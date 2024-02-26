@@ -1,0 +1,9 @@
+Nome: Matheus
+Idade: 37
+Altura: 1.710000
+Nome: JOAO
+Idade: 29
+Altura: 1.800000
+Nome: MARIA
+Idade: 20
+Altura: 1.600000
