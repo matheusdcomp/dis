@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <style>
+    .secao {
+      border: 2px groove gray;
+      margin: 10px;
+      padding: 10px;
+    }
+
+    #divlista {
+      height: 100px;
+    }
+
+    #divlista h1 {
+      margin-bottom: 0;
+    }
+
+    ul {
+      max-width: 450px;
+      margin: auto;
+      padding: 0;
+    }
+
+    li {
+      background-color: lightskyblue;
+      border: 1px solid black;
+      float: left;
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      font-weight: bold;
+      list-style-type: none;
+      margin: 0;
+      padding: 10px;
+      text-align: center;
+      width: 100px;
+    }
+
+    table,
+    th,
+    td {
+      border: 1px solid black;
+      border-collapse: collapse;
+      padding: 2px;
+    }
+
+    th {
+      background-color: rgb(107, 107, 247);
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      font-weight: bold;
+    }
+  </style>
+  <title>CSS</title>
+</head>
+
+<body>
+
+  <div id="divlista" class="secao">
+    <h1>Lista</h1>
+    <ul>
+      <li>HTML</li>
+      <li>CSS</li>
+      <li>JavaScript</li>
+    </ul>
+  </div>
+
+  <div id="divtabela" class="secao">
+    <h1>Tabela</h1>
+    <table>
+      <tr>
+        <th>Linguagem de Programação</th>
+        <th>Paradigma</th>
+      </tr>
+      <tr>
+        <td>C</td>
+        <td>Imperativo</td>
+      </tr>
+      <tr>
+        <td>Python</td>
+        <td rowspan="3">Orientado a Objetos</td>
+      </tr>
+      <tr>
+        <td>Ruby</td>
+      </tr>
+      <tr>
+        <td>Java</td>
+      </tr>
+      <tr>
+        <td>Haskell</td>
+        <td rowspan="2">Funcional</td>
+      </tr>
+      <tr>
+        <td>LISP</td>
+      </tr>
+      <tr>
+        <td>Prolog</td>
+        <td>Lógico</td>
+      </tr>
+    </table>
+  </div>
+</body>
+
+</html>
