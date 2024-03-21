@@ -4,5 +4,5 @@ aps - Análide e Projeto de Software
 clp - Conceitos de Linguagens de Programação
 pnf - Programação Funcional
 pmd - Programação Modular (Programação Orientada a Objetos no currículo antigo)
-twc - Tecnologias Web
+twb - Tecnologias Web
 
