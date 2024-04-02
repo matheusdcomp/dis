@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .minhadiv {
+      background-color: rgb(66, 66, 196);
+      color: white;
+      font-size: 30px;
+      border-radius: 25px;
+      height: 300px;
+      width: 600px;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-items: center;
+      align-content: center;
+    }
+
+    input {
+      width: 250px;
+      color: black;
+    }
+
+    button {
+      background-color: whitesmoke;
+      color: rgb(66, 66, 196);
+      border: 0;
+      box-shadow: 3px 3px 3px gray;
+      border-radius: 25px;
+    }
+  </style>
+
+  <script>
+    function cliqueBotao() {
+      const input = document.getElementById("texto");
+      const p = document.createElement("p");
+      p.innerHTML = input.value;
+      const divabaixo = document.getElementById("divabaixo");
+      divabaixo.appendChild(p);
+
+    }
+
+  </script>
+
+</head>
+<body>
+  <div class="corpo">
+    <h1>Minha Página</h1>
+    <div class="minhadiv">
+      <form name="formulario">
+        <label for="texto">Digite algo: </label>
+        <input type="text" id="texto" name="texto" />
+      </form>
+      <button onclick="cliqueBotao()">Adicionar Parágrafo</button>
+    </div>
+    <div id="divabaixo"></div>
+  </div>
+  <!--
+  <script>
+    const minhadiv = document.getElementsByClassName("minhadiv")[0];
+    alert(minhadiv.children.length);
+
+    forms["formulario"]["texto"].value
+  </script>
+  -->
+</body>
+</html>
