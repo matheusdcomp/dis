@@ -1,6 +1,8 @@
 # Compiled files
 *.class
 *.exe
+*.hi
+*.o
 
 # Log file
 *.log
