@@ -9,8 +9,8 @@ public class Main {
   public static void main(String[] args) {
 
     ProdutoDAO dao = new ProdutoDAO();
-    ProdutoCtrl controler = new ProdutoCtrl(dao);
-    JProduto janela = new JProduto(controler);
+    ProdutoCtrl controlador = new ProdutoCtrl(dao);
+    JProduto janela = new JProduto(controlador);
     janela.setVisible(true);
   }
 
