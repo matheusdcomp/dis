@@ -18,10 +18,6 @@ public class ProdutoCtrl {
     return this.dao.inserir(p);
   }
 
-  public Produto remover(int id) {
-    return this.dao.remover(id);
-  }
-
   public ArrayList<Produto> carregarTodos() {
     return this.dao.getDados();
   }

@@ -1,4 +1,4 @@
-package clp.concorrente;
+package clp.java.concorrente;
 
 public class Buffer {
 
@@ -23,7 +23,7 @@ public class Buffer {
 	public synchronized int get(int id) {
 		while (!disponivel) {
 			try {
-				System.out.println("Consumidor #" + id	+ " esperado...");
+				System.out.println("Consumidor #" + id + " esperado...");
 				wait();
 			} catch (Exception e) {
 				e.printStackTrace();

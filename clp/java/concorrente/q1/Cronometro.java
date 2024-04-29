@@ -1,4 +1,4 @@
-package clp.concorrente.q1;
+package clp.java.concorrente.q1;
 
 import javax.swing.JOptionPane;
 
@@ -6,7 +6,7 @@ public class Cronometro extends Thread {
 
 	public void run() {
 		int t = Integer.parseInt(
-			JOptionPane.showInputDialog("Digite o tempo"));
+				JOptionPane.showInputDialog("Digite o tempo"));
 
 		for (; t >= 0; t--) {
 			System.out.println(t);

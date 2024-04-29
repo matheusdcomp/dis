@@ -1,4 +1,4 @@
-package clp.concorrente.q3;
+package clp.java.concorrente.q3;
 
 import java.util.LinkedList;
 import java.util.Queue;
@@ -26,7 +26,7 @@ public class FilaImpressao {
 	public synchronized void poll(int id) {
 		while (disponivel == 3) {
 			try {
-				System.out.println("Impressora #" + id	+ " esperado...");
+				System.out.println("Impressora #" + id + " esperado...");
 				wait();
 			} catch (Exception e) {
 				e.printStackTrace();

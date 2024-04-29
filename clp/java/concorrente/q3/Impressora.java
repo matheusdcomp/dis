@@ -1,7 +1,7 @@
-package clp.concorrente.q3;
+package clp.java.concorrente.q3;
 
 public class Impressora extends Thread {
-	
+
 	private int id;
 	private FilaImpressao buffer;
 	private int consumoTotal;

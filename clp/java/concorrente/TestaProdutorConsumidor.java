@@ -1,4 +1,4 @@
-package clp.concorrente;
+package clp.java.concorrente;
 
 public class TestaProdutorConsumidor {
 

@@ -1,10 +1,9 @@
-package clp.concorrente.q3;
-
+package clp.java.concorrente.q3;
 
 public class ServidorImpressaoMain {
 
 	public static void main(String[] args) {
-		
+
 		FilaImpressao fila = new FilaImpressao();
 		Computador computador1 = new Computador(1, fila, 5);
 		Computador computador2 = new Computador(2, fila, 5);

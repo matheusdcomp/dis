@@ -1,7 +1,7 @@
-package clp.concorrente;
+package clp.java.concorrente;
 
 public class Consumidor extends Thread {
-	
+
 	private int id;
 	private Buffer buffer;
 	private int consumoTotal;
