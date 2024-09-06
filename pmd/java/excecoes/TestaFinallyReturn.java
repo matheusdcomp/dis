@@ -1,18 +1,16 @@
 package excecoes;
 
 public class TestaFinallyReturn {
-	
+
 	public static void testa() {
 		try {
 			System.out.println("TRY");
 			int a = 5 / 0;
 			return;
-		} 
-		catch (Exception e) {
+		} catch (Exception e) {
 			System.out.println("CATCH");
 			return;
-		} 
-		finally {
+		} finally {
 			System.out.println("FINALLY");
 		}
 	}

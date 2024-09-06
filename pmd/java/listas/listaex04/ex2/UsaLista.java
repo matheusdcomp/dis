@@ -1,6 +1,6 @@
 package listas.listaex04.ex2;
 
-import lista2.ex05.Produto;
+import listas.listaex04.ex1.Produto;
 
 public class UsaLista {
 
@@ -28,7 +28,7 @@ public class UsaLista {
     lstr.remove(1);
     System.out.println(lstr.toString());
 
-    System.out.println("\n\nLISTA DE C�RCULOS\n");
+    System.out.println("\n\nLISTA DE CIRCULOS\n");
     Lista<Produto<Integer>> lpro = new Lista<>();
     Produto<Integer> p = new Produto<Integer>(1, "CHOCOLATE", 3.99f);
     lpro.add(0, p);

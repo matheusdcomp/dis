@@ -1,6 +1,6 @@
 package listas.listaex01.ex3;
 
-import listaex01.ex2.Conta;
+import listas.listaex01.ex2.Conta;
 
 public class Banco {
 

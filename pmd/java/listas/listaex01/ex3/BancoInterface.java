@@ -1,8 +1,8 @@
 package listas.listaex01.ex3;
 
 import java.util.Scanner;
-import listaex01.ex2.Conta;
-import listaex01.ex2.ContaInterface;
+import listas.listaex01.ex2.Conta;
+import listas.listaex01.ex2.ContaInterface;
 
 public class BancoInterface {
 
