@@ -9,7 +9,7 @@ public abstract class Entidade {
     id = System.currentTimeMillis();
   }
 
-  public int getId() {
+  public long getId() {
     return id;
   }
 
