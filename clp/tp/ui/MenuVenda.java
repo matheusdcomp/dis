@@ -34,29 +34,39 @@ public class MenuVenda extends MenuEntidade {
 
     Venda venda = new Venda();
     Produto produto = null;
-    String nome = null;
     int qtd = 0;
 
     while (true) {
 
-      while (nome == null || nome.equals("") || qtd <= 0) {
+      while (true) {
 
         try {
+
           System.out.print("\nDigite o nome do produto: ");
-          produto = daoProduto.buscar(scanner.nextLine());
+          produto = daoProduto.buscar(scanner.next());
+
           System.out.print("Digite a quantidade: ");
           qtd = scanner.nextInt();
+
+          if (produto == null || qtd <= 0)
+            throw new Exception("\nFavor informar os dados corretamente.\n");
+          else
+            break;
+
         } catch (Exception ex) {
-          System.err.println("\nFavor informar os dados corretamente.\n");
+          System.err.println(ex.getMessage());
         }
       }
 
       venda.adicionarItem(produto, qtd);
 
-      System.out.print("\nDeseja adicionar outro produto à venda (1-SIM/0-NAO)?");
+      System.out.print("\nDeseja adicionar outro produto à venda (1-SIM/0-NAO)? ");
+
       if (scanner.nextInt() != 1)
         break;
     }
+
+    System.out.println("\n\nNOTA FISCAL\n" + venda.toString());
 
     daoVenda.adicionar(venda);
   }
@@ -66,12 +76,20 @@ public class MenuVenda extends MenuEntidade {
 
     long id = 0;
 
-    while (id <= 0.0) {
+    while (true) {
+
       try {
+
         System.out.print("\nDigite o id: ");
         id = scanner.nextLong();
+
+        if (id <= 0.0)
+          throw new Exception("\nFavor informar os dados corretamente.\n");
+        else
+          break;
+
       } catch (Exception ex) {
-        System.err.println("\nFavor informar os dados corretamente.\n");
+        System.err.println(ex.getMessage());
       }
     }
     daoVenda.remover(id);

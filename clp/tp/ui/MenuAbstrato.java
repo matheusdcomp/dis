@@ -6,18 +6,23 @@ public abstract class MenuAbstrato {
 
   public void mostrarMenu(Scanner scanner) {
 
-    System.out.println("\n\n\n");
+    int opcao = 0;
 
-    mostrarTitulo();
+    do {
+      System.out.println("\n\n\n");
 
-    mostrarOpcoes();
+      mostrarTitulo();
 
-    System.out.print("INFORME A SUA OPCAO: ");
+      mostrarOpcoes();
 
-    executarOpcao(scanner.nextInt(), scanner);
+      System.out.print("INFORME A SUA OPCAO: ");
+
+      opcao = executarOpcao(scanner.nextInt(), scanner);
+
+    } while (opcao != 0);
   }
 
-  protected abstract void executarOpcao(int opcao, Scanner scanner);
+  protected abstract int executarOpcao(int opcao, Scanner scanner);
 
   protected abstract void mostrarOpcoes();
 

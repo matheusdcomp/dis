@@ -14,11 +14,11 @@ public class MenuPrincipal extends MenuAbstrato {
   }
 
   @Override
-  protected void executarOpcao(int opcao, Scanner scanner) {
+  protected int executarOpcao(int opcao, Scanner scanner) {
 
     switch (opcao) {
       case 0:
-        return;
+        return 0;
 
       case 1:
         menuProduto.mostrarMenu(scanner);
@@ -31,15 +31,17 @@ public class MenuPrincipal extends MenuAbstrato {
       default:
         System.err.println("OPCAO INVALIDA\n");
     }
+
+    return 1;
   }
 
   @Override
   protected void mostrarOpcoes() {
     System.out.println(String.format(
-        "%s\n%s\n%s\n",
-        "0 -> FECHAR PROGRAMA\n",
-        "1 -> PRODUTO\n",
-        "2 -> VENDA\n"));
+        "%s\n%s\n%s",
+        "0 -> FECHAR PROGRAMA",
+        "1 -> PRODUTO",
+        "2 -> VENDA"));
   }
 
   @Override

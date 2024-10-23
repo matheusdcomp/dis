@@ -9,8 +9,9 @@ public class Main {
   public static void main(String[] args) {
 
     Scanner scanner = new Scanner(System.in);
+    scanner.useDelimiter("\\R");
 
-    MenuPrincipal.getInstance().mostrarMenu(scanner);
+    new MenuPrincipal().mostrarMenu(scanner);
 
     scanner.close();
   }

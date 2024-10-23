@@ -34,7 +34,7 @@ public class Produto extends Entidade {
   }
 
   public String toString() {
-    return String.format("%sNome: %s\tValor: %.2lf", super.toString(), nome, valor);
+    return String.format("%sNome: %s\tValor: %.2f", super.toString(), nome, valor);
   };
 
 }

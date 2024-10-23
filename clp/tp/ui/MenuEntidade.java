@@ -11,11 +11,11 @@ public abstract class MenuEntidade extends MenuAbstrato {
   protected abstract void remover(Scanner scanner);
 
   @Override
-  protected void executarOpcao(int opcao, Scanner scanner) {
+  protected int executarOpcao(int opcao, Scanner scanner) {
 
     switch (opcao) {
       case 0:
-        return;
+        return 0;
 
       case 1:
         listar();
@@ -32,16 +32,18 @@ public abstract class MenuEntidade extends MenuAbstrato {
       default:
         System.err.println("OPCAO INVALIDA\n");
     }
+
+    return 1;
   }
 
   @Override
   protected void mostrarOpcoes() {
     System.out.println(String.format(
-        "%s\n%s\n%s\n%s\n",
-        "0 -> VOLTAR\n",
-        "1 -> LISTAR\n",
-        "2 -> ADICIONAR\n",
-        "3 -> REMOVER\n"));
+        "%s\n%s\n%s\n%s",
+        "0 -> VOLTAR",
+        "1 -> LISTAR",
+        "2 -> ADICIONAR",
+        "3 -> REMOVER"));
   }
 
 }

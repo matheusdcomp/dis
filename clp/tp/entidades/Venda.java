@@ -37,11 +37,13 @@ public class Venda extends Entidade implements Totalizavel {
 
   public String toString() {
 
-    var sb = new StringBuilder(String.format("%sData-Hora: %s\tItens:\n", super.toString(), dataHora));
+    var sb = new StringBuilder(String.format("%sData-Hora: %s\nItens:\n", super.toString(), dataHora));
 
     for (ItemVenda i : itens) {
-      sb.append("\n\t" + i.toString());
+      sb.append("\n  " + i.toString());
     }
+
+    sb.append("\nTOTAL: " + total());
 
     return sb.toString();
   }
@@ -77,7 +79,7 @@ public class Venda extends Entidade implements Totalizavel {
     }
 
     public String toString() {
-      return String.format("%50s-%8.2lf-%5d-%8.2lf", produto.getNome(), valor, qtd, valor * qtd);
+      return String.format("%15s %8.2f x %5d = %8.2f", produto.getNome(), valor, qtd, valor * qtd);
     };
 
   }

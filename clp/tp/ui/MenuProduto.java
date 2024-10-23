@@ -31,14 +31,23 @@ public class MenuProduto extends MenuEntidade {
     String nome = null;
     double valor = 0.0;
 
-    while (nome == null || nome.equals("") || valor <= 0.0) {
+    while (true) {
+
       try {
+
         System.out.print("\nDigite o nome: ");
-        nome = scanner.nextLine();
+        nome = scanner.next();
+
         System.out.print("Digite o valor: ");
         valor = scanner.nextDouble();
+
+        if (nome == null || nome.equals("") || valor <= 0.0)
+          throw new Exception("\nFavor informar os dados corretamente.\n");
+        else
+          break;
+
       } catch (Exception ex) {
-        System.err.println("\nFavor informar os dados corretamente.\n");
+        System.err.println(ex.getMessage());
       }
     }
 
@@ -50,12 +59,20 @@ public class MenuProduto extends MenuEntidade {
 
     String nome = null;
 
-    while (nome == null || nome.equals("")) {
+    while (true) {
+
       try {
+
         System.out.print("\nDigite o nome: ");
-        nome = scanner.nextLine();
+        nome = scanner.next();
+
+        if (nome == null || nome.equals(""))
+          throw new Exception("\nFavor informar o nome corretamente.\n");
+        else
+          break;
+
       } catch (Exception ex) {
-        System.err.println("\nFavor informar os dados corretamente.\n");
+        System.err.println(ex.getMessage());
       }
     }
 
