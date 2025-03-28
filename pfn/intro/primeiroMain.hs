@@ -1,4 +1,7 @@
-main = print (soma 20 30)
+main = do { 
+  a <- readLn ; 
+  b <- readLn ; 
+  print (soma a b) }
 
 soma :: Int -> Int -> Int
 soma x y = x + y
