@@ -1,58 +1,94 @@
+import Control.Monad (when)
+
 --1
-class Visible t where
-  toString :: t -> String
-  size :: t -> Int
-
-instance Visible Int where
-  toString n = "0"
-  size _ = 1
-
-data Pares a = Par a a deriving (Show)
-
-instance Show a => Visible (Pares a) where
-  toString (Par x y) = "Par " ++ show x ++ " " ++ show y
-  size p = length $ toString p
-
---com o deriving (Show) em Pares, 
---toString também pode ser feita assim:
---toString p = show p
+--A função map aplica a função print para cada elemento da lista.
+--Assim, a função print imprime cada elemento da lista em uma lisnha separada.
+--Como cada chamada à função print retorna o valor IO (),
+--o comando sequence coleta esses valores removendo a parte IO,
+--o que resulta na lista [(),(),(),(),()].
 
 
 --2
-data Ponto = Pt Float Float deriving (Show)
+leiaAte :: IO ( )
+leiaAte = do
+  putStr "Digite o nome de um aluno ou digite fim para sair do programa: "
+  nome <- getLine
+  if nome == "fim" || nome == "FIM"
+  then return ()
+  else do
+  	putStrLn "Digite as três notas do aluno: "
+  	n1 <- getDouble
+  	n2 <- getDouble
+  	n3 <- getDouble
+  	putStr ("Aluno: " ++ nome ++ " - Média: " ++ show ((n1+n2+n3)/3.0) ++ "\n")
+  	leiaAte
 
-data Forma = 
-  Circulo Ponto Float | 
-  Retangulo Ponto Ponto
-  deriving (Show)
-
-surface :: Forma -> Float  
-surface (Circulo _ r) = 2.0 * pi * r  
-surface (Retangulo (Pt x1 y1) (Pt x2 y2)) = 
-  (abs $ x2 - x1) * (abs $ y2 - y1)
+getDouble :: IO Double
+getDouble = do
+  dado <- getLine
+  return (read dado :: Double)
 
 
---3 
-retangulo :: Ponto -> Ponto
-retangulo p1 p2 = (Retangulo p1 p2)
+--3
+inverte :: [a] -> [a]
+inverte [] = []
+inverte (h:t) = inverte t ++ [h]
+
+palindromo :: Eq a => [a] -> Bool
+palindromo lista = lista == inverte lista
+
+palimdromoIO :: IO ()
+palimdromoIO = do
+  putStr "Digite uma string: "
+  str <- getLine
+  putStrLn $ str ++ " invertida fica " ++ inverte str
+  if (palindromo str)
+  then putStrLn $ str  ++ " é palindromo"
+  else putStrLn $ str  ++ " não é palindromo"
 
 
 --4
-data Booleano = Falso | Verdadeiro deriving (Show)
+parimparIO :: IO ()
+parimparIO = do
+  putStrLn "Digite as três inteiros: "
+  a <- getLine
+  b <- getLine
+  c <- getLine
+  putStr (parimpar a b c)
 
---no circulo, a distância entre o ponto e o centro deve ser menor que o raio
---no retângulo, o ponto deve estar entre os pontos superior e inferior do retângulo  
-dentro :: Forma -> Ponto -> Booleano
-dentro (Circulo (Pt cx cy) r)  (Pt x y) = 
-  if sqrt ((x-cx)^2 + (y-cy)^2) <= r then Verdadeiro else Falso
-dentro (Retangulo (Pt sx sy) (Pt ix iy)) (Pt x y) = 
-  if x >= sx && x <= ix && y <= sy && y >= iy then Verdadeiro else Falso
+parimpar :: String -> String -> String -> String
+parimpar a b c =
+  a ++ (if even (read a) then " é par.\n" else " é ímpar.\n") ++
+  b ++ (if even (read b) then " é par.\n" else " é ímpar.\n") ++
+  c ++ (if even (read c) then " é par.\n" else " é ímpar.\n")
 
 
 --5
-desloca :: Forma -> Float -> Float -> Forma
-desloca (Circulo (Pt cx cy) r) x y = (Circulo (cx+x) (cy+y))
-desloca (Retangulo (Pt sx sy) (Pt ix iy)) x y = (Retangulo ps pi)
-  where 
-  	ps = (Pt (sx+x) (sy+y))
-  	pi = (Pt (ix+x) (iy+y))
+main = do
+  putStrLn menu
+  op <- getLine
+  when (op /= "0") $ do
+    processaopcao op
+    main
+
+menu :: String
+menu = "\n0 - SAIR\n1 - SOMAR\n2 - MULTIPLICAR" ++
+  "\n3 - FATORIAL\nDigite sua opção: "
+
+processaopcao :: String -> IO ()
+processaopcao op
+  | op == "1" = do
+      putStrLn "Digite dois números: "
+      n1 <- getDouble
+      n2 <- getDouble
+      putStrLn $ "Soma: " ++ show (n1 + n2)
+  | op == "2" = do
+      putStrLn "Digite dois números: "
+      n1 <- getDouble
+      n2 <- getDouble
+      putStrLn $ "Multiplicação: " ++ show (n1 * n2)
+  | op == "3" = do
+      putStrLn "Digite um inteiro: "
+      n <- getLine
+      putStrLn $ "Fatorial de " ++ n ++ ": " ++
+        show (product [1..(read n)])

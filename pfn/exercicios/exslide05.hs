@@ -1,54 +1,31 @@
 --1
-tamanho [] = 0
-tamanho (a:b) = 1 + tamanho b
+quicksort :: [Int] -> [Int]
+quicksort [] = []
+quicksort (p:r) = 
+  quicksort (filter (<p) r) 
+  ++ [p] ++ 
+  quicksort (filter (>=p) r)
 
 --2
-repete :: Char -> Int -> String
-repete _ 0 = []
-repete c n = c : repete c (n-1)
+mymap _ [] = []
+mymap f (a:b) =  f a : mymap f b 
 
 --3
-maioresMedia :: [Float] -> [Float]
-maioresMedia lst = [x | x <- lst, x > media lst] 
-
-maioresMedia2 :: [Float] -> [Float]
-maioresMedia2 lst = mmaux lst (media lst)
-
-mmaux :: [Float] -> Float -> [Float]
-mmaux [] _ = []
-mmaux (a:b) m =   
-  | a > m = a : maioresMedia2 b
-  | otherwise = maioresMedia2 b
-
-media :: [Float] -> Float
-media l = (soma l) / (fromInteger (tamanho l))
-
-soma :: [Float] -> Float
-soma [] = 0
-soma (a:b) = a + soma b
+myfoldl _ b [] = b
+myfoldl f b (a:r) = f a (myfoldl f b r)
 
 --4
-existe _ [] = False
-existe a (b:c)
-  | a == b = True
-  | otherwise = existe a c
+fxl :: (Int->Int) -> Int -> Int -> [Int]
+fxl _ _ 0 = []
+fxl f x n = x : fxl f (f x) (n-1)  
 
 --5
-inverte [] = []
-inverte (a:b) = inverte b ++ [a]
+fgxl _ _ [] = []
+fgxl f g (x:r) = (f.g) x : fgxl f g r 
 
 --6
-sublistas _ [] = []
-sublistas n lst = take n lst : sublistas n (drop n lst)
+zipw f x y = [f x' y' | x' <- x, y' <- y] 
 
 --7
-selectionsort [] = []
-selectionsort lst = menor lst : selectionsort (remove1 (menor lst) lst)
-
-menor [a] = a
-menor (a:b) = min a (menor b)
-
-remove1 _ [] = []
-remove1 a (b:c)
-  | a == b = c
-  | otherwise = b : remove1 a c
+--Na interface do GHCi, digite ((==0).(`mod` 2)) 1 para testar se o 1 é par.  
+--Usando a função da questão 5: fgxl (==0) (`mod` 2) [1,2,3,4,5,6]

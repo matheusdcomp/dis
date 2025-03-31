@@ -1,36 +1,39 @@
+import Data.Maybe (fromJust)
+
 --1
-q1v1 = fst ( snd ( fst (("Hello", (4, True)), 15.5) ) )
-q1v2 = (fst.snd.fst) (("Hello", (4, True)), 15.5)
+mytake :: Int -> [a] -> [a]
+mytake 0 _ = []
+mytake n (h:t) = h : mytake (n-1) t
+
+mydrop :: Int -> [a] -> [a]
+mydrop 0 ls = ls
+mydrop n (h:t) = mydrop (n-1) t
 
 --2
-type Trapezio = (Float,Float,Float)
-
-areaTrapezio :: Trapezio -> Float
-areaTrapezio (teto, piso, altura) = (teto + piso) * altura / 2
+cat :: [a] -> [a] -> [a]
+cat l1 [] = l1
+cat [] l2 = l2
+cat (h1:t1) l2 = h1 : cat t1 l2
 
 --3
-type Ponto = (Float,Float)
-
-somaPontos :: [Ponto] -> Ponto
-somaPontos [] = (0,0)
-somapontos (p:r) = soma2pontos p (somaPontos r) 
-
-soma2pontos :: Ponto -> Ponto -> Ponto
-soma2pontos (xa,ya) (xb,yb) = (xa+xb,ya+yb) 
+mylast :: [a] -> Maybe a
+mylast [] = Nothing
+mylast [e] = Just e
+mylast (h:t) = mylast t
 
 --4
-fstlst lista = (head lista, last lista)
+menor :: [Int] -> Maybe Int
+menor [] = Nothing
+menor [x] = Just x
+menor (x:r) = Just (min x (fromJust (menor r)))
 
 --5
-type Jogador = String
-type Tabuleiro = (Char,Int)
-type Jogada = (Jogador, Tabuleiro)
+bubblesort :: Ord a => [a] -> [a]
+bubblesort [] = []
+bubblesort lst = bubblesort (init (bsort lst)) ++ [last (bsort lst)]
 
-jogadasde :: [Jogada] -> Jogador -> Int
-jogadasde lista j = length [(x,y) | (x,y) <- lista, x == j ]
-
---6
-type Triangulo = (Float,Float,Float)
-
-equilateros :: [Triangulo] -> [Triangulo]
-equilateros lista = [(x,y,z) | (x,y,z) <- lista, x == y && x == z ]
+bsort :: Ord a =>  [a] -> [a]
+bsort (x:y:xs)
+  | x > y = y : bsort (x:xs)
+  | otherwise = x : bsort (y:xs)
+bsort xs = xs

@@ -1,23 +1,76 @@
+import System.IO
+import Control.Monad (forever)
+
+
 --1
-process :: [Int] -> Int -> Int -> Maybe Int
-process lst n m 
-  | n > m = Nothing
-  | n < 1 || m > length lst = Nothing
-  | otherwise = Just (sum ( drop (n-1) (take m lst) ) ) 
+qtdChar :: IO ()
+qtdChar = do
+  putStr "\nInforme o arquivo: "
+  path <- getLine
+  arq <- openFile path ReadMode
+  conteudo <- hGetContents arq
+  hClose arq
+  putStr $ "\nTamanho do arquivo em caracteres: " ++
+    show (length conteudo) ++ "\n\n"
 
 
 --2
-substring :: [a] -> Int -> [a]
-substring [] _    = []
-substring (h:t) i |
-  i < 0     = error "Índice inválido" 
-  i == 0    = [] 
-  otherwise = h : substring t (i-1)
+qtdLinhas :: IO ()
+qtdLinhas = do
+  putStr "\nInforme o arquivo: "
+  path <- getLine
+  arq <- openFile path ReadMode
+  conteudo <- hGetContents arq
+  hClose arq
+  putStr $ "\nTamanho do arquivo em linhas: " ++
+    show (length (lines conteudo)) ++ "\n\n"
 
 
 --3
-aplica :: [(a -> b)] -> [a] -> [Maybe b]
-aplica [] []       = []
-aplica [] (_:r)    = Nothing : aplica [] r
-aplica (_:c) []    = Nothing : aplica c []
-aplica (f:c) (x:r) = Just (f x) : aplica c r
+addLinhas :: IO ()
+addLinhas = do
+  putStr "\nInforme o arquivo: "
+  path <- getLine
+  arq <- openFile path AppendMode
+  addLinha arq
+  hClose arq
+
+addLinha :: Handle -> IO ()
+addLinha arq = do
+  putStrLn "\nDigite uma linha de texto:"
+  linha <- getLine
+  if linha == "EOF"
+  then return ()
+  else do
+    hPutStrLn arq linha
+    addLinha arq
+
+
+--4
+operacao :: IO()
+operacao = do
+  putStr "fim\nsum\nsub\nDigite sua opção: "
+  op <- getLine
+  case op of
+    "fim" -> return ()
+    "sum"  -> do
+      putStrLn "\nDigite 2 números:"
+      n1 <- getLine
+      n2 <- getLine
+      let opr = n1 ++ " + " ++ n2 ++ " = " ++ show (read n1 + read n2)
+      putStrLn opr
+      arq <- openFile "exslide12q4.txt" AppendMode
+      hPutStrLn arq opr
+      hClose arq
+      operacao
+    "sub"  -> do
+      putStrLn "\nDigite 2 números:"
+      n1 <- getLine
+      n2 <- getLine
+      let opr = n1 ++ " - " ++ n2 ++ " = " ++ show (read n1 - read n2)
+      putStrLn opr
+      arq <- openFile "exslide12q4.txt" AppendMode
+      hPutStrLn arq opr
+      hClose arq
+      operacao
+    _      -> operacao -- _ é equivalente ao default do switch do C

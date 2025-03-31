@@ -1,49 +1,54 @@
-import Data.Char (ord)
-
--- 1
-divisao :: Int -> Int -> Int
-divisao x y
-  | x < y = 0
-  | x >= y = 1 + divisao (x-y) y
+--1
+tamanho [] = 0
+tamanho (a:b) = 1 + tamanho b
 
 --2
-maior :: Int -> Int -> Int -> Int
-maior a b c = 
-  if a >= b && a >= c then a
-  else if b >= a && b >= c then b
-  else c
+repete :: Char -> Int -> String
+repete _ 0 = []
+repete c n = c : repete c (n-1)
 
 --3
-bissexto :: Int -> Bool
-bissexto a 
-  | mod a 400 == 0 = True
-  | mod a 4 == 0 && mod a 100 /= 0 = True
-  | otherwise = False
+maioresMedia :: [Float] -> [Float]
+maioresMedia lst = [x | x <- lst, x > media lst] 
+
+maioresMedia2 :: [Float] -> [Float]
+maioresMedia2 lst = mmaux lst (media lst)
+
+mmaux :: [Float] -> Float -> [Float]
+mmaux [] _ = []
+mmaux (a:b) m =   
+  | a > m = a : maioresMedia2 b
+  | otherwise = maioresMedia2 b
+
+media :: [Float] -> Float
+media l = (soma l) / (fromInteger (tamanho l))
+
+soma :: [Float] -> Float
+soma [] = 0
+soma (a:b) = a + soma b
 
 --4
-crescente :: Int -> Int -> Int -> String
-crescente a b c
-  | a <= b && a <= c = show a ++ " " ++ crescente2 b c
-  | b <= a && b <= c = show b ++ " " ++ crescente2 a c
-  | c <= b && c <= a = show c ++ " " ++ crescente2 a b
-
-crescente2 :: Int -> Int -> String
-crescente2 a b
-  | a <= b = show a ++ " " ++ show b
-  | otherwise = show b ++ " " ++ show a
+existe _ [] = False
+existe a (b:c)
+  | a == b = True
+  | otherwise = existe a c
 
 --5
-multiplos :: Int -> Int -> Bool
-multiplos a b = mod a b == 0 || mod b a == 0
+inverte [] = []
+inverte (a:b) = inverte b ++ [a]
 
 --6
-letra :: Char -> Bool
-letra c = ord c >= 65 && ord c <= 90 || 
-          ord c >= 97 && ord c <= 122 
+sublistas _ [] = []
+sublistas n lst = take n lst : sublistas n (drop n lst)
 
 --7
-triangulo :: Float -> Float -> Float -> String
-triangulo a b c 
-  | a == b && b == c = "Equilatero"
-  | a /= b && a /= c && b /= c = "Escaleno"
-  | otherwise = "Isosceles"
+selectionsort [] = []
+selectionsort lst = menor lst : selectionsort (remove1 (menor lst) lst)
+
+menor [a] = a
+menor (a:b) = min a (menor b)
+
+remove1 _ [] = []
+remove1 a (b:c)
+  | a == b = c
+  | otherwise = b : remove1 a c

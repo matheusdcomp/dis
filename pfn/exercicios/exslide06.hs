@@ -1,31 +1,73 @@
 --1
-quicksort :: [Int] -> [Int]
-quicksort [] = []
-quicksort (p:r) = 
-  quicksort (filter (<p) r) 
-  ++ [p] ++ 
-  quicksort (filter (>=p) r)
+media ls = s / q
+  where
+  	s = soma ls
+  	q = tam ls
+    soma [] = 0
+    soma (h:t) = h + soma t
+    tam [] = 0
+    tam (h:t) = 1 + tam t
+
+
+media2 ls = s / fromIntegral q
+  where
+  	s = sum ls
+  	q = length ls
 
 --2
-mymap _ [] = []
-mymap f (a:b) =  f a : mymap f b 
+selectionsort [] = []
+selectionsort ls = m : selectionsort x
+  where
+    m = menor ls
+    x = remove m ls
+    menor [e] = e
+    menor (h:t)
+      |	h < menorDet = h
+      | otherwise = menorDet
+      where
+        menorDet = menor t
+    remove _ [] = []
+    remove e (h:t)
+      | e == h = t
+      | otherwise = h : remove e t
+
+import Data.List
+
+selectionsort2 [] = []
+selectionsort2 ls = m : selectionsort2 x
+  where
+    m = minimum ls
+    x = delete m ls  --delete pertence a Data.List
 
 --3
-myfoldl _ b [] = b
-myfoldl f b (a:r) = f a (myfoldl f b r)
+mergesort []  = []
+mergesort [x] = [x]
+mergesort lst = conquistar (mergesort m1) (mergesort m2)
+	where 
+		metade = div (length lst) 2
+		m1 = take metade lst
+		m2 = drop metade lst
+    conquistar [] lst = lst
+    conquistar lst [] = lst
+    conquistar (p1:r1) (p2:r2)
+      | p1 < p2   = p1 : conquistar r1 (p2:r2)
+      | otherwise = p2 : conquistar (p1:r1) r2 
 
---4
-fxl :: (Int->Int) -> Int -> Int -> [Int]
-fxl _ _ 0 = []
-fxl f x n = x : fxl f (f x) (n-1)  
 
---5
-fgxl _ _ [] = []
-fgxl f g (x:r) = (f.g) x : fgxl f g r 
+--4 Considerei a versão em que fib 1 = 0
+--  Para a versão em que fib 1 = 1, trocar os dois 0 por 1 
+fib 1 = 0 
+fib 2 = 1 
+fib n = fib' n 0 1 
+  where
+    fib' 2 p s  = s
+    fib' n p s = fib' (n-1) s (s+p)   
 
---6
-zipw f x y = [f x' y' | x' <- x, y' <- y] 
+--fibonacci 1 2 3 4 5 6 7
+--resposta  0 1 1 2 3 5 8 
 
---7
---Na interface do GHCi, digite ((==0).(`mod` 2)) 1 para testar se o 1 é par.  
---Usando a função da questão 5: fgxl (==0) (`mod` 2) [1,2,3,4,5,6]
+--f 3 0 1 = f 2 1 1 = 1
+--f 4 0 1 = f 3 1 1 = f 2 1 2 = 2
+--f 5 0 1 = f 4 1 1 = f 3 1 2 = f 2 2 3 = 3
+--f 6 0 1 = f 5 1 1 = f 4 1 2 = f 3 2 3 = f 2 3 5 = 5
+--f 7 0 1 = f 6 1 1 = f 5 1 2 = f 4 2 3 = f 3 3 5 = f 2 5 8 = 8
