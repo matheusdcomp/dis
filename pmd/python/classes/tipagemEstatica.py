@@ -8,10 +8,10 @@ class Circulo:
         self.centro:pt.Ponto = centro
         self.raio:float = raio
 
-    def area(self):
+    def area(self): float
         return 3.1415 * self.raio * self.raio
     
-    def pertence(self, p):
+    def pertence(self, p): bool
         return self.centro.distancia(p) <= self.raio
 
 p1 = pt.Ponto(4.0, 6.0)
