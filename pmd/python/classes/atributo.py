@@ -14,7 +14,8 @@ objetos dessa classe são criados sem atributos.
 
 Atributos de instância são criados dentro dos objetos no
 momento em que a linha onde esse atributo foi declarado é 
-executada. Isso pode acontecer dentro ou fora da classe.
+executada. Isso pode acontecer dentro da classe (em qualquer método) 
+ou fora da classe.
 
 Por causa disso, em Python, é possível que objetos da mesma
 classe possuam uma quantidade diferente de atributos.
