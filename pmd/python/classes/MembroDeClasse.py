@@ -24,3 +24,6 @@ mc.metodoInstancia()
 print('Atributo de mc: ', mc.at_instancia)
 MinhaClasse.metodoClasse()
 MinhaClasse.metodoEstatico()
+
+mc = MinhaClasse(1) 
+MinhaClasse.metodoClasse()
