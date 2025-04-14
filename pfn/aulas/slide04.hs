@@ -18,4 +18,30 @@ maioresQMedia lst = [x | x <- lst, x > (sum lst)/fromIntegral(length lst) ]
 contem _ [] = False
 contem e (a:b)
   | e == a = True
-  | otherwhise = contem e b
+  | otherwise = contem e b
+
+--5
+inverte1 [] = []
+inverte1 (a:b) = inverte1 b ++ [a]
+
+inverte2 [] = []
+inverte2 lst = last lst : inverte2 (init lst)
+
+inverte3 lst = invrt lst []
+invrt [] li = li
+invrt (a:b) li = invrt b (a:li) --versão mais eficiente
+
+--6
+reparte _ [] = []
+reparte n lst = take n lst : reparte n (drop n lst)
+
+--7
+--esta versão não aceita repetido
+selsort1 [] = []
+selsort1 lst = minimum lst : selsort1 [ x | x <- lst, x /= minimum lst]
+
+--esta versão aceita repetido
+selsort2 [] = []
+selsort2 lst = minimum lst : selsort2 (rem1 (minimum lst) lst)
+rem1 _ [] = []
+rem1 e (a:b) = if e == a then b else a : rem1 e b

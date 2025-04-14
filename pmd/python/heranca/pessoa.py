@@ -30,4 +30,4 @@ pessoas.append( PFisica('JOAO','12345678910') )
 pessoas.append( PJuridica('UFSJ','0001676742364') )
 
 for p in pessoas:
-    print (p.string()) 
+  print (p.string()) 
