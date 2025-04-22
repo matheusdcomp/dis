@@ -1,71 +1,50 @@
--- Obs.: Só é obrigatório definir o cabeçalho da questão 7, pois
--- é a única questão que está definida para um tipo específico (Int)
-
 --1
-foldll f (h:t) = foldll' f h t
-
-foldll' _ r [] = r
-foldll' f r (h:t) = foldll' f (f r h) t
-
--- foldll (+) [1,2,3,4]
--- foldll' (+) 1 [2,3,4]
--- foldll' (+) ((+) 1 2) [3,4]
--- foldll' (+) ((+) ((+) 1 2) 3) [4]
--- foldll' (+) ((+) ((+) ((+) 1 2) 3) 4) []
--- (+) ((+) ((+) 1 2) 3) 4
--- (+) ((+) 3 3) 4 
--- (+) 6 4 
--- 10 
+inv ls = inv' ls []
+  where
+    inv' [] sl = sl
+    inv' (a:b) sl = inv' b (a:sl)
 
 
 --2
-foldrl _ [x] = x
-foldrl f (h:t) = f (foldrl f t) h
-
--- foldrl (+) [1,2,3]
--- (+) (foldrl (+) [2,3]) 1
--- (+) ((+) (foldrl (+) [3]) 2) 1
--- (+) ((+) 3 2) 1
--- (+) 5 1
--- 6
+resultado :: [Float] -> String
+resultado notas
+  | media < 4.0 = "REPROVADO"
+  | media >= 6.0 = "APROVADO"
+  | otherwise = "RECUPERACAO"
+  where media = sum notas / fromIntegral (length notas)
 
 
 --3
-q3 _ [] = False
-q3 f (h:t) = if f h then True else q3 f t
- 
+equacao2grau a b c   --a não pode ser 0
+  | delta < 0 = [] 
+  | delta > 0 = [x,y] 
+  | otherwise = [x] 
+  where
+    delta = b**2 - 4*a*c
+    x = (-b + sqrt delta) / 2*a
+    y = (-b - sqrt delta) / 2*a
 
---4 
---Não tem caso base, pois se nenhum elemento der True 
---ou a lista for vazia, o programa acusa erro
-q4 f (h:t) = if f h then h else q4 f t
+
+--4
+fiblist :: Int -> [Int]
+fiblist n = fiblist' 1 n []
+  where
+    fib :: Int -> Int
+    fib 1 = 0
+    fib 2 = 1
+    fib p = fib (p-1) + fib (p-2)
+    fiblist' :: Int -> Int -> [Int] -> [Int]
+    fiblist' p f ls
+      | p > f = ls
+      | otherwise = fib p : fiblist' (p+1) f ls
 
 
 --5
-q5 v [] = v
-q5 v (f:t) = q5 (f v) t
-
-
---6 versão em que a entrada e saída das funções 
---  devem ser do mesmo tipo
-q6 [] lv = lv
-q6 lf [] = []
-q6 (f:ft) (v:vt) = (f v) : q6 ft vt
-
---6 versão em que a entrada e saída das funções 
---  podem ser de tipos diferentes
-q6' [] lv = []
-q6' lf [] = []
-q6' (f:ft) (v:vt) = (f v) : q6' ft vt
-
-
---7
-q7 :: (Int -> Bool) -> (Int -> Int) -> [Int] -> [Int]
-q7 _ _ [] = []
-q7 fb fi (h:t)
-  | fb h      = fi h : q7 fb fi t
-  | otherwise = q7 fb fi t
-
-
---8
-cabeca lst = (last.reverse) lst
+split :: Int -> [a] -> [[a]]
+split 0 _  = []
+split n ls = split' n tam ls 
+  where 
+    tam = div (length ls) n
+    split' :: Int -> Int -> [a] -> [[a]]
+    split' 1 _ ls = [ls]
+    split' n t ls = take t ls : split' (n-1) t (drop t ls)

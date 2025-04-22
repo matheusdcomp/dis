@@ -3,17 +3,6 @@ maiormenor [x] = (x,x) --caso base opcional
 maiormenor lst = (minimum lst, maximum lst)
 
 --2
-split :: Int -> [a] -> [[a]]
-split 0 _  = []
-split n ls = split' n tam ls 
-  where 
-    tam = div (length ls) n
-    split' :: Int -> Int -> [a] -> [[a]]
-    split' 1 _ ls = [ls]
-    split' n t ls = take t ls : split' (n-1) t (drop t ls)
-
-
---3
 primo :: Int -> (Bool,Int)
 primo 1 = (False,1)
 primo n = primoaux n (div n 2)
@@ -25,7 +14,7 @@ primo n = primoaux n (div n 2)
       | otherwise = primoaux n (d-1)
 
 
---4
+--3
 mdcmmc :: Int -> Int -> (Int,Int)  --versão 1
 mdcmmc x y = (mdc, mmc)
   where
@@ -44,14 +33,7 @@ mdcmmc2 x y = (mdc x y, mmc x y)
     mmc a b = div (a*b) (mdc a b)
 
 
---5
-inv ls = inv' ls []
-  where
-    inv' [] sl = sl
-    inv' (a:b) sl = inv' b (a:sl)
-
-
---6
+--4
 type Dia = Int
 type Mes = Int
 type Ano = Int
@@ -72,7 +54,7 @@ diasDoMes a m
   | otherwise = anb !! m
 
 
---7
+--5
 type Data = (Dia,Mes,Ano)
 
 datasIguais :: Data -> Data -> Bool
@@ -90,7 +72,7 @@ diasEntre (d1,m1,a1) (d2,m2,a2)
     dam2 m = if m >= m2 then 0 else diasDoMes a2 m + dam2 (m+1)  
 
 
---8
+--6
 type Descricao = String
 type Compromisso = (Descricao,Data)
 type Agenda = [Compromisso]
@@ -105,7 +87,7 @@ compromissos ((ds,dt):b) d
   | otherwise = compromissos b d
 
 
---9
+--7
 dataMaisLotada :: Agenda -> Data -- versão 1
 dataMaisLotada [(_,dt)]   = dt
 dataMaisLotada ((_,dt):b) 
@@ -141,7 +123,7 @@ removeData d ((ds,dt):b)
   | otherwise = (ds,dt) : removeData d b
 
 
---10
+--8
 faltamQntDias :: Agenda -> Descricao -> Data -> (Data,Int)
 faltamQntDias [] _ da = (da,0)
 faltamQntDias ((ds,dt):b) de da

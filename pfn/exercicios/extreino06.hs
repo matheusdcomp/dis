@@ -1,132 +1,66 @@
-import Text.Read
-
 --1
-areacirc :: IO ()
-areacirc = do
-  putStr "Digite o raio do circulo: "
-  r <- getLine
-  if (readMaybe r :: Maybe Double) == Nothing
-    then error $ r ++ " nao eh um numero."
-    else putStrLn $ "Area: " ++ show (pi * read r ** 2)
-  
+menorMaior :: Ord a => [a] -> (a,a)
+menorMaior ls = (minimum ls, maximum ls)
+
 
 --2
-palindromo :: IO ()
-palindromo = do
-  putStr "Digite uma String para verificar se eh palindome ou ENTER para sair: "
-  str <- getLine
-  if str == "" 
-    then  return ()
-    else do
-      if reverse str == str
-        then putStrLn $ str ++ " eh palindromo."
-        else putStrLn $ str ++ " nao eh palindromo."
-      palindromo
+separa :: (a -> Bool) -> [a] -> ([a],[a])
+separa f ls = ([ x | x <- ls, f x ], [ x | x <- ls, (not.f) x ])
 
 
 --3
-mmm :: IO ()
-mmm = do
-  numeros <- readNumeros []
-  putStrLn $ 
-    "\nMaior: " ++ show (maximum numeros) ++ 
-    "\nMenor: " ++ show (minimum numeros) ++ 
-    "\nMedia: " ++ show (sum numeros / fromIntegral (length numeros))
-  where
-    readNumeros :: [Double] -> IO [Double]
-    readNumeros lst = do
-      putStr "Digite um numero ou ENTER para sair: "
-      n <- getLine
-      if n == "" then return lst else readNumeros (read n:lst)
+data Pacote a = Vazio | Pac a
+
+instance Show a => Show (Pacote a) where
+  show Vazio = "------\n|    |\n------"
+  show (Pac c) = t ++ "\n| " ++ s ++ " |\n" ++ t
+    where
+      s = show c
+      t = replicate (length s + 4) '-'
+
+desempacota :: Pacote a -> Maybe a
+desempacota Vazio = Nothing
+desempacota (Pac c) = Just c
 
 
 --4
-figuras :: IO ()
-figuras = do
-  op <- menu
-  case op of 
-    0 -> putStr "\n"
-    _ -> do
-      (ld,ch) <- readFigura
-      putStr "\n"
-      if op == 1 then desenhaR 1 ld ch else desenhaT 1 ld ch
-      figuras
-
-  where    
-
-      menu :: IO Int
-      menu = do
-        putStr "\n0 Sair\n1 Retangulo\n2 Triangulo\nDigite sua opcao: "
-        op <- getLine
-        return (read op) 
-
-      readFigura :: IO (Int,Char)
-      readFigura = do
-        putStr "Digite o tamanho do lado: "
-        ld <- getLine
-        putStr "Digite o caractere de desenho: "
-        ch <- getLine
-        return (read ld, ch !! 0)
-
-      desenhaR :: Int -> Int -> Char -> IO ()
-      desenhaR ln ld ch
-        | ln > ld = return ()
-        | otherwise = do
-            putStrLn (replicate ld ch) 
-            desenhaR (ln+1) ld ch
-
-      desenhaT :: Int -> Int -> Char -> IO ()
-      desenhaT ln ld ch
-        | ln > ld = return ()
-        | otherwise = do
-            putStrLn (replicate ln ch) 
-            desenhaT (ln+1) ld ch
+data Pessoa = 
+  Pf {nome::String, cpf :: Int} |
+  Pj {nome::String, cnpj :: Int}
+  deriving (Show,Eq)
 
 
 --5
-data Pessoa = Ps { nome :: String, idade :: Int } deriving (Show)
+isPF :: Pessoa -> Bool
+isPF (Pf _ _) = True
+isPF (Pj _ _) = False
 
-pessoas :: IO ()
-pessoas = do
-  ps <- cadastraPessoas []
-  imprimePessoas (qSortPessoas ps)
 
-  where
+--6
+instance Ord Pessoa where
+  p1 > p2 = nome p1 > nome p2
+  p1 < p2 = nome p1 < nome p2
+  p1 >= p2 = nome p1 >= nome p2
+  p1 >= p2 = nome p1 >= nome p2
+  max p1 p2 = max (nome p1) (nome p2)
+  min p1 p2 = min (nome p1) (nome p2)
 
-    cadastraPessoas :: [Pessoa] -> IO [Pessoa] 
-    cadastraPessoas ps = do
-      putStr "Deseja cadastrar uma pessoa (s/n): "
-      r <- getLine
-      if r == "n" || r == "N" 
-        then return ps
-        else do
-          putStr "Digite o nome da pessoa: "
-          n <- getLine
-          putStr "Digite a idade da pessoa: "
-          i <- getLine
-          cadastraPessoas ((Ps n (read i)) : ps)  
-  
-    qSortPessoas :: [Pessoa] -> [Pessoa]
-    qSortPessoas [] = []
-    qSortPessoas (p:r) = 
-      qSortPessoas [ x | x <- r, nome x < nome p ] 
-      ++ [p] ++ 
-      qSortPessoas [ y | y <- r, nome y >= nome p ]
-          
-    imprimePessoas :: [Pessoa] -> IO ()
-    imprimePessoas ps = do
-      putStrLn $ (alinhaEsq "Nome") ++ "Idade"
-      imprimep ps
-      where
-        alinhaEsq :: String -> String
-        alinhaEsq s = s ++ replicate (30 - length s) ' ' 
-        imprimep :: [Pessoa] -> IO ()
-        imprimep [] = return ()
-        imprimep ((Ps n i):r) = do
-          putStrLn $ alinhaEsq n ++ show i  
-          imprimep r
-       
-      
-        
-  
 
+--7
+class Unico t where
+  igual :: t -> t -> Bool
+  checkID :: [t] -> [t]
+
+
+--8
+instance Unico Pessoa where
+
+  igual (Pf _ c1) (Pf _ c2) = c1 == c2
+  igual (Pj _ c1) (Pj _ c2) = c1 == c2
+  igual pj pf = False
+
+  checkID [] = []
+  checkID (h:t) = h : checkID [ x | x <- t, not (igual x h) ]
+
+--para testar checkID
+pessoas = [(Pf "maria" 4),(Pf "joao" 1),(Pf "jose" 3),(Pf "joao" 1)]

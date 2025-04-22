@@ -1,112 +1,132 @@
---Escrevi em um arquivo só para manter o nome extreino07, 
---mas o exercício peque que seja um mõdulo Aluno (arquivo Aluno.hs) 
---e outro Main (arquivo Main.hs).
-
---module Aluno where
-
-import System.IO
+import Text.Read
 
 --1
-data Aluno = Aluno Int String deriving (Eq, Read) 
-
-instance Show Aluno where
-  show (Aluno rg nome) = "Aluno " ++ show rg ++ " - " ++ nome
-
-readAluno :: String -> Aluno
-readAluno s = (Aluno rg nm)
-  where
-    rg = read ((words s) !! 1)
-    nm = (words s) !! 3
-
+areacirc :: IO ()
+areacirc = do
+  putStr "Digite o raio do circulo: "
+  r <- getLine
+  if (readMaybe r :: Maybe Double) == Nothing
+    then error $ r ++ " nao eh um numero."
+    else putStrLn $ "Area: " ++ show (pi * read r ** 2)
+  
 
 --2
-novoAluno :: String -> Aluno -> IO ()
-novoAluno arq aln = do
-  handle <- openFile arq AppendMode
-  hPutStrLn handle (show aln)
-  hClose handle
+palindromo :: IO ()
+palindromo = do
+  putStr "Digite uma String para verificar se eh palindome ou ENTER para sair: "
+  str <- getLine
+  if str == "" 
+    then  return ()
+    else do
+      if reverse str == str
+        then putStrLn $ str ++ " eh palindromo."
+        else putStrLn $ str ++ " nao eh palindromo."
+      palindromo
 
 
 --3
-loadAlunos :: String -> IO [Aluno]
-loadAlunos arq = do
-  handle <- openFile arq ReadMode  
-  alunos <- loadAlunos' handle []
-  hClose handle
-  return alunos
+mmm :: IO ()
+mmm = do
+  numeros <- readNumeros []
+  putStrLn $ 
+    "\nMaior: " ++ show (maximum numeros) ++ 
+    "\nMenor: " ++ show (minimum numeros) ++ 
+    "\nMedia: " ++ show (sum numeros / fromIntegral (length numeros))
   where
-    loadAlunos' :: Handle -> [Aluno] -> IO [Aluno]
-    loadAlunos' handle alunos = do
-      isEOF <- hIsEOF handle
-      if isEOF 
-      then return alunos
-      else do
-        str <- hGetLine handle
-        loadAlunos' handle (alunos ++ [readAluno str]) 
+    readNumeros :: [Double] -> IO [Double]
+    readNumeros lst = do
+      putStr "Digite um numero ou ENTER para sair: "
+      n <- getLine
+      if n == "" then return lst else readNumeros (read n:lst)
 
 
 --4
-buscaAluno :: String -> String -> IO (Maybe Aluno)
-buscaAluno arq nome = do
-  alunos <- loadAlunos arq 
-  return (buscaAluno' nome alunos)
-  where
-    buscaAluno' :: String -> [Aluno] -> Maybe Aluno
-    buscaAluno' _ [] = Nothing
-    buscaAluno' n ((Aluno rg nm):restante) 
-      | n == nm = Just (Aluno rg nm)
-      | otherwise = buscaAluno' n restante 
+figuras :: IO ()
+figuras = do
+  op <- menu
+  case op of 
+    0 -> putStr "\n"
+    _ -> do
+      (ld,ch) <- readFigura
+      putStr "\n"
+      if op == 1 then desenhaR 1 ld ch else desenhaT 1 ld ch
+      figuras
 
+  where    
 
---module Main where
---import Aluno
+      menu :: IO Int
+      menu = do
+        putStr "\n0 Sair\n1 Retangulo\n2 Triangulo\nDigite sua opcao: "
+        op <- getLine
+        return (read op) 
 
-arquivo = "extreino07.txt"
+      readFigura :: IO (Int,Char)
+      readFigura = do
+        putStr "Digite o tamanho do lado: "
+        ld <- getLine
+        putStr "Digite o caractere de desenho: "
+        ch <- getLine
+        return (read ld, ch !! 0)
 
---7
-main = programa
+      desenhaR :: Int -> Int -> Char -> IO ()
+      desenhaR ln ld ch
+        | ln > ld = return ()
+        | otherwise = do
+            putStrLn (replicate ld ch) 
+            desenhaR (ln+1) ld ch
+
+      desenhaT :: Int -> Int -> Char -> IO ()
+      desenhaT ln ld ch
+        | ln > ld = return ()
+        | otherwise = do
+            putStrLn (replicate ln ch) 
+            desenhaT (ln+1) ld ch
+
 
 --5
-menu :: IO Int
-menu = do
-  putStr "\n\n0 - SAIR\n1 - GRAVAR ALUNO\n2 - BUSCAR ALUNO\n3 - VISUALIZAR ALUNOS\n\nDIGITE SUA OPCAO: "
-  op <- getLine 
-  return (read op)
+data Pessoa = Ps { nome :: String, idade :: Int } deriving (Show)
 
---6
-programa :: IO ()
-programa = do
-  op <- menu
-  putStr "\n\n"
-  if op == 0 then return () 
-  else do
-    case op of
-      1 -> cadastrar
-      2 -> buscar
-      3 -> visualizar
-      _ -> putStrLn "\nOPCAO INVALIDA\n"
-    programa
+pessoas :: IO ()
+pessoas = do
+  ps <- cadastraPessoas []
+  imprimePessoas (qSortPessoas ps)
 
   where
+
+    cadastraPessoas :: [Pessoa] -> IO [Pessoa] 
+    cadastraPessoas ps = do
+      putStr "Deseja cadastrar uma pessoa (s/n): "
+      r <- getLine
+      if r == "n" || r == "N" 
+        then return ps
+        else do
+          putStr "Digite o nome da pessoa: "
+          n <- getLine
+          putStr "Digite a idade da pessoa: "
+          i <- getLine
+          cadastraPessoas ((Ps n (read i)) : ps)  
   
-    cadastrar :: IO ()
-    cadastrar = do
-      putStr "Digite o registro do aluno: "
-      rg <- getLine
-      putStr "Digite o nome do aluno: "
-      nm <- getLine
-      novoAluno arquivo (Aluno (read rg) nm)
-    
-    buscar :: IO ()
-    buscar = do
-      putStr "Digite o nome do aluno: "
-      nm <- getLine
-      aluno <- buscaAluno arquivo nm
-      if aluno == Nothing 
-      then putStrLn $ "NAO EXISTE ALUNO CHAMADO " ++ nm
-      else putStrLn $ show aluno
-    
-    visualizar :: IO ()
-    visualizar = do
-      alunos <- loadAlunos arquivo
-      putStrLn $ unlines (map show alunos)
+    qSortPessoas :: [Pessoa] -> [Pessoa]
+    qSortPessoas [] = []
+    qSortPessoas (p:r) = 
+      qSortPessoas [ x | x <- r, nome x < nome p ] 
+      ++ [p] ++ 
+      qSortPessoas [ y | y <- r, nome y >= nome p ]
+          
+    imprimePessoas :: [Pessoa] -> IO ()
+    imprimePessoas ps = do
+      putStrLn $ (alinhaEsq "Nome") ++ "Idade"
+      imprimep ps
+      where
+        alinhaEsq :: String -> String
+        alinhaEsq s = s ++ replicate (30 - length s) ' ' 
+        imprimep :: [Pessoa] -> IO ()
+        imprimep [] = return ()
+        imprimep ((Ps n i):r) = do
+          putStrLn $ alinhaEsq n ++ show i  
+          imprimep r
+       
+      
+        
+  
+
