@@ -1,12 +1,12 @@
-package aulas.a0422;
+package aulas;
 
 public class UsaVeiculo {
   public static void main(String[] args) {
     Veiculo[] veiculos = new Veiculo[4];
-    veiculos[0] = new Carro();
-    veiculos[1] = new Moto();
-    veiculos[2] = new Moto();
-    veiculos[3] = new Carro();
+    veiculos[0] = new Carro(1);
+    veiculos[1] = new Moto(1);
+    veiculos[2] = new Moto(2);
+    veiculos[3] = new Carro(2);
 
     Carro[] carros = new Carro[2];
     Moto[] motos = new Moto[2];
