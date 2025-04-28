@@ -12,7 +12,7 @@ mymap f (a:b) =  f a : mymap f b
 
 --3
 myfoldl _ b [] = b
-myfoldl f b (a:r) = f b a (myfoldl f b r)
+myfoldl f b (a:r) = myfoldl f (f b a) r
 
 --4
 fxl :: (Int->Int) -> Int -> Int -> [Int]
