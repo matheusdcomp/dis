@@ -1,36 +1,31 @@
 --1
-q1v1 = fst ( snd ( fst (("Hello", (4, True)), 15.5) ) )
-q1v2 = (fst.snd.fst) (("Hello", (4, True)), 15.5)
+quicksort :: [Int] -> [Int]
+quicksort [] = []
+quicksort (p:r) = 
+  quicksort (filter (<p) r) 
+  ++ [p] ++ 
+  quicksort (filter (>=p) r)
 
 --2
-type Trapezio = (Float,Float,Float)
-
-areaTrapezio :: Trapezio -> Float
-areaTrapezio (teto, piso, altura) = (teto + piso) * altura / 2
+mymap _ [] = []
+mymap f (a:b) =  f a : mymap f b 
 
 --3
-type Ponto = (Float,Float)
-
-somaPontos :: [Ponto] -> Ponto
-somaPontos [] = (0,0)
-somapontos (p:r) = soma2pontos p (somaPontos r) 
-
-soma2pontos :: Ponto -> Ponto -> Ponto
-soma2pontos (xa,ya) (xb,yb) = (xa+xb,ya+yb) 
+myfoldl _ b [] = b
+myfoldl f b (a:r) = f a (myfoldl f b r)
 
 --4
-fstlst lista = (head lista, last lista)
+fxl :: (Int->Int) -> Int -> Int -> [Int]
+fxl _ _ 0 = []
+fxl f x n = x : fxl f (f x) (n-1)  
 
 --5
-type Jogador = String
-type Tabuleiro = (Char,Int)
-type Jogada = (Jogador, Tabuleiro)
-
-jogadasde :: [Jogada] -> Jogador -> Int
-jogadasde lista j = length [(x,y) | (x,y) <- lista, x == j ]
+fgxl _ _ [] = []
+fgxl f g (x:r) = (f.g) x : fgxl f g r 
 
 --6
-type Triangulo = (Float,Float,Float)
+zipw f x y = [f x' y' | x' <- x, y' <- y] 
 
-equilateros :: [Triangulo] -> [Triangulo]
-equilateros lista = [(x,y,z) | (x,y,z) <- lista, x == y && x == z ]
+--7
+--Na interface do GHCi, digite ((==0).(`mod` 2)) 1 para testar se o 1 é par.  
+--Usando a função da questão 5: fgxl (==0) (`mod` 2) [1,2,3,4,5,6]
