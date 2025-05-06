@@ -32,6 +32,8 @@ class DivMod(Divisao,Modulo):
 
 #main
 x = DivMod(5,2)
+d = Divisao(5,2);
+d.calcula()
 print("Divisao 5/2: ", Divisao.calcula(x)) #Chama calcula de Divisao
 print("Modulo 5%2: ", Modulo.calcula(x)) #Chama calcula de Modulo
 print("Div & Mod: ", x.div_mod())
