@@ -12,8 +12,6 @@ class MembroPrivado:
 mp = MembroPrivado('JOAO','OLIVEIRA')
 mp.imprimir()
 print ("\n\nNome: %s" % mp.nome)
-print ("\nSobrenome: %s\n" % mp.__sobrenome)
-
-
+print ("\nSobrenome: %s\n" % mp._MembroPrivado__sobrenome)#mmebros privados podem ser acessado com _NomeDaClasse antes.
 
 #mp ---> (nome="JOAO", sobrenome="oliveira")

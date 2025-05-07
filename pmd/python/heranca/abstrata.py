@@ -7,7 +7,7 @@ class ClasseAbstrata(ABC):
         super().__init__()
     
     @abstractmethod
-    def metodo(self): pass
+    def metodo(self): pass #pass indica que a função não tem código
 
 
 class ClasseFilha(ClasseAbstrata):

@@ -1,66 +1,71 @@
+-- Obs.: Só é obrigatório definir o cabeçalho da questão 7, pois
+-- é a única questão que está definida para um tipo específico (Int)
+
 --1
-menorMaior :: Ord a => [a] -> (a,a)
-menorMaior ls = (minimum ls, maximum ls)
+foldll f (h:t) = foldll' f h t
+
+foldll' _ r [] = r
+foldll' f r (h:t) = foldll' f (f r h) t
+
+-- foldll (+) [1,2,3,4]
+-- foldll' (+) 1 [2,3,4]
+-- foldll' (+) ((+) 1 2) [3,4]
+-- foldll' (+) ((+) ((+) 1 2) 3) [4]
+-- foldll' (+) ((+) ((+) ((+) 1 2) 3) 4) []
+-- (+) ((+) ((+) 1 2) 3) 4
+-- (+) ((+) 3 3) 4 
+-- (+) 6 4 
+-- 10 
 
 
 --2
-separa :: (a -> Bool) -> [a] -> ([a],[a])
-separa f ls = ([ x | x <- ls, f x ], [ x | x <- ls, (not.f) x ])
+foldrl _ [x] = x
+foldrl f (h:t) = f (foldrl f t) h
+
+-- foldrl (+) [1,2,3]
+-- (+) (foldrl (+) [2,3]) 1
+-- (+) ((+) (foldrl (+) [3]) 2) 1
+-- (+) ((+) 3 2) 1
+-- (+) 5 1
+-- 6
 
 
 --3
-data Pacote a = Vazio | Pac a
+q3 _ [] = False
+q3 f (h:t) = if f h then True else q3 f t
+ 
 
-instance Show a => Show (Pacote a) where
-  show Vazio = "------\n|    |\n------"
-  show (Pac c) = t ++ "\n| " ++ s ++ " |\n" ++ t
-    where
-      s = show c
-      t = replicate (length s + 4) '-'
-
-desempacota :: Pacote a -> Maybe a
-desempacota Vazio = Nothing
-desempacota (Pac c) = Just c
-
-
---4
-data Pessoa = 
-  Pf {nome::String, cpf :: Int} |
-  Pj {nome::String, cnpj :: Int}
-  deriving (Show,Eq)
+--4 
+--Não tem caso base, pois se nenhum elemento der True 
+--ou a lista for vazia, o programa acusa erro
+q4 f (h:t) = if f h then h else q4 f t
 
 
 --5
-isPF :: Pessoa -> Bool
-isPF (Pf _ _) = True
-isPF (Pj _ _) = False
+q5 v [] = v
+q5 v (f:t) = q5 (f v) t
 
 
---6
-instance Ord Pessoa where
-  p1 > p2 = nome p1 > nome p2
-  p1 < p2 = nome p1 < nome p2
-  p1 >= p2 = nome p1 >= nome p2
-  p1 >= p2 = nome p1 >= nome p2
-  max p1 p2 = max (nome p1) (nome p2)
-  min p1 p2 = min (nome p1) (nome p2)
+--6 versão em que a entrada e saída das funções 
+--  devem ser do mesmo tipo
+q6 [] lv = lv
+q6 lf [] = []
+q6 (f:ft) (v:vt) = (f v) : q6 ft vt
+
+--6 versão em que a entrada e saída das funções 
+--  podem ser de tipos diferentes
+q6' [] lv = []
+q6' lf [] = []
+q6' (f:ft) (v:vt) = (f v) : q6' ft vt
 
 
 --7
-class Unico t where
-  igual :: t -> t -> Bool
-  checkID :: [t] -> [t]
+q7 :: (Int -> Bool) -> (Int -> Int) -> [Int] -> [Int]
+q7 _ _ [] = []
+q7 fb fi (h:t)
+  | fb h      = fi h : q7 fb fi t
+  | otherwise = q7 fb fi t
 
 
 --8
-instance Unico Pessoa where
-
-  igual (Pf _ c1) (Pf _ c2) = c1 == c2
-  igual (Pj _ c1) (Pj _ c2) = c1 == c2
-  igual pj pf = False
-
-  checkID [] = []
-  checkID (h:t) = h : checkID [ x | x <- t, not (igual x h) ]
-
---para testar checkID
-pessoas = [(Pf "maria" 4),(Pf "joao" 1),(Pf "jose" 3),(Pf "joao" 1)]
+cabeca lst = (last.reverse) lst
