@@ -10,3 +10,6 @@ filtra f (a:b)
 
 soma :: Int -> (Int -> Int)
 soma x = (+x)
+
+incrementa :: Int -> Int
+incrementa = soma 1
