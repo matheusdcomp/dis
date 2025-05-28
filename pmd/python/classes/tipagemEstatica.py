@@ -1,4 +1,4 @@
-"Este arquivo mostra um exemplo de associação entre classes: Circulo ---> Ponto"
+"Este arquivo mostra um exemplo de associação entre classes: Circulo ---> Ponto e uso de tipagem estática em Python."
 
 import Ponto as pt
 
