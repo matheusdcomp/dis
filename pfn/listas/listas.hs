@@ -10,3 +10,15 @@ remove x (h:t)
 soma [] = 0
 soma [a] = a
 soma (a:b:c) = (a+b) + soma c
+
+palavras :: String -> [String]
+palavras [] = []
+palavras st
+  | s == []   = [p]
+  | otherwise = p : palavras s 
+  where 
+    (s,p) = palavra st []
+    palavra [] pl = ([],pl)
+    palavra (a:b) pl
+      | a == ' '  = (b,pl)
+      | otherwise = palavra b (pl++[a]) 

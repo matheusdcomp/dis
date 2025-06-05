@@ -1,60 +1,79 @@
-from tkinter import Tk, Label, Button, Entry, IntVar, END, W, E
+from tkinter import *
+#from tkinter.ttk import *
 
-class Calculator:
+class Calculadora:
 
-    def __init__(self, master):
-        self.master = master
-        master.title("Calculator")
+  def __init__(self):
 
-        self.total = 0
-        self.entered_number = 0
+    self.valor = None
+    self.operador = None 
 
-        self.total_label_text = IntVar()
-        self.total_label_text.set(self.total)
-        self.total_label = Label(master, textvariable=self.total_label_text)
+    janela = Tk()
+    janela.title("Calculadora")
+    #janela.geometry("800x400")
 
-        self.label = Label(master, text="Total:")
+    self.display = Entry(janela, text="0", width=20, font=("arial",20))
+    self.display.grid(row=0, column=0, rowspan=1, columnspan=2, sticky=(N, S, E, W))
+    self.display.focus_force()
+    self.btsoma = Button(janela, text="+", width=10, font=("arial",20), command=lambda: self.cliqueOP("+"))
+    self.btsoma.grid(row=1, column=0, sticky=(N, S, E, W))
+    self.btsubt = Button(janela, text="-", width=10, font=("arial",20), command=lambda: self.cliqueOP("-"))
+    self.btsubt.grid(row=1, column=1, sticky=(N, S, E, W))
+    self.btmult = Button(janela, text="x", width=10, font=("arial",20), command=lambda: self.cliqueOP("*"))
+    self.btmult.grid(row=2, column=0, sticky=(N, S, E, W))
+    self.btdivi = Button(janela, text="÷", width=10, font=("arial",20), command=lambda: self.cliqueOP("/"))
+    self.btdivi.grid(row=2, column=1, sticky=(N, S, E, W))
+    self.btrstd = Button(janela, text="=", font=("arial",20), command=self.cliqueRstd)
+    self.btrstd.grid(row=3, column=0, sticky=(N, S, E, W))
+    self.btzera = Button(janela, text="C", font=("arial",20), command=self.cliqueZera)
+    self.btzera.grid(row=3, column=1, sticky=(N, S, E, W))
 
-        vcmd = master.register(self.validate) # we have to wrap the command
-        self.entry = Entry(master, validate="key", validatecommand=(vcmd, '%P'))
+    janela.rowconfigure(0, weight=1)
+    janela.rowconfigure(1, weight=1)    
+    janela.rowconfigure(2, weight=1)
+    janela.rowconfigure(3, weight=1)
+    janela.columnconfigure(0, weight=1)
+    janela.columnconfigure(1, weight=1)
+    janela.mainloop()
 
-        self.add_button = Button(master, text="+", command=lambda: self.update("add"))
-        self.subtract_button = Button(master, text="-", command=lambda: self.update("subtract"))
-        self.reset_button = Button(master, text="Reset", command=lambda: self.update("reset"))
+  def executaOperacao(self):
+    if self.operador == "+":
+      self.valor += float(self.display.get()) 
+    elif self.operador == "-":
+      self.valor -= float(self.display.get()) 
+    elif self.operador == "*":
+      self.valor *= float(self.display.get()) 
+    elif self.operador == "/":
+      self.valor /= float(self.display.get())
+    else:
+      print("Operação inválida")
+    
+  
+  def cliqueOP(self, operador):   
+    if self.valor == None:
+      self.valor = float(self.display.get()) 
+    else:
+      self.executaOperacao()        
+    self.operador = operador     
+    self.display.delete(0,END)
+    self.display.focus_force()
+    print(self.valor, " | ", self.operador )
 
-        # LAYOUT
+  def cliqueRstd(self):
+    if (self.valor,self.operador) == (None,None): 
+      return
+    self.executaOperacao()
+    print(self.valor, " | ", self.operador )
+    self.display.delete(0,END)
+    self.display.insert(0,str(self.valor))
+    self.valor = None
+    self.operador = None
+  
+  def cliqueZera(self):
+    self.valor = None
+    self.operador = None
+    self.display.delete(0,END)
+    self.display.focus_force()
 
-        self.label.grid(row=0, column=0, sticky=W)
-        self.total_label.grid(row=0, column=1, columnspan=2, sticky=E)
 
-        self.entry.grid(row=1, column=0, columnspan=3, sticky=W+E)
-
-        self.add_button.grid(row=2, column=0)
-        self.subtract_button.grid(row=2, column=1)
-        self.reset_button.grid(row=2, column=2, sticky=W+E)
-
-    def validate(self, new_text):
-        if not new_text: # the field is being cleared
-            self.entered_number = 0
-            return True
-
-        try:
-            self.entered_number = int(new_text)
-            return True
-        except ValueError:
-            return False
-
-    def update(self, method):
-        if method == "add":
-            self.total += self.entered_number
-        elif method == "subtract":
-            self.total -= self.entered_number
-        else: # reset
-            self.total = 0
-
-        self.total_label_text.set(self.total)
-        self.entry.delete(0, END)
-
-root = Tk()
-my_gui = Calculator(root)
-root.mainloop()
+Calculadora()
