@@ -10,14 +10,14 @@ class MinhaJanela:
         self.container2.pack()
         self.container3.pack()
         #container1 alinha seus widgets pelo topo, pois pack() equivale a pack(side=TOP)
-        Button(self.container1,text='B1').pack() 
+        Button(self.container1,text='B1',font=("Arial", 30)).pack() 
         #container2 alinha seus widgets a esquerda
-        Button(self.container2,text='B2').pack(side=LEFT) 
-        Button(self.container2,text='B3').pack(side=LEFT)
+        Button(self.container2,text='B2',font=("Arial", 30)).pack(side=LEFT) 
+        Button(self.container2,text='B3',font=("Arial", 30)).pack(side=LEFT)
         #container3 alinha seus widgets a direita
-        self.b4=Button(self.container3,text='B4').pack(side=RIGHT)
-        self.b5=Button(self.container3,text='B5').pack(side=RIGHT)
-        self.b6=Button(self.container3,text='B6').pack(side=RIGHT)
+        self.b4=Button(self.container3,text='B4', font=("Arial", 30)).pack(side=RIGHT)
+        self.b5=Button(self.container3,text='B5',font=("Arial", 30)).pack(side=RIGHT)
+        self.b6=Button(self.container3,text='B6',font=("Arial", 30)).pack(side=RIGHT)
 
  
 root = Tk() 

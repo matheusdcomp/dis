@@ -7,7 +7,7 @@ class Calculadora:
 
     self.valor = None
     self.operador = None 
-
+    
     janela = Tk()
     janela.title("Calculadora")
     #janela.geometry("800x400")

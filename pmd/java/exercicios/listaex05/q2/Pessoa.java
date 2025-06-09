@@ -1,4 +1,4 @@
-package exercicios.listaex05;
+package exercicios.listaex05.q2;
 
 public class Pessoa {
 

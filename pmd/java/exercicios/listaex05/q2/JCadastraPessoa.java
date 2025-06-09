@@ -1,4 +1,4 @@
-package exercicios.listaex05;
+package exercicios.listaex05.q2;
 
 import java.awt.Dimension;
 import java.awt.FlowLayout;

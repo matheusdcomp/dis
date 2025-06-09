@@ -1,4 +1,4 @@
-package exercicios.listaex05;
+package exercicios.listaex05.q1;
 
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;

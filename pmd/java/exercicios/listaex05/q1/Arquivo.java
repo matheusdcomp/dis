@@ -1,4 +1,4 @@
-package exercicios.listaex05;
+package exercicios.listaex05.q1;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
