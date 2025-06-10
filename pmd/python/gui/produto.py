@@ -17,7 +17,7 @@ class ProdutoForm:
     categorias = ["DIVERSOS", "LIMPEZA", "MANUTENÇÃO"]
     janela = Tk()
     janela.title("Produtos")
-    centralizarJanela(janela, 800, 400)
+    centralizarJanela(janela, 800, 600)
 
     styleLB = Style()
     styleLB.configure("TLabel", font=("Arial", 16, "bold"))
@@ -36,7 +36,7 @@ class ProdutoForm:
     lbct = Label(janela, style="TLabel", text="Categoria:")
     self.cbct = Combobox(janela, style="TCombobox", values=categorias)  
     btsv = Button(janela, style="TButton", text="Salvar", command=self.cliqueBtsv)
-    btbs = Button(janela, style="TButton", text="Buscar", command=self.cliqueBtbs)
+    btal = Button(janela, style="TButton", text="Alterar", command=self.cliqueBtal)
     btrm = Button(janela, style="TButton", text="Apagar", command=self.cliqueBtrm)
     btcn = Button(janela, style="TButton", text="Cancelar", command=self.cliqueBtcn)
     self.lbrd = Label(janela, style="TLabel")
@@ -59,7 +59,7 @@ class ProdutoForm:
     lbct.grid(row=1, column=2, padx=5, pady=5, sticky=(N,S,E,W))
     self.cbct.grid(row=1, column=3, padx=5, pady=5, sticky=(N,S,E,W))
     btsv.grid(row=2, column=0, padx=5, pady=5, sticky=(N,S,E,W))
-    btbs.grid(row=2, column=1, padx=5, pady=5, sticky=(N,S,E,W))
+    btal.grid(row=2, column=1, padx=5, pady=5, sticky=(N,S,E,W))
     btrm.grid(row=2, column=2, padx=5, pady=5, sticky=(N,S,E,W))
     btcn.grid(row=2, column=3, padx=5, pady=5, sticky=(N,S,E,W))
     self.tvps.grid(row=3, column=0, columnspan=4, padx=5, pady=5, sticky=(N,S,E,W))
@@ -78,7 +78,7 @@ class ProdutoForm:
     self.tvps.insert('', 'end', None, values=p)
     self.lbrd["text"] = f"<< PRODUTO {self.ennm.get().upper()} CADASTRADO >>"
 
-  def cliqueBtbs(self): 
+  def cliqueBtal(self): 
     produdosSelecionados = self.tvps.selection()
     if (len(produdosSelecionados) > 0):
       self.tvps.delete(produdosSelecionados[0])
