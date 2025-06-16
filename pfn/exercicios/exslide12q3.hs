@@ -1,8 +1,8 @@
-module Exslide15q3 (
- Lista, add, remove,
- len, vazia, concatena,
- fromList, readLst
- ) where
+--module Exslide12q3 (
+-- Lista, add, remove,
+-- len, vazia, concatena,
+-- fromList, readLst
+-- ) where
 
 add :: t -> Int -> Lista t -> Lista t
 remove :: Int -> Lista t -> Lista t

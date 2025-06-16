@@ -1,4 +1,4 @@
-module Exslide15q4 (ArvBusBin,add,remove,tamanho,altura,fromList) where
+--module Exslide15q4 (ArvBusBin,add,remove,tamanho,altura,fromList) where
 
 add :: Ord t => t -> ArvBusBin t -> ArvBusBin t
 remove :: Ord t => t -> ArvBusBin t -> ArvBusBin t

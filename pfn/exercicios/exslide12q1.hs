@@ -1,4 +1,4 @@
-module Exslide15q1 (Stack, push, pop, top, isEmpty) where
+--module Exslide15q1 (Stack, push, pop, top, isEmpty) where
 
 push :: t -> Stack t -> Stack t --coloca um item no topo da pilha
 pop :: Stack t -> Stack t --retira o item do topo da pilha

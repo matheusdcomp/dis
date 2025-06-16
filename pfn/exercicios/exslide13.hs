@@ -69,7 +69,7 @@ operacao = do
       n2 <- getLine
       let opr = n1 ++ " - " ++ n2 ++ " = " ++ show (read n1 - read n2)
       putStrLn opr
-      arq <- openFile "exslide12q4.txt" AppendMode
+      arq <- openFile "exslide13q4.txt" AppendMode
       hPutStrLn arq opr
       hClose arq
       operacao
