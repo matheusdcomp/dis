@@ -9,7 +9,7 @@ def centralizarJanela(janela, width, height, resizable=False):
   y = (screen_height - height) // 2
   janela.geometry(f"{width}x{height}+{x}+{y}")
   janela.resizable(resizable, resizable)#nao funciona com grid
-
+  
 
 class ProdutoForm:
 
@@ -95,7 +95,7 @@ class ProdutoForm:
   def cliqueBtcn(self):
     self.ennm.delete(0,END)
     self.envl.delete(0,END)
-    self.cbct.current(1)
+    self.cbct.current(0)
     self.lbrd["text"] = ""
 
 

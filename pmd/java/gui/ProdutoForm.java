@@ -43,17 +43,17 @@ public class ProdutoForm extends JFrame implements ActionListener {
     add(new JLabel("Nome:"), gbc);
 
     tfnm = new JTextField();
-    gbc.gridx = 2;
+    gbc.gridx = 1;
     gbc.gridy = 0;
     gbc.weightx = 0.0;
     gbc.weighty = 0;
-    gbc.gridwidth = 6;
+    gbc.gridwidth = 7;
     add(tfnm, gbc);
 
     // linha 1
     gbc.gridx = 0;
     gbc.gridy = 1;
-    gbc.weightx = 0.5;
+    gbc.weightx = 0.0;
     gbc.weighty = 0;
     gbc.gridwidth = 1;
     add(new JLabel("Valor:"), gbc);
@@ -61,14 +61,14 @@ public class ProdutoForm extends JFrame implements ActionListener {
     tfvl = new JTextField();
     gbc.gridx = 1;
     gbc.gridy = 1;
-    gbc.weightx = 0.5;
+    gbc.weightx = 0.0;
     gbc.weighty = 0;
     gbc.gridwidth = 3;
     add(tfvl, gbc);
 
     gbc.gridx = 4;
     gbc.gridy = 1;
-    gbc.weightx = 0.5;
+    gbc.weightx = 0.0;
     gbc.weighty = 0;
     gbc.gridwidth = 1;
     add(new JLabel("Categoria:"), gbc);
@@ -77,7 +77,7 @@ public class ProdutoForm extends JFrame implements ActionListener {
     cbct.setSelectedIndex(0);
     gbc.gridx = 5;
     gbc.gridy = 1;
-    gbc.weightx = 0.5;
+    gbc.weightx = 0.0;
     gbc.weighty = 0;
     gbc.gridwidth = 3;
     add(cbct, gbc);
