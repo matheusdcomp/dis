@@ -4,7 +4,7 @@ class Janela:
 
   def __init__(self, width, height):
     self.janela = Tk()
-    self.janela.title("Produtos")
+    self.janela.title("Painéis")
     x = (self.janela.winfo_screenwidth() - width) // 2
     y = (self.janela.winfo_screenheight() - height) // 2
     self.janela.geometry(f"{width}x{height}+{x}+{y}")
