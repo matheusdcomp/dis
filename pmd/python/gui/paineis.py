@@ -15,23 +15,17 @@ class Janela:
     self.janela.config(menu=mainmenu) 
     menu = Menu(mainmenu)
     mainmenu.add_cascade(label='Painéis', menu=menu)
-    menu.add_command(label='Painel 1', command=self.carregarPainel1)
-    menu.add_command(label='Painel 2', command=self.carregarPainel2)
+    menu.add_command(label='Painel 1', command=lambda: self.carregarPainel(Painel1(self.janela)))
+    menu.add_command(label='Painel 2', command=lambda: self.carregarPainel(Painel2(self.janela)))
 
     self.painelAtual = None
     self.janela.mainloop()
 
   
-  def carregarPainel1(self):
+  def carregarPainel(self, painel):
     if self.painelAtual != None:
       self.painelAtual.pack_forget()
-    self.painelAtual = Painel1(self.janela)
-    self.painelAtual.pack(fill="both", expand=True)
-
-  def carregarPainel2(self):
-    if self.painelAtual != None:
-      self.painelAtual.pack_forget()
-    self.painelAtual = Painel2(self.janela)
+    self.painelAtual = painel
     self.painelAtual.pack(fill="both", expand=True)
 
 

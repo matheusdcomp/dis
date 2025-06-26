@@ -21,20 +21,14 @@ public class Paineis extends JFrame {
     var mip1 = new JMenuItem("Painel 1");
     mip1.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
-        getContentPane().removeAll(); // remove todos os componentes adicionados à janela
-        add(new Painel1(), BorderLayout.CENTER);
-        revalidate(); // Recalcula o layout
-        repaint(); // Redesenha a janela
+        carregaPainel(new Painel1());
       }
     });
 
     var mip2 = new JMenuItem("Painel 2");
     mip2.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
-        getContentPane().removeAll();
-        add(new Painel2(), BorderLayout.CENTER);
-        revalidate();
-        repaint();
+        carregaPainel(new Painel2());
       }
     });
 
@@ -50,6 +44,13 @@ public class Paineis extends JFrame {
     setResizable(false);
     setLayout(new BorderLayout());
     setDefaultCloseOperation(EXIT_ON_CLOSE);
+  }
+
+  public void carregaPainel(JPanel painel) {
+    getContentPane().removeAll(); // remove todos os componentes adicionados à janela
+    add(painel, BorderLayout.CENTER);
+    revalidate(); // Recalcula o layout
+    repaint(); // Redesenha a janela
   }
 
   public static void main(String[] args) {
