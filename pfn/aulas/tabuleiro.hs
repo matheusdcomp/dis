@@ -11,7 +11,8 @@ instance Show Bloco where
   
 
 data Jogador = Jgd {nome::String, letra::Char} 
-
+ deriving Read
+ 
 instance Show Jogador where
   show j = nome j ++ " " ++ [letra j]
 
@@ -62,13 +63,12 @@ jogar (Tab j1 j2 bs) turno = do
 
 
 alguemGanhou :: [Bloco] -> Bool
-alguemGanhou bs = agh || agv || agd
-  where
-    agh = aghl 0 || aghl 3 || aghl 6 
-    aghl l = bs!!l /= Vazio && bs!!l == bs!!(l+1) && bs!!l == bs!!(l+2)
-    agv = agvc 0 || agvc 1 || agvc 2 
-    agvc c = bs!!c /= Vazio && bs!!c == bs!!(c+3) && bs!!c == bs!!(c+6)
-    agd = bs!!4 /= Vazio && ((bs!!0 == bs!!4 && bs!!0 == bs!!8) || (bs!!2 == bs!!4 && bs!!2 == bs!!6))  
+alguemGanhou bs = 
+  ag 0 1 2 || ag 3 4 5 || ag 6 7 8 || 
+  ag 0 3 6 || ag 1 4 7 || ag 2 5 8 ||
+  ag 0 4 8 || ag 2 4 6
+  where 
+    ag a b c = bs!!a /= Vazio && bs!!a == bs!!b && bs!!a == bs!!c
 
 registrarJogada :: Jogador -> Int -> [Bloco] -> Maybe [Bloco]
 registrarJogada j 1 (a:b) 

@@ -1,4 +1,4 @@
-module Stack (Stack, push, pop, top, isEmpty) where
+module Stack (Stack(..), push, pop, top, isEmpty, newStack) where
 
 push :: t -> Stack t -> Stack t --coloca um item no topo da pilha
 pop :: Stack t -> Stack t --retira o item do topo da pilha
@@ -12,6 +12,15 @@ instance (Show t) => Show (Stack t) where
   show (EmptyStk) = "#"
   show (Stk x EmptyStk) = show x
   show (Stk x s) = show x ++ " | " ++ show s
+
+
+instance (Eq t) => Show (Stack t) where
+  EmptyStk == EmptyStk = True
+  EmptyStk == _ = False
+  _ == EmptyStk = False
+  (Stk a s1) == (Stk b s2) = a == b && s1 == s2
+  s1 /= s2 = not (s1 == s2)
+
 
 push x s = Stk x s
 
