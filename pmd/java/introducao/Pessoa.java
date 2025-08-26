@@ -1,4 +1,4 @@
-package aulas;
+package introducao;
 
 import java.util.ArrayList;
 import java.util.Scanner;

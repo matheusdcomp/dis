@@ -1,9 +1,12 @@
-print()#print vazio pula a linha
+x = 5
+x = "ab"
+
+print() #print vazio pula a linha
 
 for a in [1,2,3]:
   print(a) #imprime e pula a linha
 
-print()
+print("X: " + x)
 
 for a in [1,2,3]:
   print(a, end=' ') #end=' ' faz com que o print imprima um espaço no final ao invéz de pular linha (\n)

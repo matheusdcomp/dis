@@ -17,8 +17,9 @@ print(f"{a} > {b}") if a > b else print(f"{b} >= {a}")
 
 
 #if que não faz nada. Pode usar pass em for, while e função também
-if b > a:
+if b > a: 
   pass
+  
 
 
 #switch do python

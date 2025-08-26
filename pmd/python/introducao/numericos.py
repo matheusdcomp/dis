@@ -12,7 +12,7 @@ print("The type of variable having value", d, " is ", type(d))
 
 x = 1
 del x
-#print ('\nx: ', x) #Se executar essa linha, dá erro: name 'x' is not defined
+print ('\nx: ', x) #Se executar essa linha, dá erro: name 'x' is not defined
 
 '''
 O comando del apaga o ponteiro, não o objeto. 
