@@ -1,30 +1,30 @@
 /*
- * Escreva um programa que contém a classe Circulo, 
+ * Escreva um programa que contï¿½m a classe Circulo, 
  * com o atributo raio, e a classe Retangulo,
- * com os atributos l1 e l2. Crie em cada classe um método
- * que calcula e retorna a área.
+ * com os atributos l1 e l2. Crie em cada classe um mï¿½todo
+ * que calcula e retorna a ï¿½rea.
  * Crie uma classe com
- * o método main que pergunta ao usuário se
- * ele quer um círculo ou um retângulo e depois
+ * o mï¿½todo main que pergunta ao usuï¿½rio se
+ * ele quer um cï¿½rculo ou um retï¿½ngulo e depois
  * solicitar os valores dos atributos e calcular
- * a área.
+ * a ï¿½rea.
  * 
  */
 
 package classes.geometria;
 
 public class Circulo {
-	
+
 	private float raio = 4;
-	
+
 	public Circulo() {
 		raio = 0;
 	}
-	
+
 	public Circulo(float raio) {
 		this.raio = raio;
 	}
-	
+
 	public float getRaio() {
 		return raio;
 	}
@@ -34,7 +34,17 @@ public class Circulo {
 	}
 
 	public float area() {
-		 return 3.14F * raio * raio;
+		return 3.14F * raio * raio;
+	}
+
+	public static void main(String[] args) {
+
+		Circulo c1 = new Circulo();
+		Circulo c2 = new Circulo();
+		c1.setRaio(4);
+		c2.setRaio(5);
+		System.out.println("Area C1: " + c1.area());
+		System.out.println("Area C2: " + c2.area());
 	}
 
 }
