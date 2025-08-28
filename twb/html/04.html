@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Formulário</title>
+  <meta charset="UTF-8" />
+  <meta name="author" content="Matheus Viana" />
+  <meta name="keywords" content="HTML, página web" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+
+<body>
+  <h1 id="formulario">Formulário</h1>
+  <form>
+
+    <label for="nome">Nome</label>
+    <input type="text" id="nome" name="nome" value="JOAO" required />
+    <br />
+    <br />
+
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" placeholder="username@servidor" required />
+    <br />
+    <br />
+
+    <label for="senha">Senha</label>
+    <input type="password" id="senha" name="senha" />
+    <br />
+    <br />
+
+    <label for="nasc">Nascimento:</label>
+    <input type="date" id="nasc" name="nasc">
+    <br />
+    <br />
+
+    <label for="web">Selecione um ou mais assuntos:</label>
+    <select id="web" name="web">
+      <option value="HTML">HTML</option>
+      <option value="CSS">CSS</option>
+      <option value="JavaScript">JavaScript</option>
+    </select>
+    <br />
+    <br />
+
+    <label for="mensagem">Mensagem:</label><br />
+    <textarea name="mensagem" rows="20" cols="50">Conteúdo da mensagem</textarea>
+    <br />
+    <br />
+
+    <p>Selecione um ou mais assuntos:</p>
+    <input type="checkbox" id="html" name="assunto" value="HTML">
+    <label for="html">HTML</label><br />
+    <input type="checkbox" id="css" name="assunto" value="CSS">
+    <label for="css">CSS</label><br />
+    <input type="checkbox" id="js" name="assunto" value="JavaScript">
+    <label for="js">JavaScript</label>
+    <br />
+    <br />
+
+    <p>Sexo:</p>
+    <input type="radio" id="masc" name="genero" value="M">
+    <label for="masc">Masculino</label><br />
+    <input type="radio" id="fem" name="genero" value="F">
+    <label for="fem">Feminino</label>
+    <br />
+    <br />
+
+    <input type="submit" value="Enviar" /><br />
+    <input type="reset" value="Apagar" /><br />
+    <a href="#formulario"><input type="button" value="Início" /></a>
+    <br />
+    <br />
+
+  </form>
+</body>
+
+</html>
