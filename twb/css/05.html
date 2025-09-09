@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <style>
+    a {
+      text-decoration: none;
+    }
+
+    #topo {
+      height: 100px;
+      text-align: center;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #menu {
+      border-top: 1px solid black;
+      border-bottom: 1px solid black;
+    }
+
+    #menu ul {
+      max-width: 599px;
+      margin: auto;
+      list-style-type: none;
+      font-weight: bold;
+      padding: 0;
+      height: 30px;
+    }
+
+    #menu ul li {
+      float: left;
+      width: 198px;
+      border-left: 1px solid black;
+      padding: 5px 0;
+      text-align: center;
+      height: 20px;
+    }
+
+    #menu ul li:last-child {
+      border-right: 1px solid green;
+    }
+
+    .espaco {
+      height: 800px;
+      background-color: aqua;
+      position: relative;
+    }
+
+    .espaco a {
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="topo">
+    <h1>Página</h1>
+  </div>
+  <div id="menu">
+    <ul>
+      <li key="home"><a href="#home">Home</a></li>
+      <li key="cliente"><a href="#cliente">Clientes</a></li>
+      <li key="produto"><a href="#produto">Produtos</a></li>
+    </ul>
+  </div>
+  <div id="pagina">
+    <h1 id="home">Sistema X</h1>
+    <div class="espaco">
+      <a href="#topo">Voltar</a>
+    </div>
+    <h1 id="cliente">Clientes</h1>
+    <div class="espaco">
+      <a href="#topo">Voltar</a>
+    </div>
+    <h1 id="produto">Produtos</h1>
+    <div class="espaco">
+      <a href="#topo">Voltar</a>
+    </div>
+  </div>
+  <div id="rodape">
+    <p>Copyright Matheus Viana</p>
+  </div>
+</body>
+
+</html>
