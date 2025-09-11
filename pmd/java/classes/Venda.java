@@ -53,4 +53,12 @@ public class Venda {
       p.imprimir();
   }
 
+  public String toString() {
+    StringBuilder s = new StringBuilder("Numero: ");
+    s.append(numero);
+    for (Produto p : produtos)
+      s.append("\n" + p);
+    return s.toString();  
+  }
+
 }

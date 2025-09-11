@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    :root {
+      --cora: #96dcdc;
+      --corb: #ffffff;
+      --corc: #055055;
+      --cord: #444444;
+    }
+
+    * {
+      margin: 0;
+      box-sizing: border-box;
+      font-family: 'Lucida Sans', sans-serif;
+    }
+
+    .grid-container {
+      display: grid;
+      grid-template-areas:
+        'header header header header header header'
+        'menu main main main main right'
+        'footer footer footer footer footer footer';
+      gap: 10px;
+      background-color: var(--corb);
+      padding: 10px;
+    }
+
+    .topo {
+      grid-area: header;
+      background-color: var(--cora);
+      color: var(--cord);
+      text-align: center;
+      font-size: 30px;
+      padding: 10px;
+    }
+
+    .menu {
+      grid-area: menu;
+    }
+
+    .menu ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .menu ul li {
+      background-color: var(--cora);
+      color: var(--cord);
+      text-align: center;
+      margin-bottom: 5px;
+      padding: 10px;
+      box-shadow: 2px 2px 5px var(--corc);
+    }
+
+    .menu ul li:hover {
+      background-color: var(--corc);
+      color: var(--cora)
+    }
+
+    .centro {
+      grid-area: main;
+      background-color: var(--corb);
+      text-align: justify;
+      padding: 10px;
+    }
+
+    .divimg {
+      text-align: center;
+    }
+
+    .divimg img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .painel {
+      grid-area: right;
+      background-color: var(--cora);
+      color: var(--cord);
+      padding: 5px 10px;
+      text-align: justify;
+      box-shadow: 0 1px 3px var(--corc);
+    }
+
+    .rodape {
+      grid-area: footer;
+      background-color: var(--cora);
+      color: var(--cord);
+      font-size: 12px;
+      margin: 0;
+      padding: 10px 5px;
+      text-align: center;
+    }
+
+    @media only screen and (max-width: 600px) {
+      .topo {grid-area: 1 / span 6;}
+      .menu {grid-area: 2 / span 6;}
+      .centro {grid-area: 3 / span 6;}
+      .painel {grid-area: 4 / span 6;}
+      .rodape {grid-area: 5 / span 6;}
+    }
+
+    @media only screen and (min-width: 600px) {
+      .topo {grid-area: 1 / span 6;}
+      .menu {grid-area: 2 / span 1;}
+      .centro {grid-area: 2 / span 5;}
+      .painel {grid-area: 3 / span 6;}
+      .rodape {grid-area: 4 / span 6;}
+    }
+
+    @media only screen and (min-width: 768px) {
+      .topo {grid-area: 1 / span 6;}
+      .menu {grid-area: 2 / span 1;}
+      .centro {grid-area: 2 / span 4;}
+      .painel {grid-area: 2 / span 1;}
+      .rodape {grid-area: 3 / span 6;}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="grid-container">
+
+    <div class="topo">      
+      <h1>Responsive Web Design - RWD</h1>
+    </div>
+
+    <div class="menu">
+      <ul>
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>JavaScript</li>
+      </ul>
+    </div>
+
+    <div class="centro">
+      <h1>RWD</h1>
+      <p>As páginas da Web podem ser visualizadas em muitos dispositivos
+        diferentes:
+        desktops, tablets e telefones. Sua página web deve ter uma boa aparência
+        e ser fácil de usar, independentemente do dispositivo.</p>
+      <div class="divimg">
+        <img src="rwd.jpeg" alt="RWD" width="620px" height="326px">
+      </div>
+    </div>
+
+    <div class="painel">
+      <h2>Como funciona?</h2>
+      <p>O design responsivo (RWD) faz com que sua página da web tenha uma boa
+        aparência
+        em todos os dispositivos.</p>
+      <p>O RWD responsivo usa apenas HTML e CSS.</p>
+      <p>Web design responsivo não é um programa ou JavaScript.</p>
+    </div>
+
+    <div class="rodape">
+      <p>Desmaximize e modifique o tamanho da janela do navegador para ver os
+        efeitos de renderização.</p>
+    </div>
+  </div>
+
+</body>
+
+</html>

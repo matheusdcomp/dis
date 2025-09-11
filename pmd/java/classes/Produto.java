@@ -42,4 +42,8 @@ public class Produto {
     System.out.println("\nNome: " + nome + "\nValor: " + valor);
   }
 
+  public String toString() {
+    return "Produto: " + nome + " Valor: " + valor;
+  }
+
 }
