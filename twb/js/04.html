@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <form name="formulario">
+    <input type="text" id="texto" name="texto" />
+  </form>
+  <button onclick="cliqueBotao()">Adicionar Parágrafo</button>
+  <div id="divabaixo"></div>
+  <script>
+  function cliqueBotao() {
+    document.getElementById("divabaixo").innerHTML = 
+      "<p>" + document.forms["formulario"]["texto"].value + "</p>";
+  }
+  </script>
+
+  </body>
+</html>

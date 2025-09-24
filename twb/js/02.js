@@ -1,5 +1,9 @@
 const joao = {nome:"JOAO", idade:20};
 
+const fun = function() {};
+
+
+
 function Pessoa(nome, idade) { //função constructora
   this.nome = nome;
   this.idade = idade;
@@ -20,7 +24,7 @@ class Pessoa2 { // a classe é apenas um açucar sintático para a função cons
 
   toString() {
     return `Nome: ${this.nome}  Idade: ${this.idade}`;
-  };
+  }
 }
 
 const maria = new Pessoa("Maria", 30);
