@@ -3,7 +3,7 @@ class Pessoa:
   def __init__(self, nome): 
     self.nome = nome
 
-  def string(self):
+  def string(self, x):
     return self.nome
 
 class PFisica (Pessoa):
@@ -31,3 +31,4 @@ pessoas.append( PJuridica('UFSJ','0001676742364') )
 
 for p in pessoas:
   print (p.string()) 
+

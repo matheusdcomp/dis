@@ -5,6 +5,12 @@ public class Circulo extends FormaGeometrica implements Numeravel {
   private Ponto centro;
   private double raio;
 
+  public Circulo() {
+    super();
+    this.centro = new Ponto(0,0);
+    this.raio = 0;
+  }
+
   public Circulo(Ponto centro, double raio) {
     super();
     this.centro = centro;
@@ -39,6 +45,21 @@ public class Circulo extends FormaGeometrica implements Numeravel {
   @Override
   public double numerar() {
     return raio;
+  }
+
+  public static void main(String[] args) {
+    Ponto p1 = new Ponto(1,1);
+    Ponto p2 = new Ponto(2,2);
+
+    
+
+    Circulo c = new Circulo(p1, 4);
+    
+    c.getQtd()
+
+    
+    if ( c.pertence( p2 ) )
+    System.out.println( "pertence");
   }
 
 }

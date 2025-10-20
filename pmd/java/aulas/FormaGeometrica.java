@@ -4,6 +4,10 @@ public abstract class FormaGeometrica {
 
   private static int qtd;
 
+  public FormaGeometrica() {
+    super();
+  }  
+
   public static int getQtd() {
     return qtd;
   }
@@ -13,5 +17,10 @@ public abstract class FormaGeometrica {
   }
 
   public abstract String imprimir();
+
+  public static void main(String[] args) {
+
+    System.out.println(FormaGeometrica.qtd);
+  }
 
 }
