@@ -36,6 +36,7 @@ public class Pessoa implements Comparable<Pessoa> {
     ps[1] = new Pessoa("MARIA", 23);
     ps[2] = new Pessoa("JOSE", 35);
     int maiores = new Teste<Pessoa>().contaMaiores(ps, new Pessoa("LUCAS", 21), 3);
+    System.out.println(maiores);
   }
 
 }

@@ -21,3 +21,7 @@
 *.zip
 *.tar.gz
 *.rar
+
+# Python bytecode files and __pycache__ directories
+__pycache__/
+*.pyc

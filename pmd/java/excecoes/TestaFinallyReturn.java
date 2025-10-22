@@ -5,7 +5,7 @@ public class TestaFinallyReturn {
 	public static void testa() {
 		try {
 			System.out.println("TRY");
-			int a = 5 / 0;
+			System.err.println(5 / 0);
 			return;
 		} catch (Exception e) {
 			System.out.println("CATCH");

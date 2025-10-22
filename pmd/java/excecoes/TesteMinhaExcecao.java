@@ -9,12 +9,13 @@ public class TesteMinhaExcecao {
       String a;
       System.out.println("Digite uma string: ");
       a = sc.next();
+      sc.close();
       if (a.equals("sim"))
         throw new MinhaExcecao();
     } catch (MinhaExcecao e) {
       e.printStackTrace();
     }
     System.out.println("\nFIM");
-    sc.close();
+    
   }
 }

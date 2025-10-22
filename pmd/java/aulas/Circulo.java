@@ -48,18 +48,15 @@ public class Circulo extends FormaGeometrica implements Numeravel {
   }
 
   public static void main(String[] args) {
+
     Ponto p1 = new Ponto(1,1);
     Ponto p2 = new Ponto(2,2);
-
-    
-
     Circulo c = new Circulo(p1, 4);
     
-    c.getQtd()
-
+    System.out.print("Qtd de formas geométricas: " + FormaGeometrica.getQtd());
     
     if ( c.pertence( p2 ) )
-    System.out.println( "pertence");
+      System.out.println( "P2 pertence ao circulo c.");
   }
 
 }

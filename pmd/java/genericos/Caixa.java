@@ -18,11 +18,11 @@ public class Caixa<T> {
     this.conteudo = conteudo;
   }
 
+  @SuppressWarnings("unused")
   public static void main(String[] args) {
     Caixa<Chocolate> c2 = new Caixa<>(new Chocolate());
     Caixa<Geladeira> c3 = new Caixa<>(new Geladeira());
     ArrayList<Float> lista = new ArrayList<>();
-
   }
 
 }
