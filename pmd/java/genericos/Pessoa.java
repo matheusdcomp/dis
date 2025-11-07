@@ -40,6 +40,17 @@ public class Pessoa implements Comparable<Pessoa> {
     return this.idade - p.idade;
   }
 
+  public boolean equals(Object obj) {
+    return obj != null && (
+      this == obj || (
+        obj instanceof Pessoa && //obj.getClass() == Pessoa.class se não desejar comparação com classes filhas
+        this.nome == ((Pessoa)obj).nome &&
+        this.idade == ((Pessoa)obj).idade &&
+        this.altura == ((Pessoa)obj).altura 
+      )
+    );
+  }
+
   public static void main(String[] a) {
     Pessoa[] ps = new Pessoa[3];
     ps[0] = new Pessoa("JOAO", 20, 1.70f);
