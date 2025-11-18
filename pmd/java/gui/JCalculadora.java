@@ -20,8 +20,9 @@ public class JCalculadora extends JFrame implements ActionListener {
   private JButton btIgual, btSoma, btSubt, btMult, btDivi;
 
   public JCalculadora() {
+
     super("Calculadora");
-    setSize(400, 300);
+    setSize(400, 320);
     setDefaultCloseOperation(EXIT_ON_CLOSE);
     setResizable(false);
 
