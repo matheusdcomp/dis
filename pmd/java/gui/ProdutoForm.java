@@ -1,5 +1,6 @@
 package gui;
 
+import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -31,18 +32,22 @@ public class ProdutoForm extends JFrame implements ActionListener {
     setSize(800, 600);
     setDefaultCloseOperation(EXIT_ON_CLOSE);
     setLayout(new GridBagLayout());
+    var fonte = new Font("ARIAL", Font.BOLD, 20);
     var gbc = new GridBagConstraints();
     gbc.fill = GridBagConstraints.HORIZONTAL;
 
     // linha 0
+    var lbnm = new JLabel("Nome:");
+    lbnm.setFont(fonte);
     gbc.gridx = 0;
     gbc.gridy = 0;
     gbc.weightx = 0.0;
     gbc.weighty = 0;
     gbc.gridwidth = 1;
-    add(new JLabel("Nome:"), gbc);
+    add(lbnm, gbc);
 
     tfnm = new JTextField();
+    tfnm.setFont(fonte);
     gbc.gridx = 1;
     gbc.gridy = 0;
     gbc.weightx = 0.0;
@@ -51,14 +56,17 @@ public class ProdutoForm extends JFrame implements ActionListener {
     add(tfnm, gbc);
 
     // linha 1
+    var lbvl = new JLabel("Valor:");
+    lbvl.setFont(fonte);
     gbc.gridx = 0;
     gbc.gridy = 1;
     gbc.weightx = 0.0;
     gbc.weighty = 0;
     gbc.gridwidth = 1;
-    add(new JLabel("Valor:"), gbc);
+    add(lbvl, gbc);
 
     tfvl = new JTextField();
+    tfvl.setFont(fonte);
     gbc.gridx = 1;
     gbc.gridy = 1;
     gbc.weightx = 0.0;
@@ -66,14 +74,17 @@ public class ProdutoForm extends JFrame implements ActionListener {
     gbc.gridwidth = 3;
     add(tfvl, gbc);
 
+    var lbct = new JLabel("Categoria:");
+    lbct.setFont(fonte);
     gbc.gridx = 4;
     gbc.gridy = 1;
     gbc.weightx = 0.0;
     gbc.weighty = 0;
     gbc.gridwidth = 1;
-    add(new JLabel("Categoria:"), gbc);
+    add(lbct, gbc);
 
     cbct = new JComboBox<String>(categorias);
+    cbct.setFont(fonte);
     cbct.setSelectedIndex(0);
     gbc.gridx = 5;
     gbc.gridy = 1;
@@ -84,6 +95,7 @@ public class ProdutoForm extends JFrame implements ActionListener {
 
     // linha 2
     btsv = new JButton("Salvar");
+    btsv.setFont(fonte);
     btsv.addActionListener(this);
     gbc.gridx = 0;
     gbc.gridy = 2;
@@ -93,6 +105,7 @@ public class ProdutoForm extends JFrame implements ActionListener {
     add(btsv, gbc);
 
     btal = new JButton("Alterar");
+    btal.setFont(fonte);
     btal.addActionListener(this);
     gbc.gridx = 2;
     gbc.gridy = 2;
@@ -102,6 +115,7 @@ public class ProdutoForm extends JFrame implements ActionListener {
     add(btal, gbc);
 
     btrm = new JButton("Apagar");
+    btrm.setFont(fonte);
     btrm.addActionListener(this);
     gbc.gridx = 4;
     gbc.gridy = 2;
@@ -111,6 +125,7 @@ public class ProdutoForm extends JFrame implements ActionListener {
     add(btrm, gbc);
 
     btcn = new JButton("Cancelar");
+    btcn.setFont(fonte);
     btcn.addActionListener(this);
     gbc.gridx = 6;
     gbc.gridy = 2;
@@ -126,6 +141,7 @@ public class ProdutoForm extends JFrame implements ActionListener {
     modeloTabela.addColumn("Categoria");
 
     tabela = new JTable(modeloTabela);
+    tabela.setFont(fonte);
     tabela.getColumnModel().getColumn(0).setMaxWidth(500);
     tabela.getColumnModel().getColumn(1).setMaxWidth(100);
     tabela.getColumnModel().getColumn(2).setMaxWidth(200);
