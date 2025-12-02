@@ -56,6 +56,21 @@ public class Pessoa implements Comparable<Pessoa> {
     ps[0] = new Pessoa("JOAO", 20, 1.70f);
     ps[1] = new Pessoa("MARIA", 23, 1.60f);
     ps[2] = new Pessoa("JOSE", 35, 1.69f);
+
+    if (ps[0].compareTo(ps[2]) < 0) {
+      System.out.println(ps[0] + " é mais novo que " + ps[2]);
+    }
+    else if (ps[0].compareTo(ps[2]) > 0) {
+      System.out.println(ps[2] + " é mais novo que " + ps[0]);
+    } 
+    else if (ps[0].compareTo(ps[2]) == 0) {
+      System.out.println(ps[2] + " tem a mesma idade que " + ps[0]);
+    }
+
+    else if (ps[0].equals(ps[2])) {
+      System.out.println(ps[0] + " é a mesma pessoa que " + ps[2]);
+    }
+     
     int maiores = new Teste<Pessoa>().contaMaiores(ps, new Pessoa("LUCAS", 21, 1.80f), 3);
     System.out.println(maiores);
   }
