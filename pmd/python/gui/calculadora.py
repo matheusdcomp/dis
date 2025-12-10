@@ -15,7 +15,7 @@ class Calculadora:
     self.display = Entry(janela, text="0", width=20, font=("arial",20))
     self.display.grid(row=0, column=0, rowspan=1, columnspan=2, sticky=(N, S, E, W))
     self.display.focus_force()
-    self.btsoma = Button(janela, text="+", width=10, font=("arial",20), command=lambda: self.cliqueOP("+"))
+    self.btsoma = Button(janela, text="+", width=10, font=("arial",20), command=self.cliqueSoma)
     self.btsoma.grid(row=1, column=0, sticky=(N, S, E, W))
     self.btsubt = Button(janela, text="-", width=10, font=("arial",20), command=lambda: self.cliqueOP("-"))
     self.btsubt.grid(row=1, column=1, sticky=(N, S, E, W))
@@ -48,6 +48,9 @@ class Calculadora:
     else:
       print("Operação inválida")
     
+
+  def cliqueSoma(self):
+    self.cliqueOP("+")  
   
   def cliqueOP(self, operador):   
     if self.valor == None:

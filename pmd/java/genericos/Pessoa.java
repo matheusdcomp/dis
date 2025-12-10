@@ -4,10 +4,12 @@ public class Pessoa implements Comparable<Pessoa> {
 
   protected String nome;
   protected int idade;
+  protected float altura;
 
-  public Pessoa(String n, int i) {
+  public Pessoa(String n, int i, float a) {
     nome = n;
     idade = i;
+    altura = a;
   }
 
   public String getNome() {
@@ -22,20 +24,54 @@ public class Pessoa implements Comparable<Pessoa> {
     return idade;
   }
 
+  public float getAltura() {
+    return altura;
+  }
+
   public void setIdade(int idade) {
     this.idade = idade;
+  }
+
+  public void setAltura(float altura) {
+    this.altura = altura;
   }
 
   public int compareTo(Pessoa p) {
     return this.idade - p.idade;
   }
 
+  public boolean equals(Object obj) {
+    return obj != null && (
+      this == obj || (
+        obj instanceof Pessoa && //obj.getClass() == Pessoa.class se não desejar comparação com classes filhas
+        this.nome == ((Pessoa)obj).nome &&
+        this.idade == ((Pessoa)obj).idade &&
+        this.altura == ((Pessoa)obj).altura 
+      )
+    );
+  }
+
   public static void main(String[] a) {
     Pessoa[] ps = new Pessoa[3];
-    ps[0] = new Pessoa("JOAO", 20);
-    ps[1] = new Pessoa("MARIA", 23);
-    ps[2] = new Pessoa("JOSE", 35);
-    int maiores = new Teste<Pessoa>().contaMaiores(ps, new Pessoa("LUCAS", 21), 3);
+    ps[0] = new Pessoa("JOAO", 20, 1.70f);
+    ps[1] = new Pessoa("MARIA", 23, 1.60f);
+    ps[2] = new Pessoa("JOSE", 35, 1.69f);
+
+    if (ps[0].compareTo(ps[2]) < 0) {
+      System.out.println(ps[0] + " é mais novo que " + ps[2]);
+    }
+    else if (ps[0].compareTo(ps[2]) > 0) {
+      System.out.println(ps[2] + " é mais novo que " + ps[0]);
+    } 
+    else if (ps[0].compareTo(ps[2]) == 0) {
+      System.out.println(ps[2] + " tem a mesma idade que " + ps[0]);
+    }
+
+    else if (ps[0].equals(ps[2])) {
+      System.out.println(ps[0] + " é a mesma pessoa que " + ps[2]);
+    }
+     
+    int maiores = new Teste<Pessoa>().contaMaiores(ps, new Pessoa("LUCAS", 21, 1.80f), 3);
     System.out.println(maiores);
   }
 

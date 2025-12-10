@@ -22,6 +22,10 @@ class Produto(Entidade):
   def __str__(self):
     return f"{super().__str__()}\t{self.nome}\t= {self.valor}"
 
+class ValorInvalidoException (Exception):
+  def __init__(self, valor):
+    super().__init__(f"Valor inválido para produto: {valor}")
+
 
 class Venda(Entidade,Totalizavel):
   def __init__(self, id):
@@ -56,15 +60,24 @@ class ItemVenda(Totalizavel):
 
 
 
-p1 = Produto(1, "AGUA",2.0)
-p2 = Produto(2, "CHOCOLATE",10.0)
-p3 = Produto(3, "SABAO",4.0)
-
-v = Venda(1)
-v.itens = [
-    ItemVenda(p1, 5),
-    ItemVenda(p2, 8),
-    ItemVenda(p3, 3)
-  ]
-
-print(v)
+produtos = []
+while True:
+  print("\n\n0 SAIR\n1 CRIAR PRODUTO\n2 IMPRIMIR")
+  op = input("Digite sua opção: ")
+  
+  if op == "0": 
+    break
+  elif op == "1":
+    id = int(input("ID do produto: "))
+    nome = input("Nome do produto: ")
+    valor = -1.0
+    while valor <= 0:
+      try:
+        valor = float(input("Valor do produto: "))
+        if valor <= 0: raise ValorInvalidoException(valor)
+      except ValorInvalidoException as e:
+        print(e)
+    produtos.append(Produto(id, nome, valor))
+  else:
+    for p in produtos:
+      print(p)  
