@@ -6,8 +6,10 @@ class ClasseAbstrata(ABC):
         self.valor = valor
         super().__init__()
     
-    @abstractmethod
+    @abstractmethod #para a classe ser efetivamente abstrata, precisa ter ao menos um método abstrato
     def metodo(self): pass #pass indica que a função não tem código
+
+    def metodo2(self): pass
 
 
 class ClasseFilha(ClasseAbstrata):
@@ -16,6 +18,6 @@ class ClasseFilha(ClasseAbstrata):
         return self.valor
 
 
-y = ClasseAbstrata(1)
+y = ClasseAbstrata(1) #Erro: não pode instanciar classe abstrata
 x = ClasseFilha(4)
 print(x.metodo())
