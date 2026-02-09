@@ -8,12 +8,12 @@ public class TestaFinally {
 	public static void main(String[] args) {
 		Scanner s = new Scanner(System.in);
 		try {
-		  System.out.print("Digite um código ASCII: ");
+		  System.out.print("Digite um cï¿½digo ASCII: ");
 		  int x = s.nextInt();
 		  System.out.printf("Char: %c", (char) x );
 		}
 		catch (InputMismatchException e) {  
-			System.err.println("Isso não é um código ASCII.");
+			System.err.println("Isso nï¿½o ï¿½ um cï¿½digo ASCII.");
 		}
 		finally {
 		  s.close();
