@@ -1,5 +1,6 @@
 package avancado;
 
+import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 
 import classes.Pessoa;
@@ -9,7 +10,8 @@ public class Reflexao1 {
     
     try {
       Class<?> classe = Class.forName("classes.Pessoa");
-      Pessoa p = (Pessoa) classe.getConstructor(int.class, String.class).newInstance(15,"JOAO");      
+      Constructor<?> construtor = classe.getConstructor(int.class, String.class);
+      Pessoa p = (Pessoa) construtor.newInstance(15,"JOAO");      
       System.out.println(p);      
     } catch (ClassNotFoundException e) {
       System.err.println("Nome incorreto da classe.");
