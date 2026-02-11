@@ -33,6 +33,11 @@ public class Pessoa {
     this.nome = nome;
   }
 
+  @Override
+  public String toString() {
+    return "Nome: " + nome + "\tIdade: " + idade;
+  }
+
   public static void main(String[] args) {
 
     Scanner scanner = new Scanner(System.in);

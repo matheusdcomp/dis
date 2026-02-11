@@ -5,7 +5,7 @@ import java.lang.reflect.Method;
 
 import classes.Pessoa;
 
-public class Reflexao {
+public class Reflexao2 {
   public static void main(String[] args) {
 
     Class<Pessoa> cp = Pessoa.class; //ou Class.forName("classes.Pessoa");
