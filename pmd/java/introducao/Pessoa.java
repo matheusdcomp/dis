@@ -16,7 +16,7 @@ public class Pessoa {
     int idade = 0;
     String nome = null;
 
-    var sc = new Scanner(System.in);
+    Scanner sc = new Scanner(System.in);
     while (idade == 0) {
       System.out.print("Digite a idade da pessoa: ");
       idade = sc.nextInt();
@@ -35,6 +35,10 @@ public class Pessoa {
     v.add(1);
     v.add(5);
     v.add(10);
+
+    for (int x =0; x < v.size(); x++) {
+      System.out.printf("\nFatorial de %d: %d", v.get(x), fatorial(v.get(x)));
+    }
 
     for (int x : v) {
       System.out.printf("\nFatorial de %d: %d", x, fatorial(x));
