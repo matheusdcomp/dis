@@ -16,7 +16,7 @@ public class Pessoa {
     int idade = 0;
     String nome = null;
 
-    Scanner sc = new Scanner(System.in);
+    var sc = new Scanner(System.in);
     while (idade == 0) {
       System.out.print("Digite a idade da pessoa: ");
       idade = sc.nextInt();
