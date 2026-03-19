@@ -3,10 +3,11 @@ class Circulo:
   def __init__(self, raio=0):
     self.raio = raio 
 
-  def area(self):
-    return 3.1415 * self.raio * self.raio
+  def calculaArea(self):
+    self.area = 3.1415 * self.raio * self.raio
+    
 
-  def volume(self):
+  def volume(self) -> float:
     return 4/3 * self.raio * self.area()
 
   def __str__():
@@ -19,6 +20,7 @@ c = Circulo(r1)
 
 r2 = float(input("Digite o segundo raio: "))
 a = Circulo(r2)
+a.calculaArea()
 
-print ("\nArea de c: ", c.area(), "   Volume de c: ", c.volume())
-print ("\nArea de a: ", a.area(), "   Volume de a: ", a.volume())
+print ("Volume de c: ", c.volume())
+print ("\nArea de a: ", a.area, "   Volume de a: ", a.volume())

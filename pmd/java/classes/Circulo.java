@@ -16,9 +16,5 @@ public class Circulo {
     return 3.1415F * this.raio * this.raio;
   }
 
-  public static void main(String[] args) {
-    Circulo c = new Circulo(4);
-    System.out.println("\nArea: " + c.area() );
-  }
   
 }
