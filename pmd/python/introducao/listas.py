@@ -1,4 +1,6 @@
 lista = [ 'abcd', 786 , 70.2, 10+3j, True ]
+
+listaVazia = []
 '''
 As listas em Python são listas de ponteiros, por isso ela consegue armazenar elementos de tipos diferentes.
 Ou seja, [ 'abcd', 786 , 70.2 ] é uma lista de 3 ponteiros que apontam para os objetos 'abcd', 786 e 70.2.
@@ -35,7 +37,7 @@ print("\nlista.pop(1): ", lista)
 del lista[1] #Para listas, é preverível usar pop ou remove
 print('\ndel lista[1]: ', lista)
 '''
-O comando del apaga o ponteiro, não o objeto. Aplica-se qualquer poteiro (variável isolada, elementos de listas, atributos de classes, etc.). 
+O comando del apaga o ponteiro, não o objeto. Aplica-se a qualquer ponteiro (variável isolada, elementos de listas, atributos de classes, etc.). 
 Neste exemplo em específico, del lista[1] apaga o 2o elemento/ponteiro da lista e a lista diminui de tamanho. 
 Depois o coletor de lixo que apaga o objeto porque não tem mais ponteiro apontando para ele.
 '''

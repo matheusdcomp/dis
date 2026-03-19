@@ -39,4 +39,5 @@ print('\n(1,"x") * 2:',(1,"x") * 2)
 x = (1,2,3,1,2,1)
 print(f"\nQuantos 1's em {x}: {x.count(1)}")
 
+
 print()

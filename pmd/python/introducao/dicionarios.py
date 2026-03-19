@@ -29,7 +29,7 @@ print("\nd.update({'a':'matheus'}): ", d)
 d["c"] = 7 #ou d.update({"c":7})adiciona um novo elemento "c":7
 print("\nAdicionado ('c':7): ", d)
 
-d.pop("c") #reomve o elemento com chave "c"
+d.pop("c") #remove o elemento com chave "c"
 print("\nRemovido ('c':7): ", d)
 
 print()

@@ -1,9 +1,10 @@
 print()
 
+
 #for em python itera sobre qualquer coleção (lista, tupla, string, set, dicionario)
 
-for letter in 'Python': 
-  print(letter)
+for letra in 'Python': 
+  print(letra)
 else: #else do for executa quando o for termina
   print("terminou\n")  
 
@@ -21,6 +22,10 @@ print()
 for num in range(1, 10, 2): #de 1 a 9 aumentando de 2 em 2
    print (num, end=' ')
 print()   
+
+
+for num in range(10, 0, -1): #de 10 a 1 diminuindo
+   print (num, end=' ')
 
 
 count = 0

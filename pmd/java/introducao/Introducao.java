@@ -6,7 +6,8 @@ public class Introducao {
 
   public static void main(String[] args) {
 
-    int i = 5;
+    Integer i = 5;
+    i = 10;
 
     boolean b = false;
 
