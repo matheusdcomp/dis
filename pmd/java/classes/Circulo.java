@@ -8,6 +8,14 @@ public class Circulo {
     raio = 0;
   } 
 
+  public void setRaio(float raio) {
+    this.raio = raio;
+  }
+
+  public float getRaio() {
+    return raio;
+  }
+
   public Circulo(float raio) {
     this.raio = raio;
   }
