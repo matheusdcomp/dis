@@ -8,6 +8,7 @@ public class AlunoMain {
     Scanner s = new Scanner(System.in);
     
     Aluno a = new Aluno();
+
     System.out.print("\nDigite o nome do aluno: ");
     a.setNome(s.next());
     System.out.print("\nDigite a matricula do aluno: ");

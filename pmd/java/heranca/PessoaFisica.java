@@ -30,6 +30,7 @@ public class PessoaFisica extends Pessoa implements Identificavel, Serializable 
   }
 
   public String getDocumento() {
+     toString();
     return "CPF: " + this.cpf;
   }
 

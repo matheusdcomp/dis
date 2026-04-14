@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script>
+    function carregar() {
+      alert("Carregando... Carregado.")
+    }
+    function addParagrafo() {
+      const p = document.createElement("p");
+      p.innerText = document.getElementById("texto").value;
+      document.getElementById("minhadiv").appendChild(p);
+    }
+    function cliqueBotao(bt) {
+      alert(bt);
+    }
+    const fun = (e) => alert(e);
+  </script>
+</head>
+
+<body>
+  <h1>Minha Página</h1>
+  <form name="formulario">
+    <input id="texto" name='texto' type='text' />
+  </form>
+  <button onclick='addParagrafo()'>Novo parágrafo</button>
+  <button id='bt1' onclick='cliqueBotao(this)'>BT1</button>
+  <button id='bt2' onclick='fun(this)'>BT2</button>
+  <div id="minhadiv"></div>
+</body>
+
+
+</html>
