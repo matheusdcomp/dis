@@ -1,19 +1,27 @@
 package aulas;
 
-public class Circulo extends FormaGeometrica implements Numeravel {
+import java.io.Serializable;
 
-  private Ponto centro;
-  private double raio;
+public class Circulo extends FormaGeometrica implements Mensuravel, Serializable {
+
+  protected Ponto centro;
+  protected double raio;
 
   public Circulo() {
     super();
-    this.centro = new Ponto(0,0);
-    this.raio = 0;
+    centro = new Ponto(0.0, 0.0);
+    raio = 0.0;
   }
 
   public Circulo(Ponto centro, double raio) {
     super();
     this.centro = centro;
+    this.raio = raio;
+  }
+
+  public Circulo(double xcentro, double ycentro, double raio) {
+    super();
+    this.centro = new Ponto(xcentro, ycentro);
     this.raio = raio;
   }
 
@@ -33,30 +41,25 @@ public class Circulo extends FormaGeometrica implements Numeravel {
     this.raio = raio;
   }
 
+  public String toString() {
+    return String.format(
+      "CIRCULO ((%.1f,%.1f), %.1f)", 
+      centro.getX(), 
+      centro.getY(), 
+      raio
+    );
+  }
+
+  public double area() {
+    return Math.PI * raio * raio;
+  }
+
+  public double comprimento() {
+    return 2.0 * Math.PI * raio;
+  }
+
   public boolean pertence(Ponto p) {
-    return raio >= p.distancia(centro);
-  }
-
-  @Override
-  public String imprimir() {
-    return "(Centro: " + centro.imprimir() + " Raio: " + raio + ")";
-  }
-
-  @Override
-  public double numerar() {
-    return raio;
-  }
-
-  public static void main(String[] args) {
-
-    Ponto p1 = new Ponto(1,1);
-    Ponto p2 = new Ponto(2,2);
-    Circulo c = new Circulo(p1, 4);
-    
-    System.out.print("Qtd de formas geométricas: " + FormaGeometrica.getQtd());
-    
-    if ( c.pertence( p2 ) )
-      System.out.println( "P2 pertence ao circulo c.");
+    return p.distancia(centro) <= raio;
   }
 
 }

@@ -1,4 +1,4 @@
-package genericos;
+package avancado;
 
 public class Pessoa implements Comparable<Pessoa> {
 

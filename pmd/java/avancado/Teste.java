@@ -1,4 +1,4 @@
-package genericos;
+package avancado;
 
 public class Teste<E extends Comparable<E>> {
   public int contaMaiores(E[] v, E e, int tam) {

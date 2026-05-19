@@ -1,4 +1,4 @@
-package genericos;
+package avancado;
 
 import java.util.Comparator;
 

@@ -18,13 +18,13 @@ public class TestaTryCatch {
 			System.out.printf("%d / %d = %d", a, b, d);
 		}
 		catch (NumberFormatException e) {
-			System.out.println("Você não digitou um número inteiro.");
+			System.out.println("Voce nao digitou um numero inteiro.");
 		}
 		catch (ArithmeticException e) {
-			System.out.println("Divisão por 0.");
+			System.out.println("Divisao por 0.");
 		}
 		catch (Exception e) {
-			System.out.println("Exeçeção genérica.");
+			System.out.println("Exececao generica.");
 		}
 	}
 

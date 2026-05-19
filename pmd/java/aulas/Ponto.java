@@ -1,17 +1,25 @@
 package aulas;
 
-public class Ponto extends FormaGeometrica implements Numeravel {
+public class Ponto extends FormaGeometrica {
 
   private double x, y;
 
   public Ponto() {
-    this.x = 0;
-    this.y = 0;
+    super();
+    x = y = 0.0;
   }
 
   public Ponto(double x, double y) {
+    super();
     this.x = x;
     this.y = y;
+  }
+
+  public double distancia(Ponto p) {
+    return Math.sqrt(
+      Math.pow(p.x - this.x,2) +
+      Math.pow(p.y - this.y,2) 
+    );
   }
 
   public double getX() {
@@ -29,28 +37,14 @@ public class Ponto extends FormaGeometrica implements Numeravel {
   public void setY(double y) {
     this.y = y;
   }
-
-  public double distancia(Ponto p) {
-    return Math.sqrt(
-        Math.pow(this.x - p.x, 2) +
-            Math.pow(this.y - p.y, 2));
-  }
-
+  
   @Override
-  public String imprimir() {
-    return "(" + x + "," + y + ")";
+  public double area() {
+    return 0.0;
   }
 
-  public static void main(String[] args) {
-    Ponto a = new Ponto();
-    Ponto b = new Ponto();
-    a.distancia(b);
-    a.x = 10;
-  }
-
-  @Override
-  public double numerar() {
-    return x + y;
+  public String toString() {
+    return String.format("PONTO (%.1f,%.1f)", x, y);
   }
 
 }

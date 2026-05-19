@@ -54,7 +54,7 @@ class Vetor {
 			valores[i] = 0;
 	}
 
-	public void set(int v, int i) {
+	public synchronized void set(int v, int i) {
 		valores[i] = v;
 	}
 

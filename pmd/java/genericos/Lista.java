@@ -1,4 +1,4 @@
-package aulas;
+package genericos;
 
 import java.util.Scanner;
 

@@ -1,4 +1,4 @@
-package genericos;
+package avancado;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -38,11 +38,7 @@ public class UsaPessoa {
     System.out.println(); 
 
     //ordenar por nome
-    Collections.sort(pessoas, new Comparator<Pessoa>() {
-      public int compare(Pessoa a, Pessoa b) {
-        return a.getNome().compareTo(b.getNome());
-      }
-    });
+    Collections.sort(pessoas, new PessoaComparator());
     for (Pessoa p : pessoas)
       System.out.println(p.getNome());
 

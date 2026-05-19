@@ -18,6 +18,6 @@ class ClasseFilha(ClasseAbstrata):
         return self.valor
 
 
-y = ClasseAbstrata(1) #Erro: não pode instanciar classe abstrata
+#y = ClasseAbstrata(1) #Erro: não pode instanciar classe abstrata
 x = ClasseFilha(4)
 print(x.metodo())

@@ -1,11 +1,10 @@
-package heranca.programa;
+package heranca;
 
-import heranca.*;
 //import java.util.Scanner;
 import java.util.List;
 import java.util.ArrayList;
 
-public class Main {
+public class PessoaMain {
 
   public static void main(String[] args) {
 
