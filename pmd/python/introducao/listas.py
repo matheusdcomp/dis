@@ -1,5 +1,6 @@
 lista = [ 'abcd', 786 , 70.2, 10+3j, True ]
 
+
 listaVazia = []
 '''
 As listas em Python são listas de ponteiros, por isso ela consegue armazenar elementos de tipos diferentes.
@@ -46,3 +47,17 @@ print('\n3o elemento da lista (lista[2]): ', lista[2])
 print('\n3o elemento da lista (lista[2]): ', lista[2])
 
 print() #pula linha
+
+#Compreensão de lista
+#Cria uma lista a partir de outra, filtrando e/ou alterando o elementos da lista original
+
+numeros = [1,2,3,4,5,6,7,8,9,10]
+
+ns = [x for x in numeros if x % 2 == 0 ] # cria uma lista (ns) que é formada por elementos x, tal que x vem da lista numeros desde que x seja par.
+#ou seja, ns é uma lista que contém apenas os elementos pares da lista numeros.
+#o mesmo resultado pode ser obtido usando a função de alta ordem filter
+ns2 = filter(lambda x : x % 2 == 0, lista)
+
+#A compreensão de lista também permite alterar os elementos que são extraídos da lista original antes de incluí-los na lista nova
+#A listanova abaixo é formada pelos elementos pares de da lsita numeros multiplicados por 5
+listanova = [x*5 for x in numeros if x % 2 == 0]
