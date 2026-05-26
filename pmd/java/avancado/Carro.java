@@ -1,5 +1,6 @@
 package avancado;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -7,9 +8,9 @@ import java.util.List;
 
 public class Carro implements Comparable<Carro> {
   
-  private int id;
+  private Integer id;
   private String nome;
-  private double valor;
+  private Double valor;
 
   public Carro(int id, String nome, double valor) {
     super();
@@ -18,7 +19,7 @@ public class Carro implements Comparable<Carro> {
     this.valor = valor;
   }
 
-  public int getId() {
+  public Integer getId() {
     return id;
   }
 
@@ -26,11 +27,11 @@ public class Carro implements Comparable<Carro> {
     return nome;
   }
 
-  public double getValor() {
+  public Double getValor() {
     return valor;
   }
 
-  public void setId(int id) {
+  public void setId(Integer id) {
     this.id = id;
   }
 
@@ -38,7 +39,7 @@ public class Carro implements Comparable<Carro> {
     this.nome = nome;
   }
 
-  public void setValor(double valor) {
+  public void setValor(Double valor) {
     this.valor = valor;
   }
 
@@ -83,7 +84,27 @@ public class Carro implements Comparable<Carro> {
   public static Comparator<Carro> getComparatorValor() {
     return new Comparator<Carro>() {
       public int compare(Carro a, Carro b) {
-        return (int) (a.valor - b.valor);
+        return Double.compare(a.valor, b.valor);
+      }
+    };
+  }
+
+  public static Comparator<Carro> getComparator(String nomeAtributo) {
+    return new Comparator<Carro>() {
+      public int compare(Carro a, Carro b) {
+        try {
+          Field at = Carro.class.getDeclaredField(nomeAtributo);
+          /* 
+          if (at.getType() == Integer.class)
+            return at.getInt(a) - at.getInt(b);
+          if (at.getType() == Double.class)
+            return Double.compare(at.getDouble(a), at.getDouble(b));
+          else*/
+            return at.get(a).toString().compareTo(at.get(b).toString());
+          
+        } catch (Exception e) {
+          throw new RuntimeException(e);
+        }
       }
     };
   }
@@ -106,30 +127,37 @@ public class Carro implements Comparable<Carro> {
     ls.add(new Carro(1,"B",200.0));
     ls.add(new Carro(1,"C",400.0));
 
-    System.out.println();
+    System.out.println("\nOdenado pelo compareTo");
 
     Collections.sort(ls);
     for (Carro c: ls)
       System.out.println(c);
 
-    System.out.println();
+    System.out.println("\nOrdenado pelo ComparatorId");
 
     Collections.sort(ls, Carro.getComparatorId());
     for (Carro c: ls)
       System.out.println(c);
 
-    System.out.println();
+    System.out.println("\nOrdenado pelo ComparatorNome");
     
     Collections.sort(ls, Carro.getComparatorNome());
     for (Carro c: ls)
       System.out.println(c);
 
-    System.out.println();
+    System.out.println("\nOrdenado pelo ComparatorValor");
     
     Collections.sort(ls, Carro.getComparatorValor());
     for (Carro c: ls)
       System.out.println(c);
 
+    System.out.println("\nOrdenado pelo Comparator com reflexão");
+    
+    Collections.sort(ls, Carro.getComparator("valor"));
+    for (Carro c: ls)
+      System.out.println(c);
+
+    System.out.println("\nForEach");
     ls.forEach((c) -> System.out.println(c));
     Object[] l2 =  ls.stream().map((c) -> c.id * 2).toArray();
     Object[] l3 =  ls.stream().filter((c) -> c.nome.startsWith("A")).toArray();

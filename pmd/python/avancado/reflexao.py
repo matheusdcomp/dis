@@ -13,7 +13,7 @@ print('Tipo da classe Ponto: ', type(Ponto))
 print('Tipo do objeto pnt: ', type(pnt))
 
 print('Possui atributo x: ', hasattr(pnt,'x'))
-setattr(pnt,'x',3)
+setattr(pnt,'x',3) #pnt.x = 3
 print('Atributo x depois de alterar: ', getattr(pnt,'x'))
 
 
