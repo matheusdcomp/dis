@@ -7,17 +7,17 @@ import org.junit.jupiter.api.Test;
 
 public class SampleTest {
 
- private java.util.List<Object> listaVazia;
+ private static java.util.List<Object> listaVazia;
 
  //Este método será chamado antes de cada método de teste.
  @BeforeAll
- protected void inicializar() {
+ protected static void inicializar() {
 	 listaVazia = new java.util.ArrayList<Object>();
  } 
 
  //Após cada método de teste, este método é invocado para limpar o lixo.
  @AfterAll
- protected void terminou() {
+ protected static void terminou() {
 	 listaVazia = null;
  }
 

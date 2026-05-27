@@ -9,10 +9,10 @@ public class Reflexao1 {
   public static void main(String[] args) {
     
     try {
-      Pessoa p = new Pessoa(15,"JOAO");
       Class<?> classe = Class.forName("classes.Pessoa");
       Constructor<?> construtor = classe.getConstructor(int.class, String.class);
-      Pessoa p = (Pessoa) construtor.newInstance(15,"JOAO");      
+      Pessoa p = (Pessoa) construtor.newInstance(15,"JOAO"); 
+      //Essas 3 linhas anteriores equivalem à: Pessoa p = new Pessoa(15,"JOAO");    
       System.out.println(p);      
     } catch (ClassNotFoundException e) {
       System.err.println("Nome incorreto da classe.");
