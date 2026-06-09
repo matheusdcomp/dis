@@ -29,7 +29,7 @@ public class SampleTest {
  @Test
  public void comportamento() {
    Assertions.assertEquals(
-    0, listaVazia.size(), "A lista vazia deve ter 0 elementos");
+    listaVazia.size(), 0, "A lista vazia deve ter 0 elementos");
  }
 
  //Este método testa a exceção. Ela deve ser lançada, pois não existe
