@@ -4,54 +4,49 @@ from tkinter import *
 class Calculadora(Tk):
 
   def __init__(self):
-
-    super().__init__()    
+    super().__init__()  
     self.title("Calculadora")
-    self.resizable(False, False)
     self.valor = None
     self.operador = None 
+    
     f = ("arial",20)
-
-    self.display = Entry(self, text="0", font=f)
-    self.display.pack(fill='x')
+    m = (N, S, E, W)
+    self.display = Entry(self, text="0", width=22, font=f)
+    self.display.grid(row=0, column=0, rowspan=1, columnspan=2, sticky=m)
     self.display.focus_force()
-    
-    p1 = Frame(self)
-    p1.pack()
-    self.btsoma = Button(p1, text="+", width=10, font=f, command=lambda: self.cliqueOP("+"))
-    self.btsoma.pack(side=LEFT)
-    self.btsubt = Button(p1, text="-", width=10, font=f, command=lambda: self.cliqueOP("-"))
-    self.btsubt.pack(side=LEFT)
-    
-    p2 = Frame(self)
-    p2.pack()
-    self.btmult = Button(p2, text="x", width=10, font=f, command=lambda: self.cliqueOP("*"))
-    self.btmult.pack(side=LEFT)
-    self.btdivi = Button(p2, text="÷", width=10, font=f, command=lambda: self.cliqueOP("/"))
-    self.btdivi.pack(side=LEFT)
-    
-    p3 = Frame(self)
-    p3.pack()
-    self.btrstd = Button(p3, text="=", width=10, font=f, command=self.cliqueRstd)
-    self.btrstd.pack(side=LEFT)
-    self.btzera = Button(p3, text="C", width=10, font=f, command=self.cliqueZera)
-    self.btzera.pack(side=LEFT)
+    self.btsoma = Button(self, text="+", font=f, command=lambda: self.cliqueOP("+"))
+    self.btsoma.grid(row=1, column=0, sticky=m)
+    self.btsubt = Button(self, text="-", font=f, command=lambda: self.cliqueOP("-"))
+    self.btsubt.grid(row=1, column=1, sticky=m)
+    self.btmult = Button(self, text="x", font=f, command=lambda: self.cliqueOP("*"))
+    self.btmult.grid(row=2, column=0, sticky=m)
+    self.btdivi = Button(self, text="÷", font=f, command=lambda: self.cliqueOP("/"))
+    self.btdivi.grid(row=2, column=1, sticky=m)
+    self.btrstd = Button(self, text="=", font=f, command=self.cliqueRstd)
+    self.btrstd.grid(row=3, column=0, sticky=m)
+    self.btzera = Button(self, text="C", font=f, command=self.cliqueZera)
+    self.btzera.grid(row=3, column=1, sticky=m)
 
+    self.rowconfigure(0, weight=1)
+    self.rowconfigure(1, weight=1)    
+    self.rowconfigure(2, weight=1)
+    self.rowconfigure(3, weight=1)
+    self.columnconfigure(0, weight=1)
+    self.columnconfigure(1, weight=1)
+  
 
   def executaOperacao(self):
     s = self.display.get()
     if self.operador == "+":
-      self.valor += float(s) 
+      self.valor += float() 
     elif self.operador == "-":
       self.valor -= float(s) 
     elif self.operador == "*":
       self.valor *= float(s) 
     elif self.operador == "/":
       self.valor /= float(s)
-    else:
-      print("Operação inválida")
-   
-
+    
+  
   def cliqueOP(self, operador):   
     if self.valor == None:
       self.valor = float(self.display.get()) 

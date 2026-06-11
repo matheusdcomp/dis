@@ -1,9 +1,9 @@
 from tkinter import *
 
-class MinhaJanela (Frame): #Esta classe é um painel
+class MeuPainel (Frame): #Esta classe é um painel
  
-    def __init__(self, master = None): 
-        super().__init__(master) #isso faz com que self.master = master
+    def __init__(self, janela = None): 
+        super().__init__(janela) #isso faz com que self.janela = janela
         self.pack(padx=20, pady=20) #margem do painel
         self.botao1 = Button(self, text = 'Oi!')
         self.botao1['background'] = 'green'
@@ -14,10 +14,10 @@ class MinhaJanela (Frame): #Esta classe é um painel
         self.botao2['text'] = 'Tchau!'
         self.botao2['fg'] = 'yellow'
         self.botao2['width'] = 12
-        self.botao2['command'] = master.quit 
+        self.botao2['command'] = janela.quit 
         self.botao2.pack()
 
  
-master = Tk() 
-MinhaJanela(master) 
-master.mainloop()
+janela = Tk() 
+MeuPainel(janela) 
+janela.mainloop()
