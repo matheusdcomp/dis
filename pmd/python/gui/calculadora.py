@@ -18,7 +18,7 @@ class Calculadora(Tk):
     
     p1 = Frame(self)
     p1.pack()
-    self.btsoma = Button(p1, text="+", width=10, font=f, command=lambda: self.cliqueOP("+"))
+    self.btsoma = Button(p1, text="+", width=10, font=f, command=self.opSoma)
     self.btsoma.pack(side=LEFT)
     self.btsubt = Button(p1, text="-", width=10, font=f, command=lambda: self.cliqueOP("-"))
     self.btsubt.pack(side=LEFT)
@@ -37,6 +37,8 @@ class Calculadora(Tk):
     self.btzera = Button(p3, text="C", width=10, font=f, command=self.cliqueZera)
     self.btzera.pack(side=LEFT)
 
+  def opSoma(self):
+    self.cliqueOP("+")
 
   def executaOperacao(self):
     s = self.display.get()

@@ -52,12 +52,14 @@ class Janela(Tk):
     self.msg['text'] = 'Clique sobre o Botão 2'
 
   def fin01(self, event): 
+    self.msg['text'] = 'TAB sobre o Botão 1'
     self.b01['relief'] = FLAT #deixa o botao liso quando ganha o foco
 
   def fout01(self, event):
     self.b01['relief'] = RIDGE #deixa o botao com altorrelevo quando ganha o foco
 
   def fin02(self, event): 
+    self.msg['text'] = 'TAB sobre o Botão 2'
     self.b02['relief'] = FLAT
 
   def fout02(self, event): 
