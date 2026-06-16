@@ -6,6 +6,8 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -33,17 +35,18 @@ public class ProdutoForm extends JFrame implements ActionListener {
     setDefaultCloseOperation(EXIT_ON_CLOSE);
     setLayout(new GridBagLayout());
     var fonte = new Font("ARIAL", Font.BOLD, 20);
-    var gbc = new GridBagConstraints();
-    gbc.fill = GridBagConstraints.HORIZONTAL;
+
+    var gbc = new GridBagConstraints();       //define posição e tamanho dos componentes
+    gbc.fill = GridBagConstraints.HORIZONTAL; //os componentes devem ocupar toda a largura da célula
 
     // linha 0
     var lbnm = new JLabel("Nome:");
     lbnm.setFont(fonte);
-    gbc.gridx = 0;
-    gbc.gridy = 0;
-    gbc.weightx = 0.0;
-    gbc.weighty = 0;
-    gbc.gridwidth = 1;
+    gbc.gridx = 0;      //coluna inicial
+    gbc.gridy = 0;      //linha inicial
+    gbc.weightx = 0;    //o quanto a coluna expande - só precisa ajustar um componente em cada coluna, os demais ficam com 0
+    gbc.weighty = 0;    //o quanto a linha expande - só precisa ajustar um componente em cada linha, os demais ficam com 0
+    gbc.gridwidth = 1;  //quantas colunas vai ocupar (use gridheight se quiser ocupar mais de uma linha). A soma de todos os componentes na mesma linha/coluna define o total de colunas/linhas.
     add(lbnm, gbc);
 
     tfnm = new JTextField();
@@ -69,7 +72,7 @@ public class ProdutoForm extends JFrame implements ActionListener {
     tfvl.setFont(fonte);
     gbc.gridx = 1;
     gbc.gridy = 1;
-    gbc.weightx = 0.0;
+    gbc.weightx = 0;
     gbc.weighty = 0;
     gbc.gridwidth = 3;
     add(tfvl, gbc);
@@ -88,7 +91,7 @@ public class ProdutoForm extends JFrame implements ActionListener {
     cbct.setSelectedIndex(0);
     gbc.gridx = 5;
     gbc.gridy = 1;
-    gbc.weightx = 0.0;
+    gbc.weightx = 0;
     gbc.weighty = 0;
     gbc.gridwidth = 3;
     add(cbct, gbc);
@@ -99,7 +102,7 @@ public class ProdutoForm extends JFrame implements ActionListener {
     btsv.addActionListener(this);
     gbc.gridx = 0;
     gbc.gridy = 2;
-    gbc.weightx = 0.5;
+    gbc.weightx = 1;
     gbc.weighty = 0;
     gbc.gridwidth = 2;
     add(btsv, gbc);
@@ -109,7 +112,7 @@ public class ProdutoForm extends JFrame implements ActionListener {
     btal.addActionListener(this);
     gbc.gridx = 2;
     gbc.gridy = 2;
-    gbc.weightx = 0.5;
+    gbc.weightx = 1;
     gbc.weighty = 0;
     gbc.gridwidth = 2;
     add(btal, gbc);
@@ -119,7 +122,7 @@ public class ProdutoForm extends JFrame implements ActionListener {
     btrm.addActionListener(this);
     gbc.gridx = 4;
     gbc.gridy = 2;
-    gbc.weightx = 0.5;
+    gbc.weightx = 1;
     gbc.weighty = 0;
     gbc.gridwidth = 2;
     add(btrm, gbc);
@@ -129,7 +132,7 @@ public class ProdutoForm extends JFrame implements ActionListener {
     btcn.addActionListener(this);
     gbc.gridx = 6;
     gbc.gridy = 2;
-    gbc.weightx = 0.5;
+    gbc.weightx = 1;
     gbc.weighty = 0;
     gbc.gridwidth = 2;
     add(btcn, gbc);
@@ -154,7 +157,7 @@ public class ProdutoForm extends JFrame implements ActionListener {
     gbc.weighty = 1;
     gbc.gridwidth = 8;
     gbc.fill = GridBagConstraints.BOTH;
-    gbc.insets = new Insets(5, 0, 5, 0);
+    gbc.insets = new Insets(10, 0, 10, 0);//margem acima direita abaixo esquerda
     add(scroll, gbc);
   }
 
@@ -182,7 +185,7 @@ public class ProdutoForm extends JFrame implements ActionListener {
         if (tabela.isRowSelected(i))
           modeloTabela.removeRow(i);
 
-    } else if (e.getSource() == btcn) {
+    } else if (e.getSource() == btcn) {ç
       tfnm.setText("");
       tfvl.setText("");
       cbct.setSelectedIndex(0);

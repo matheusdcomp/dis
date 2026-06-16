@@ -27,9 +27,10 @@ public class JCalculadora extends JFrame implements ActionListener {
     setResizable(false);
 
     setLayout(new BorderLayout());
+    Font fonte = new Font("ARIAL", Font.BOLD, 36);
 
     display = new JTextField(10);
-    display.setFont(new Font("ARIAL", Font.BOLD, 36));
+    display.setFont(fonte);
     add(display, BorderLayout.NORTH);
 
     JPanel pBotoes = new JPanel();
@@ -38,34 +39,34 @@ public class JCalculadora extends JFrame implements ActionListener {
 
     btSoma = new JButton("+");
     btSoma.setPreferredSize(new Dimension(150, 50));
-    btSoma.setFont(new Font("ARIAL", Font.BOLD, 36));
+    btSoma.setFont(fonte);
     pBotoes.add(btSoma);
     btSoma.addActionListener(this);
 
     btSubt = new JButton("-");
     btSubt.setPreferredSize(new Dimension(150, 50));
-    btSubt.setFont(new Font("ARIAL", Font.BOLD, 36));
+    btSubt.setFont(fonte);
     pBotoes.add(btSubt);
     btSubt.addActionListener(this);
 
     btMult = new JButton("x");
     btMult.setPreferredSize(new Dimension(150, 50));
-    btMult.setFont(new Font("ARIAL", Font.BOLD, 36));
+    btMult.setFont(fonte);
     pBotoes.add(btMult);
     btMult.addActionListener(this);
 
     btDivi = new JButton("/");
     btDivi.setPreferredSize(new Dimension(150, 50));
-    btDivi.setFont(new Font("ARIAL", Font.BOLD, 36));
+    btDivi.setFont(fonte);
     pBotoes.add(btDivi);
     btDivi.addActionListener(this);
 
     btIgual = new JButton("=");
     btIgual.setPreferredSize(new Dimension(310, 50));
-    btIgual.setFont(new Font("ARIAL", Font.BOLD, 36));
+    btIgual.setFont(fonte);
     pBotoes.add(btIgual);
     btIgual.addActionListener(this);
-
+    
   }
 
   public void actionPerformed(ActionEvent e) {
