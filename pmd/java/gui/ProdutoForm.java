@@ -185,7 +185,7 @@ public class ProdutoForm extends JFrame implements ActionListener {
         if (tabela.isRowSelected(i))
           modeloTabela.removeRow(i);
 
-    } else if (e.getSource() == btcn) {ç
+    } else if (e.getSource() == btcn) {
       tfnm.setText("");
       tfvl.setText("");
       cbct.setSelectedIndex(0);
