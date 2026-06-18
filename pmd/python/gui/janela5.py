@@ -1,25 +1,26 @@
 from tkinter import *
 #from tkinter.ttk import *
 
-class MinhaJanela:
+class Minhaself(Tk):
 
-  def __init__(self, janela=None):
-    #janela.geometry("800x600")
-    ct = Entry(janela, font=("Arial", 30))
-    ct["width"] = 30
+  def __init__(self):
+    super().__init__()
+    #self.geometry("800x600")
+    ct = Entry(self, font=("Arial", 30), width=30)
     ct.grid(row=0, column=0, columnspan=2, sticky=(N,S,E,W))
-    bt = Button(janela, text="Botao 1", command=lambda: self.imprime(ct.get()) )
+    bt = Button(self, text="Botao 1", command=lambda: self.imprime(ct.get()) )
     bt.grid(row=1, column=0, sticky=(N,S,E,W))
-    bt = Button(janela, text="Botao 2" )
+    bt = Button(self, text="Botao 2" )
     bt.grid(row=1, column=1, sticky=(N,S,E,W))
-    janela.columnconfigure(0, weight=1)
-    janela.rowconfigure(0, weight=1)
-    janela.columnconfigure(1, weight=1)
-    janela.rowconfigure(1, weight=1)
+    self.columnconfigure(0, weight=1)
+    self.rowconfigure(0, weight=1)
+    self.columnconfigure(1, weight=1)
+    self.rowconfigure(1, weight=1)
+    
   
   def imprime(self, texto):
     print(texto)
 
-janela = Tk()
-mj = MinhaJanela(janela)
-janela.mainloop()
+
+j = Minhaself()
+j.mainloop()
