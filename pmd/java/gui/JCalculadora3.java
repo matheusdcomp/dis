@@ -57,14 +57,13 @@ public class JCalculadora3 extends JFrame {
 		btDivi.setPreferredSize(new Dimension(150, 50));
 		btDivi.setFont(new Font("ARIAL", Font.BOLD, 36));
 		pBotoes.add(btDivi);
-		btDivi.addActionListener((ActionEvent e) -> operacao(btDivi));
+		btDivi.addActionListener((ActionEvent e) -> {operacao(btDivi);});
 
 		btIgual = new JButton("=");
 		btIgual.setPreferredSize(new Dimension(310, 50));
 		btIgual.setFont(new Font("ARIAL", Font.BOLD, 36));
 		pBotoes.add(btIgual);
-		btIgual.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+		btIgual.addActionListener((ActionEvent e) -> {
 				n2 = Double.parseDouble(display.getText());
 				if (op == btSoma)
 					rs = Calculadora.soma(n1, n2);
@@ -75,7 +74,7 @@ public class JCalculadora3 extends JFrame {
 				else if (op == btDivi)
 					rs = Calculadora.divi(n1, n2);
 				display.setText(rs + "");
-			}
+			
 		});
 
 	}

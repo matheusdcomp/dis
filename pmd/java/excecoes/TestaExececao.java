@@ -29,7 +29,10 @@ public class TestaExececao {
       } catch (ArithmeticException e) {
         System.err.println(e.getMessage());
         ok = false;
+      } catch (Exception e) {
+        System.err.println(e.getMessage());
       }
+      
       System.out.println("\nFIM DO PROGRAMA");
 
     }

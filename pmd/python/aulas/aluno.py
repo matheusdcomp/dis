@@ -1,6 +1,6 @@
 class Aluno:
   
-  def __init__(self, nome="", matricula=0):
+  def __init__(self, nome="", matricula=""):
     self.__nome = nome
     self.matricula = matricula 
 
@@ -17,7 +17,7 @@ class Aluno:
 a = Aluno("JOAO", "2026001")
 b = Aluno("JOAO", "2026001")
 
-if getNome(a) == b.getNome() and a.matricula == b.matricula:
+if a.getNome() == b.getNome() and a.matricula == b.matricula:
   print("Aluno a igual ao aluno b.") 
 else:
   print("Aluno a diferente do aluno b.") 
