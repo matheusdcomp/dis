@@ -1,4 +1,4 @@
-package aulas;
+package excecoes;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;

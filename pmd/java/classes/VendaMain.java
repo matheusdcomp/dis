@@ -4,14 +4,12 @@
   Ao realizar a venda, o usuário deve poder escolher os produtos.
 */
 
-package classes.programa;
+package classes;
 
-import classes.Venda;
-import classes.Produto;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Main {
+public class VendaMain {
 
   public static void main(String[] args) {
 
