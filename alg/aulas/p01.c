@@ -1,15 +1,19 @@
 #include <stdio.h>
 
-/*
-Esta é a função 
-principal
-*/
-void main() { 
+void main() {
+ 
+  char a, b;
 
-  int a = 6;
-  float b = 4.5;
-  char c = ' ';
+  printf("Digite uma letra maiuscula: ");
+  scanf("%c", &a);
 
-print("%d + %d = %d", 1, b, c);  
+  printf(
+    "%s%c\n%s%c\n",
+    "Voce digitou: ", 
+    a,  
+    "Convertendo para minuscula: ", 
+    a+32  
+  );
+
   
 }

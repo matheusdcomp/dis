@@ -53,7 +53,7 @@ print() #pula linha
 
 numeros = [1,2,3,4,5,6,7,8,9,10]
 
-ns = [x for x in numeros if x % 2 == 0 ] # cria uma lista (ns) que é formada por elementos x, tal que x vem da lista numeros desde que x seja par.
+ns = [x*2 for x in numeros if x % 2 == 0 ] # cria uma lista (ns) que é formada por elementos x, tal que x vem da lista numeros desde que x seja par.
 #ou seja, ns é uma lista que contém apenas os elementos pares da lista numeros.
 #o mesmo resultado pode ser obtido usando a função de alta ordem filter
 ns2 = filter(lambda x : x % 2 == 0, lista)
