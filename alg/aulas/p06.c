@@ -20,6 +20,8 @@ void main() {
   else if (x == '&' || x == '|' || x == '!') {
     printf("%c eh um operador lógico.\n", x);
   }
-  
+  else  {
+    printf("%c eh algum outro caractere.\n", x);
+  }
 
 }
