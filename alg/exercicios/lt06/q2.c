@@ -1,25 +1,44 @@
-//Digite 10 números em um vetor e no final imprima a média,
-//o maior e o menor número.
+/*
+Usando o registro Ponto da questão anterior, crie um registro 
+chamado Retângulo, que contém o ponto superior esquerdo e um 
+ponto inferior direito.  Faça  um  programa  que  solicita  
+do  usuário  os  dados  de  um retângulo e imprima a área, o 
+comprimento da diagonal e o perímetro desse retângulo.
+*/
+
 
 #include<stdio.h>
+#include<math.h>
+
+typedef struct {
+   float x, y;
+} ponto;
+
+typedef struct {
+    ponto se, id;
+} retangulo;
 
 void main() {
 
-    float x[10], media, menor, maior; 
+    retangulo r;
+    printf("Digite os dados do retangulo:\n");
+    printf("Coordenadas do ponto superior esquerdo: ");
+    scanf("%f %f", &r.se.x, &r.se.y);
+    printf("Coordenadas do ponto inferior direito: ");
+    scanf("%f %f", &r.id.x, &r.id.y);
 
-    for (int i = 0; i < 10; i++) {
-        printf("Digite o %do elemento: ", i+1);
-        scanf("%f", &x[i]);
-        media += x[i];
-        if (i == 0) 
-            menor = maior = x[i];
-        else  {
-            if (x[i] < menor) menor = x[i];
-            if (x[i] > maior) maior = x[i];
-        }      
-    }
+    float altura = r.se.y - r.id.y;
+    float base = r.id.x - r.se.x;
+    float area = base * altura;
+    float diagonal = sqrt(pow(base,2) + pow(altura,2)); 
+    float perimetro = altura*2 + base*2;
 
-    printf("\nMedia: %f\nMenor: %f\nMaior: %f\n", 
-        media/10, menor, maior);
+    printf("\nAltura: %f", altura);
+    printf("\nBase: %f", base);
+    printf("\nArea: %f", area);
+    printf("\nDiagonal: %f", diagonal);
+    printf("\nPerimetro: %f\n", perimetro);
     
 }
+
+

@@ -1,53 +1,35 @@
 /*
-Crie uma função que recebe uma string e um caractere e 
-retorna a posição do caractere se ele existir na string, ou 
--1 caso ele não exista na string. Crie uma função que recebe 
-duas strings e retorna 1 se a primeira for uma substring da 
-segunda ou 0, caso contrário. Utilize a primeira função para 
-implementar a segunda. Crie um programa que solicite duas 
-strings e verifica se a primeira é uma substring da segunda.
+Crie uma função recursiva que recebe uma string e 
+retorna o seu tamanho.
+Crie uma função recursiva que recebe uma string e 
+um caractere e retorna 1 caso ele exista na string ou 0, 
+caso contrário. Crie um programa que
+solicite uma string e um caractere e utilize as duas funções.
 */
 
-
 #include<stdio.h>
-#include<string.h>
-#define TAM 100
 
+int tamanho(char[]);
+int contem(char[],char);
+void main();
 
-int indexOf(char str[], char c) {
-	for (int i = 0; str[i] != '\0'; i++)
-		if (str[i] == c)
-			return i;
-	return -1;
+int tamanho(char str[]) {
+    if (str[0] == '\0') return 0;
+    return 1 + tamanho(&str[1]);
 }
 
-int isSubstring(char sub[], char str[]) {
-		
-	int encontrou;
-	int p = indexOf(str, sub[0]);//onde aparece o 1o char de sub em str 
-	int n = p; //a partir de qual índice deve procurar sun em str
-		
-	while( p > -1 ) {			
-		encontrou = 1;		
-		for(int i = 0; i < strlen(sub); i++ ) {
-			if (str[n+i] != sub[i]) {
-				encontrou = 0;
-				break;
-			}
-		}
-		if (encontrou) return 1;
-		p = indexOf(&str[++n], sub[0]);
-		n += p; 
-	}
-	return 0;
+int contem(char str[], char c) {
+    if (str[0] == '\0') return 0;
+    if (str[0] == c) return 1;
+    return contem(&str[1],c);
 }
 
 void main() {
-	char str[TAM], sub[TAM];
-	printf("Digite uma string: ");
-	gets(str);	
-	printf("Digite outra string: ");
-	gets(sub);
-	printf("\n\"%s\"%s eh substring de \"%s\".\n", 
-		sub, isSubstring(sub,str)? "" : " nao", str);
+    char s[50], c;
+    printf("Digite uma string: ");
+    gets(s);
+    printf("Digite um caractere: ");
+    scanf(" %c", &c);
+    printf("Tamanho de %s: %d\n", s, tamanho(s));
+    printf("%s contem %c? %s\n", s, c, contem(s,c)?"sim":"nao");
 }

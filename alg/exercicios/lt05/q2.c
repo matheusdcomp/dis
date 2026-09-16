@@ -1,27 +1,25 @@
-/*Faça um programa que calcule a média de n números informados pelo
-usuário até ele informar o número 0. Por exemplo, se o usuário
-informar os números 9 6 2 8 0, o programa deve calcular a média (9
-+ 6 + 2 + 8) / 4.
-*/
+//Digite 10 números em um vetor e no final imprima a média,
+//o maior e o menor número.
 
 #include<stdio.h>
 
 void main() {
 
-    float n, m = 0, q=0;
+    float x[10], media, menor, maior; 
 
-    do {
+    for (int i = 0; i < 10; i++) {
+        printf("Digite o %do elemento: ", i+1);
+        scanf("%f", &x[i]);
+        media += x[i];
+        if (i == 0) 
+            menor = maior = x[i];
+        else  {
+            if (x[i] < menor) menor = x[i];
+            if (x[i] > maior) maior = x[i];
+        }      
+    }
 
-      printf("Digite um numero ou 0 para sair: ");
-      scanf("%f", &n);
-
-      if ( !n ) break;
-      
-      m += n;
-      q++;
-      
-    } while(1);
-
-    printf("Media: %f\n", m/q );     
-
+    printf("\nMedia: %f\nMenor: %f\nMaior: %f\n", 
+        media/10, menor, maior);
+    
 }

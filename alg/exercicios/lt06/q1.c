@@ -1,20 +1,31 @@
+/*
+Crie um registro chamado Ponto com os campos x e y (float). 
+Crie um programa que solicita dois pontos A e B e calcula a 
+distância entre eles. A distância d entre 2 pontos A e B é: 
+d2 = (xB -xA)2 + (yB-yA)2
+*/
+
+
 #include<stdio.h>
+
+#include<math.h>
+
+typedef struct {
+   float x, y;
+} ponto;
 
 void main() {
 
-    int x[10], y[10];
+    ponto A, B;
+    printf("Digite as coordenadas x e y do ponto A: ");
+    scanf("%f %f", &A.x, &A.y);
+    printf("Digite as coordenadas x e y do ponto B: ");
+    scanf("%f %f", &B.x, &B.y);
 
-    for (int i = 0; i < 10; i++) {
-        printf("Digite o %do elemento: ", i+1);
-        scanf("%d", &x[i]);
-        if (i % 2 == 0) 
-            y[i] = x[i] / 2;
-        else
-            y[i] = x[i] * 3;
-            
-    }
+    float d = sqrt(pow((B.x - A.x),2) + pow((B.y - A.y),2));
 
-    for (int i = 0; i < 10; i++) 
-        printf("x[%d] = %d\t\ty[%d] = %d\n", i, x[i], i, y[i]);
+    printf("\nA distancia entre os pontos A e B eh: %f\n", d);
     
 }
+
+

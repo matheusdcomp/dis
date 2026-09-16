@@ -1,14 +1,19 @@
+/*
+1.	Faça um programa que calcule a multiplicação de dois 
+números utilizando apenas a operação de soma. 
+*/
+
 #include<stdio.h>
 
 void main() {
 
-    int ano;
-    printf("Digite um ano: ");
-    scanf("%d", &ano);
+    int a, b, m = 0;
+    printf("Digite dois inteiros, um menor e  outro maior: ");
+    scanf("%d %d", &a, &b);
+    
+    for (int c = 1; c <= b; c++)
+        m += a;
 
-    if ( ano % 400 == 0 || (ano % 4 == 0 && ano % 100 != 0) ) 
-        printf("\n%d eh bissexto.\n", ano);
-    else
-        printf("\n%d nao eh bissexto.\n", ano);
+    printf("%d x %d = %d\n", a, b, m);     
 
 }

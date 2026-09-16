@@ -1,16 +1,24 @@
 #include<stdio.h>
+#include<string.h>
 
 void main() {
-   int s, n, p = 0, pp = 1;
-   printf("Digite a posicao do termo que desejar descobrir: ");
-   scanf("%d", &n) ;
 
-   for ( int i = 2; i <= n; i++ ) {      
-      s = p + pp;
-      p = pp;
-      pp = s;      
-   }
+    char str[50];
+    printf("Digite uma palavra: ");
+    scanf("%s", str);
 
-   printf("\nO %d-esimo termo eh %d.\n", n, p);
+    int r = 1, i = 0, t = strlen(str) - 1;
+        
+    while (i <= t) {
+        if (str[i] != str[t]) {
+            r = 0;
+            break;
+        }
+        i++;
+        t--;
+    } 
+
+    printf("%s %seh palindromo.\n", str, r ? "" : "nao "); 
+        
+    
 }
-

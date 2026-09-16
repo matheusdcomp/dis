@@ -1,31 +1,32 @@
 /*
-Crie uma função que recursiva que recebe uma string e a 
-inverte. Crie o programa que solicita uma string, utiliza 
-a função criada e a imprime invertida.
+Crie um registro Carro com nome e valor. 
+Crie um programa que cadastra 5 carros em um array 
+com dados do usuário e no final imprime o mais
+caro. O acesso a cada elemento do array deve sempre 
+ser feito por meio de um ponteiro.
 */
 
 #include<stdio.h>
-#include<string.h>
 
-void inverte(char[]);
-void inverteAux(char[], int, int);
-void main();
-
-void inverte(char str[]) {
-    inverteAux(str, 0, strlen(str)-1);
-}
-void inverteAux(char str[], int i, int f) {
-    if (i >= f) return;
-    char aux = str[i];
-    str[i] = str[f];
-    str[f] = aux;
-    inverteAux(str, i+1, f-1);
-}
+typedef struct {
+    char nome[50];
+    float valor;
+} carro;
 
 void main() {
-    char s[50];
-    printf("Digite uma string: ");
-    gets(s);
-    inverte(s);
-    printf("Inverso: %s\n", s);
+    carro cs[5], *pca, *pmc = cs;
+    for (int i = 0; i < 5; i++) {
+        
+        pca = cs + i;
+        
+        printf("\nDigite o nome do %do carro:\t", i+1);
+        scanf(" %s", pca->nome);
+        printf("Digite o valor do %do carro:\t", i+1); 
+        scanf("%f", &pca->valor);
+        
+        if (pca->valor > pmc->valor) pmc = pca;
+    }
+
+    printf("\n\nCarro mais caro:\nNome:\t%s\nValor:\t%.f\n", 
+        pmc->nome, pmc->valor);
 }

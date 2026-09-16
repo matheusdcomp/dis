@@ -2,13 +2,19 @@
 
 void main() {
 
-    int a, b, m = 0;
-    printf("Digite dois inteiros, um menor e  outro maior: ");
-    scanf("%d %d", &a, &b);
+    int x[10], y[10];
+
+    for (int i = 0; i < 10; i++) {
+        printf("Digite o %do elemento: ", i+1);
+        scanf("%d", &x[i]);
+        if (i % 2 == 0) 
+            y[i] = x[i] / 2;
+        else
+            y[i] = x[i] * 3;
+            
+    }
+
+    for (int i = 0; i < 10; i++) 
+        printf("x[%d] = %d\t\ty[%d] = %d\n", i, x[i], i, y[i]);
     
-    for (int c = 1; c <= b; c++)
-        m = m + a;
-
-    printf("%d x %d = %d\n", a, b, m);     
-
 }

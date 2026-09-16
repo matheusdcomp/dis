@@ -1,11 +1,12 @@
 package aulas;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Scanner;
 
 public class FormasMain {
   public static void main(String[] args) {
-    ArrayList<FormaGeometrica> formas = new ArrayList<>();
+    List<FormaGeometrica> formas = new LinkedList<>();
     Scanner s = new Scanner(System.in);
     int op;
 

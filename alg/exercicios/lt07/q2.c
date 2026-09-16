@@ -1,44 +1,58 @@
 /*
-Usando o registro Ponto da questão anterior, crie um registro 
-chamado Retângulo, que contém o ponto superior esquerdo e um 
-ponto inferior direito.  Faça  um  programa  que  solicita  
-do  usuário  os  dados  de  um retângulo e imprima a área, o 
-comprimento da diagonal e o perímetro desse retângulo.
+Crie uma função que recebe duas matrizes 3x3 e calcula a multiplicação delas. 
+Crie um programa que solicita os números de duas matrizes 3x3, utiliza a função 
+criada e imprime a matriz resultante.
 */
 
-
 #include<stdio.h>
-#include<math.h>
+#define TAM 3
 
-typedef struct {
-   float x, y;
-} ponto;
-
-typedef struct {
-    ponto se, id;
-} retangulo;
+void multiplica(int m[][TAM], int a[][TAM], int b[][TAM]) {
+	for (int i = 0; i < TAM; i++){
+		for (int j = 0; j < TAM; j++)
+			m[i][j] = a[i][0]*b[0][j] + a[i][1]*b[1][j] + a[i][2]*b[2][j];
+	}
+}
 
 void main() {
 
-    retangulo r;
-    printf("Digite os dados do retangulo:\n");
-    printf("Coordenadas do ponto superior esquerdo: ");
-    scanf("%f %f", &r.se.x, &r.se.y);
-    printf("Coordenadas do ponto inferior direito: ");
-    scanf("%f %f", &r.id.x, &r.id.y);
+	int a[TAM][TAM], b[TAM][TAM], m[TAM][TAM];
 
-    float altura = r.se.y - r.id.y;
-    float base = r.id.x - r.se.x;
-    float area = base * altura;
-    float diagonal = sqrt(pow(base,2) + pow(altura,2)); 
-    float perimetro = altura*2 + base*2;
+	printf("\nMatriz A:\n");
+	for (int i = 0; i < TAM; i++){
+		for (int j = 0; j < TAM; j++){
+			printf("Digite o elemento [%d][%d]: ", i, j);
+			scanf("%d",&a[i][j]);
+		}
+	}
 
-    printf("\nAltura: %f", altura);
-    printf("\nBase: %f", base);
-    printf("\nArea: %f", area);
-    printf("\nDiagonal: %f", diagonal);
-    printf("\nPerimetro: %f\n", perimetro);
-    
+	printf("\nMatriz B:\n");
+	for (int i = 0; i < TAM; i++){
+		for (int j = 0; j < TAM; j++){
+			printf("Digite o elemento [%d][%d]: ", i, j);
+			scanf("%d",&b[i][j]);
+		}
+	}
+
+	multiplica(m,a,b);
+
+	printf("\n\n");
+	for (int i = 0; i < TAM; i++){
+
+		for (int j = 0; j < TAM; j++)
+			printf("%3d ", a[i][j]);
+
+		printf("%s",(i == TAM/2 ? "   x    " : "        "));
+	
+		for (int j = 0; j < TAM; j++)
+			printf("%3d ", b[i][j]);
+
+		printf("%s",(i == TAM/2 ? "   =    " : "        "));
+	
+		for (int j = 0; j < TAM; j++)
+			printf("%3d  ", m[i][j]);
+		
+		printf("\n");
+	}
+		
 }
-
-

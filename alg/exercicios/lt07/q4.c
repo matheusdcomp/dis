@@ -1,84 +1,45 @@
 /*
-Crie um registro Acessorio com nome e valor. Crie um registro 
-Carro com nome, valor e um array de acessórios. Implemente um 
-programa que permite o usuário configurar diversos carros até 
-escolher sair. Para cada carro, o usuário informa o nome e 
-os acessórios(nome e valor de cada um, podendo ser quantos o 
-usuário quiser, respeitando o limite do array). Após  o  
-cadastro  de  um carro,  o  programa imprime os  dados  dele, 
-dos acessórios incluídos e o valor total (soma do valor do 
-carro com osvalores dos acessóriosincluídos nele).
+Crie uma função que recebe um vetor de inteiros e ordene 
+os seus elementos na ordem crescente. Dica: utilize o algoritmo 
+Selection Sort para ordenar o vetor. Para isso, encontre o menor 
+valor do vetor e posicione-o na primeira posição. Em seguida, 
+repita esse processo para encontrar o segundo menor e colocá-lo 
+na segunda posição e assim sucessivamente. Para facilitar, 
+crie uma função que recebe um vetor de inteiros e uma posição 
+inicial e retorna a posição que possui o menor elemento a partir 
+da posição inicial informada. Crie um programa que solicite os 
+elementos do vetor de tamanho 10 e o imprima de forma ordenada.
 */
 
 #include<stdio.h>
 
-typedef struct {
-    char nome[50];
-    float valor;
-} Acessorio;
+#define TAM 10
 
-typedef struct {
-    char nome[50];
-    float valor;
-    Acessorio acessorios[10];
-} Carro;
+int indiceDoMenor(int vetor[], int i) {
+	int menor = i;
+	while(++i < TAM)
+		if (vetor[i] < vetor[menor])
+			menor = i;
+	return menor;	
+}
+
+void selectionSort(int vetor[]) {
+	for (int i = 0; i < TAM-1; i++) {
+		int menor = indiceDoMenor(vetor, i);
+		int aux = vetor[i];
+		vetor[i] = vetor[menor];
+		vetor[menor] = aux;	
+	}
+}
 
 void main() {
-
-    Carro carros[10];
-    int op, ac, sair = 0, qc = 0, qa;
-    float total; 
-
-    while(!sair) {
-
-        printf("\n\n0 SAIR\n1 Cadastrar Carro");
-        printf("\nDigite sua opcao: ");
-        scanf("%d", &op);
-        ac = 1;
-
-        switch (op) {
-
-            case 0:
-                sair = 1; 
-                break;
-
-            case 1:
-                printf("\nDigite o nome do carro: ");
-                scanf(" %s", carros[qc].nome);
-                printf("\nDigite o valor do carro: ");
-                scanf("%f", &carros[qc].valor);
-                qa = 0;
-
-                while(ac && qa < 10) {
-
-                    printf("\n\n0 Voltar\n1 Add acessorio");
-                    printf("\nDigite sua opcao: ");
-                    scanf("%d", &ac);
-
-                    if (ac) {
-                        printf("\nDigite o nome do acessorio: ");
-                        scanf(" %s", carros[qc].acessorios[qa].nome);
-                        printf("\nDigite o valor do acessorio: ");
-                        scanf("%f", &carros[qc].acessorios[qa].valor);
-                        qa++;
-                    }                    
-
-                }
-                total = carros[qc].valor;
-                printf("\nNome do carro: %s", carros[qc].nome); 
-                printf("\nValor do carro: %.2f", carros[qc].valor); 
-                printf("\nAcessorios:");
-                for (int i = 0; i < qa; i++) {
-                    printf("\n\tNome: %s", carros[qc].acessorios[i].nome); 
-                    printf("\tValor: %.2f", carros[qc].acessorios[i].valor);
-                    total += carros[qc].acessorios[i].valor;
-                } 
-                printf("\nTotal: %.2f", total);
-                qc++;             
-
-        }
-
-
-    }
-    
+	int v[TAM];
+	for (int i = 0; i < TAM; i++) {
+		printf("Digite o valor do %do elemento: ", i+1);
+		scanf("%d", &v[i]);
+	}
+	selectionSort(v);
+	printf("\nVetor ordenado: ");
+	for (int i = 0; i < TAM; i++)
+		printf("%d ", v[i]);	
 }

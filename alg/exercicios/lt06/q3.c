@@ -1,40 +1,42 @@
+/*
+Usando o registro Retângulo e Ponto das questões anteriores, 
+faça um programa que solicita os dados de um retângulo e um 
+ponto e informe se esse ponto está ou não inserido dentro do 
+retângulo.
+*/
+
+
 #include<stdio.h>
-#define LIN 3
-#define COL 3
+#include<math.h>
+
+typedef struct {
+   float x, y;
+} ponto;
+
+typedef struct {
+    ponto se, id;
+} retangulo;
 
 void main() {
 
-	int g[LIN][COL], sl[LIN], sc[COL];
+    retangulo r;
+    ponto p;
 
-	for (int linha = 0; linha < LIN; linha++) {
-		for (int coluna = 0; coluna < COL; coluna++) {
-			printf("Digite o elemento [%d][%d]: ", linha, coluna);
-			scanf("%d", &g[linha][coluna]);
-		}
-	}
+    printf("Digite os dados do retangulo R:\n");
+    printf("Coordenadas do ponto superior esquerdo: ");
+    scanf("%f %f", &r.se.x, &r.se.y);
+    printf("Coordenadas do ponto inferior direito: ");
+    scanf("%f %f", &r.id.x, &r.id.y);
+    printf("\nDigite as coordenadas do ponto P: ");
+    scanf("%f %f", &p.x, &p.y);
 
-	printf( "\nSoma de cada linha: ");
-	for (int linha = 0; linha < LIN; linha++) {
+    int dentro = ( r.se.x <= p.x && p.x <= r.id.x ) &&
+                 ( r.id.y <= p.y && p.y <= r.se.y );
 
-		sl[linha] = 0;
-
-		for (int coluna = 0; coluna < COL; coluna++)
-			sl[linha] += g[linha][coluna];
-
-		printf( "%d ", sl[linha]);
-	}
-	
-	printf( "\nSoma de cada coluna: ");
-	for (int coluna = 0; coluna < COL; coluna++) {
-
-		sc[coluna] = 0;
-
-		for (int linha = 0; linha < LIN; linha++)
-			sc[coluna] += g[linha][coluna];
-
-		printf( "%d ", sc[coluna]);
-	}		
-
-	printf( "\n" );
-
+    printf("\n%s %s\n", 
+        "O ponto P esta dentro do retangulo R?",
+        dentro ? "sim" : "nao" );
+    
 }
+
+
