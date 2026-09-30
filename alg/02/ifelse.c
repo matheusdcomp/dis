@@ -3,7 +3,6 @@
 void main() {
 	char op;
 	float area, a, b;
-
 	printf("\n%s\n%s\n%s\n%s",
 	       "A - circulo",
 	       "B - triangulo",
@@ -11,7 +10,7 @@ void main() {
 	       "Digite a sua opcao: ");
 	scanf("%c", &op);  
 
-	if ( op == 'A' || op == 'a' ) { //aceita A ou a
+	if ( op == 'A' || op == 'a' ) { //aceita A ou a    
 		printf("\nDigite o raio: ");
     scanf("%f", &a);
     area = 3.1415 * a * a;
@@ -32,6 +31,5 @@ void main() {
   else {
     printf("\nOpcao invalida!\n");      
 	}
-  
 
 }
