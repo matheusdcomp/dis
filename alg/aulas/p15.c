@@ -8,11 +8,8 @@ int c;//global
 void main() {
   printf("Digite um inteiro e um caractere: ");
   int a;
-  scanf("%d %c", &a, &c);
-  
-  
+  scanf("%d %c", &a, &c);    
   triangulo(a);
-
 }
 
 void triangulo(int t) {
