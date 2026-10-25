@@ -1,7 +1,5 @@
 package genericos;
 
-import java.util.ArrayList;
-
 import classes.Pessoa;
 
 public class Wildcard{

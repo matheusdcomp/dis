@@ -5,6 +5,7 @@ void main() {
   int op, i = 0, p;
 
   float notas[] = {-1,-1,-1,-1};
+
   while (1) { 
     
     printf("\n0 SAIR\n1 CADASTRAR NOTA\n2 VER TODAS NOTAS\n3 VER UMA NOTA");
