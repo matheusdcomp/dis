@@ -39,7 +39,11 @@ public class JCalculadora3 extends JFrame {
 		btSoma.setPreferredSize(new Dimension(150, 50));
 		btSoma.setFont(new Font("ARIAL", Font.BOLD, 36));
 		pBotoes.add(btSoma);
-		btSoma.addActionListener((ActionEvent e) -> operacao(btSoma));
+		btSoma.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				operacao(btSoma);
+			}
+		});
 
 		btSubt = new JButton("-");
 		btSubt.setPreferredSize(new Dimension(150, 50));
@@ -73,8 +77,7 @@ public class JCalculadora3 extends JFrame {
 					rs = Calculadora.mult(n1, n2);
 				else if (op == btDivi)
 					rs = Calculadora.divi(n1, n2);
-				display.setText(rs + "");
-			
+				display.setText(rs + "");			
 		});
 
 	}

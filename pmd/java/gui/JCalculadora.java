@@ -40,7 +40,6 @@ public class JCalculadora extends JFrame implements ActionListener {
     btSoma = new JButton("+");
     btSoma.setPreferredSize(new Dimension(150, 50));
     btSoma.setFont(fonte);
-    pBotoes.add(btSoma);
     btSoma.addActionListener(this);
 
     btSubt = new JButton("-");
