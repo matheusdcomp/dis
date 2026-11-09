@@ -7,7 +7,7 @@ class MeuPainel (Frame): #Esta classe é um painel
         self.pack(padx=20, pady=20) #margem do painel
         self.botao1 = Button(self, text = 'Oi!')
         self.botao1['background'] = 'green'
-        self.botao1['font'] = ('Verdana', '12', 'italic', 'bold')
+        self.botao1['font'] = ('Arial', '12', 'italic', 'bold')
         self.botao1['height'] = 3
         self.botao1.pack()
         self.botao2 = Button(self, bg = 'red', font = ('Times','16'))

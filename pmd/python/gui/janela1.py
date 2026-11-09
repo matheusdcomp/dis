@@ -4,6 +4,8 @@ class Janela:
  
   def __init__(self): 
     janela = Tk() #cria a janela do programa
+    #janela.title("JANELA")
+    #janela.geometry("500x400")
     self.bt1 = Button(janela, text="SAIR", fg="red", command=janela.destroy)
     self.bt1.pack(side=LEFT) 
     self.bt2 = Button(janela, text="Hello", command=self.hello)

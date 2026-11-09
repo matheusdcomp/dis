@@ -10,7 +10,7 @@ class Janela(Tk):
     self.frame1.pack()
     self.frame2 = Frame(self)
     self.frame2.pack()
-    self.titulo = Label(self.frame1, text='VIDENTE 2005', font=('Verdana', '13', 'bold'))
+    self.titulo = Label(self.frame1, text='VIDENTE', font=('Arial', '13', 'bold'))
     self.titulo.pack()
     self.msg = Label(self.frame1, width=40, height=6, text='Adivinho o evento ocorrido!')
     self.msg.focus_force() #define o foco para msg. Aperte TAB para mudar foco para os botoes

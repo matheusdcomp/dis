@@ -4,6 +4,7 @@ class MinhaJanela(Tk):
 
   def __init__(self):
     super().__init__()
+    self.title("janela")
     container1 = Frame(self)  # frame é um painel
     # um painel é um container, assim como a janela
     container2 = Frame(self)
