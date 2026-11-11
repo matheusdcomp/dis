@@ -170,6 +170,7 @@ public class ProdutoForm extends JFrame implements ActionListener {
           tfvl.getText(),
           cbct.getSelectedItem()
       });
+      
 
     } else if (e.getSource() == btal) {
       for (int i = 0; i < tabela.getRowCount(); i++)

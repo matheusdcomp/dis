@@ -14,6 +14,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
@@ -24,17 +25,20 @@ public class Janela extends JFrame {
     setSize(800, 600);
     setDefaultCloseOperation(EXIT_ON_CLOSE);
     setLayout(new BorderLayout());
+    
 
     JButton bt1 = new JButton("Clique aqui");
     add(bt1, BorderLayout.NORTH);
 
     JPanel painel = new JPanel(null);
     add(painel, BorderLayout.CENTER);
+    painel.setLayout(new FlowLayout());
 
     JLabel lb1 = new JLabel("Nome:");
-    // lb1.setBounds(10, 10, 50, 20); //se o layout for null
+    
+    //lb1.setBounds(10, 10, 50, 20); //se o layout for null
     JTextField tf1 = new JTextField("djshfs", 60);
-    // tf1.setBounds(70, 10, 100, 20); //se o layout for null
+    //tf1.setBounds(70, 10, 100, 20); //se o layout for null
     painel.add(lb1);
     painel.add(tf1);
 
@@ -42,7 +46,9 @@ public class Janela extends JFrame {
     JTextArea ta1 = new JTextArea(5, 30);
     ta1.setFont(new Font("Arial", Font.BOLD, 20));
     painel.add(lb2);
-    painel.add(ta1);
+    var scroll = new JScrollPane();
+    scroll.setViewportView(ta1);
+    painel.add(scroll);
 
     JCheckBox ck1 = new JCheckBox("Check?");
     painel.add(ck1);
@@ -64,6 +70,8 @@ public class Janela extends JFrame {
     JButton bt2 = new JButton("Clique aqui");
     bt2.setPreferredSize(new Dimension(200, 100));
     painel.add(bt2);
+
+
 
   }
 
