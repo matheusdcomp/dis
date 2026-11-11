@@ -101,6 +101,7 @@ void main() {
     contas[i].qt = qt;
   }
 
+  //NAO PEDI ESSE FOR NA QUESTAO
   for (int i = 0; i < T; i++) {
     printConta(contas[i]);
     for (int j = 0; j < contas[i].qt; j++) {
