@@ -41,7 +41,7 @@ public class ProdutoForm extends JFrame implements ActionListener {
     lbnm.setFont(fonte);
     gbc.gridx = 0;
     gbc.gridy = 0;
-    gbc.weightx = 0.0;
+    gbc.weightx = 0;
     gbc.weighty = 0;
     gbc.gridwidth = 1;
     add(lbnm, gbc);
@@ -50,7 +50,7 @@ public class ProdutoForm extends JFrame implements ActionListener {
     tfnm.setFont(fonte);
     gbc.gridx = 1;
     gbc.gridy = 0;
-    gbc.weightx = 0.0;
+    gbc.weightx = 0;
     gbc.weighty = 0;
     gbc.gridwidth = 7;
     add(tfnm, gbc);
@@ -60,7 +60,7 @@ public class ProdutoForm extends JFrame implements ActionListener {
     lbvl.setFont(fonte);
     gbc.gridx = 0;
     gbc.gridy = 1;
-    gbc.weightx = 0.0;
+    gbc.weightx = 0;
     gbc.weighty = 0;
     gbc.gridwidth = 1;
     add(lbvl, gbc);
@@ -69,7 +69,7 @@ public class ProdutoForm extends JFrame implements ActionListener {
     tfvl.setFont(fonte);
     gbc.gridx = 1;
     gbc.gridy = 1;
-    gbc.weightx = 0.0;
+    gbc.weightx = 0;
     gbc.weighty = 0;
     gbc.gridwidth = 3;
     add(tfvl, gbc);
@@ -78,7 +78,7 @@ public class ProdutoForm extends JFrame implements ActionListener {
     lbct.setFont(fonte);
     gbc.gridx = 4;
     gbc.gridy = 1;
-    gbc.weightx = 0.0;
+    gbc.weightx = 0;
     gbc.weighty = 0;
     gbc.gridwidth = 1;
     add(lbct, gbc);
@@ -88,7 +88,7 @@ public class ProdutoForm extends JFrame implements ActionListener {
     cbct.setSelectedIndex(0);
     gbc.gridx = 5;
     gbc.gridy = 1;
-    gbc.weightx = 0.0;
+    gbc.weightx = 0;
     gbc.weighty = 0;
     gbc.gridwidth = 3;
     add(cbct, gbc);

@@ -35,6 +35,11 @@ public class Aluno {
 
   public String toString() {
     return "Matricula: " + matricula + "\tNome: " + nome;
+
+
+    String x = new String("ABC");
+    String z = new String("ABC");
+    z = z + z
   }
 
 }
