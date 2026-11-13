@@ -6,7 +6,7 @@ void main() {
   float area, a, b;
 
   while (op != 's' && op != 'S') {
-
+  
     printf("\n%s\n%s\n%s\n%s",
          "A - circulo",
          "B - triangulo",

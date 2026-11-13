@@ -10,9 +10,7 @@ public class FuncaoLambda {
     numbers.add(8);
     numbers.add(1);
 
-    numbers.forEach(n -> { // se mais de uma linha, precisa de chaves
-      System.out.println(n);
-    });
+    numbers.forEach(n -> System.out.println(n) );
 
     Greeting g = () -> System.out.println("Hello from lambda"); // sem nenhum parâmetro ou com mais de um, presisa de
                                                                 // parênteses

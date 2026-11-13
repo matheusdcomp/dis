@@ -1,38 +1,37 @@
 #include<stdio.h>
-#include<string.h>
 
-struct Pessoa {
+typedef struct  {
     char nome[50];
     int idade;
     float altura;
-};
+} pessoa;
 
 void main() {
     
-    struct Pessoa p1, p2;
+    pessoa p[2];
     
     printf("Digite a idade da pessoa 1: ");
-    scanf("%d", &p1.idade);
+    scanf("%d", &p[0].idade);
     printf("Digite a altura da pessoa 1: ");
-    scanf("%f", &p1.altura);
+    scanf("%f", &p[0].altura);
     printf("Digite o nome da pessoa 1: ");
-    scanf("%s", p1.nome);
+    scanf("%s", p[0].nome);
     
     printf("Digite a idade da pessoa 2: ");
-    scanf("%d", &p2.idade);
+    scanf("%d", &p[1].idade);
     printf("Digite a altura da pessoa 2: ");
-    scanf("%f", &p2.altura);
+    scanf("%f", &p[1].altura);
     printf("Digite o nome da pessoa 2: ");
-    scanf("%s", p2.nome);
+    scanf("%s", p[1].nome);
     
     printf("\nPessoa 1");
-    printf("\nNome: %s", p1.nome);
-    printf("\nIdade: %d", p1.idade);
-    printf("\naltura: %.2f", p1.altura);
+    printf("\nNome: %s", p[0].nome);
+    printf("\nIdade: %d", p[0].idade);
+    printf("\naltura: %.2f", p[0].altura);
 
     printf("\nPessoa 2");
-    printf("\nNome: %s", p2.nome);
-    printf("\nIdade: %d", p2.idade);
-    printf("\naltura: %.2f", p2.altura);
+    printf("\nNome: %s", p[1].nome);
+    printf("\nIdade: %d", p[1].idade);
+    printf("\naltura: %.2f", p[1].altura);
 
 }

@@ -16,8 +16,6 @@ import javax.swing.JTextArea;
 
 public class JBlocoNotas extends JFrame {
 
-  private static final long serialVersionUID = -6336097206892502266L;
-
   private JMenuBar menubar;
   private JMenu mnArquivo;
   private JMenu mnSobre;

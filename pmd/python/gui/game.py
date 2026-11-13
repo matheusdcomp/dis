@@ -54,9 +54,9 @@ class GuessingGame:
             self.reset_button.configure(state=NORMAL)
 
         elif self.guess < self.secret_number:
-            self.message = "Too low! Guess again!"
+            self.message = self.entry.get() + " is too low! Guess again!"
         else:
-            self.message = "Too high! Guess again!"
+            self.message = self.entry.get() + " is too high! Guess again!"
 
         self.label_text.set(self.message)
 

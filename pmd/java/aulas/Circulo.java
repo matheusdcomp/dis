@@ -1,65 +1,65 @@
 package aulas;
 
-import java.io.Serializable;
+import java.util.Comparator;
 
-public class Circulo extends FormaGeometrica implements Mensuravel, Serializable {
-
-  protected Ponto centro;
-  protected double raio;
-
-  public Circulo() {
+public class Circulo extends FormaGeometrica {
+  private double raio;
+  public Circulo(double raio) {
     super();
-    centro = new Ponto(0.0, 0.0);
-    raio = 0.0;
-  }
-
-  public Circulo(Ponto centro, double raio) {
-    super();
-    this.centro = centro;
     this.raio = raio;
-  }
-
-  public Circulo(double xcentro, double ycentro, double raio) {
-    super();
-    this.centro = new Ponto(xcentro, ycentro);
-    this.raio = raio;
-  }
-
-  public Ponto getCentro() {
-    return centro;
-  }
-
-  public double getRaio() {
-    return raio;
-  }
-
-  public void setCentro(Ponto centro) {
-    this.centro = centro;
   }
 
   public void setRaio(double raio) {
     this.raio = raio;
   }
 
+  public double getRaio() {
+    return raio;
+  }
+
+  @Override
   public String toString() {
-    return String.format(
-      "CIRCULO ((%.1f,%.1f), %.1f)", 
-      centro.getX(), 
-      centro.getY(), 
-      raio
-    );
+    return String.format("Circulo: raio = %.2f",raio);
   }
 
+  @Override
   public double area() {
-    return Math.PI * raio * raio;
+    return Math.PI * raio * raio; 
   }
 
-  public double comprimento() {
-    return 2.0 * Math.PI * raio;
+  public static void main(String[] args) {
+    Circulo c1 = new Circulo(4);
+    Circulo c2 = new Circulo(5);
+
+    //Comparator cc = new CirculoComparator();
+
+    var cc = new Comparator<Circulo>() {
+      public int compare(Circulo a, Circulo b) {
+        return (int) (a.getRaio() - b.getRaio());
+      }
+    };
+
+    Comparator<Circulo> cc2 = 
+      (Circulo a, Circulo b) -> (int) (a.getRaio() - b.getRaio());
+     
+    if (cc.compare(c1, c2) == 0) {
+      System.out.println(c1 + " é igual ao " + c2);
+    }
+    else if (cc.compare(c1, c2) < 0) {
+      System.out.println(c2 + " é maior que " + c1);
+    }
+    else {
+      System.out.println(c1 + " é maior que " + c2);
+    }
+
   }
 
-  public boolean pertence(Ponto p) {
-    return p.distancia(centro) <= raio;
+  private class CirculoComparator implements Comparator<Circulo> {
+    public int compare(Circulo a, Circulo b) {
+    return (int) (a.getRaio() - b.getRaio());
+    }
   }
 
 }
+
+

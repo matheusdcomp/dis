@@ -7,6 +7,6 @@ void main() {
 	for (int i = 1; i <= n; i++) {
 		s = s + i;
 	}
+
 	printf("\nSoma de 1 ate %d: %d\n", n, s);
-	}
 }

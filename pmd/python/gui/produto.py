@@ -17,7 +17,7 @@ class ProdutoForm:
     categorias = ["DIVERSOS", "LIMPEZA", "MANUTENÇÃO"]
     janela = Tk()
     janela.title("Produtos")
-    centralizarJanela(janela, 800, 600)
+    centralizarJanela(janela, 800, 600, True)
 
     styleLB = Style()
     styleLB.configure("TLabel", font=("Arial", 16, "bold"))
@@ -46,7 +46,7 @@ class ProdutoForm:
     self.tvps = Treeview(janela, show="headings")
     self.tvps["columns"] = ["Nome", "Valor", "Categoria"]
     self.tvps.heading("Nome", text="Nome")
-    self.tvps.column("Nome",minwidth=50,width=400, stretch=NO)
+    self.tvps.column("Nome",minwidth=50,width=400, stretch=YES)
     self.tvps.heading("Valor", text="Valor")
     self.tvps.column("Valor",minwidth=50,width=180, stretch=NO)
     self.tvps.heading("Categoria", text="Categoria")

@@ -1,11 +1,12 @@
 package aulas;
 
-public abstract class FormaGeometrica {
+public class FormaGeometrica {
 
   public FormaGeometrica() {
     super();
   }
 
-  public abstract double area();
-  
+  public double area(){
+    return 0;
+  }
 }

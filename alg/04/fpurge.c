@@ -1,4 +1,5 @@
 #include<stdio.h>
+#include<stdio_ext.h> //para __fpurge
 
 void main() {
 

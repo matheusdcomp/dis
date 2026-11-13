@@ -1,57 +1,59 @@
 from tkinter import *
 #from tkinter.ttk import *
 
-class Calculadora:
+class Calculadora(Tk):
 
   def __init__(self):
 
+    super().__init__()    
+    self.title("Calculadora")
+    self.resizable(False, False)
     self.valor = None
     self.operador = None 
-    
-    janela = Tk()
-    janela.title("Calculadora")
-    #janela.geometry("800x400")
+    f = ("arial",20)
 
-    self.display = Entry(janela, text="0", width=20, font=("arial",20))
-    self.display.grid(row=0, column=0, rowspan=1, columnspan=2, sticky=(N, S, E, W))
+    self.display = Entry(self, text="0", font=f)
+    self.display.pack(fill='x')
     self.display.focus_force()
-    self.btsoma = Button(janela, text="+", width=10, font=("arial",20), command=self.cliqueSoma)
-    self.btsoma.grid(row=1, column=0, sticky=(N, S, E, W))
-    self.btsubt = Button(janela, text="-", width=10, font=("arial",20), command=lambda: self.cliqueOP("-"))
-    self.btsubt.grid(row=1, column=1, sticky=(N, S, E, W))
-    self.btmult = Button(janela, text="x", width=10, font=("arial",20), command=lambda: self.cliqueOP("*"))
-    self.btmult.grid(row=2, column=0, sticky=(N, S, E, W))
-    self.btdivi = Button(janela, text="÷", width=10, font=("arial",20), command=lambda: self.cliqueOP("/"))
-    self.btdivi.grid(row=2, column=1, sticky=(N, S, E, W))
-    self.btrstd = Button(janela, text="=", font=("arial",20), command=self.cliqueRstd)
-    self.btrstd.grid(row=3, column=0, sticky=(N, S, E, W))
-    self.btzera = Button(janela, text="C", font=("arial",20), command=self.cliqueZera)
-    self.btzera.grid(row=3, column=1, sticky=(N, S, E, W))
+    
+    p1 = Frame(self)
+    p1.pack()
+    self.btsoma = Button(p1, text="+", width=10, font=f, command=self.opSoma)
+    self.btsoma.pack(side=LEFT)
+    self.btsubt = Button(p1, text="-", width=10, font=f, command=lambda: self.cliqueOP("-"))
+    self.btsubt.pack(side=LEFT)
+    
+    p2 = Frame(self)
+    p2.pack()
+    self.btmult = Button(p2, text="x", width=10, font=f, command=lambda: self.cliqueOP("*"))
+    self.btmult.pack(side=LEFT)
+    self.btdivi = Button(p2, text="÷", width=10, font=f, command=lambda: self.cliqueOP("/"))
+    self.btdivi.pack(side=LEFT)
+    
+    p3 = Frame(self)
+    p3.pack()
+    self.btrstd = Button(p3, text="=", width=10, font=f, command=self.cliqueRstd)
+    self.btrstd.pack(side=LEFT)
+    self.btzera = Button(p3, text="C", width=10, font=f, command=self.cliqueZera)
+    self.btzera.pack(side=LEFT)
 
-    janela.rowconfigure(0, weight=1)
-    janela.rowconfigure(1, weight=1)    
-    janela.rowconfigure(2, weight=1)
-    janela.rowconfigure(3, weight=1)
-    janela.columnconfigure(0, weight=1)
-    janela.columnconfigure(1, weight=1)
-    janela.mainloop()
+  def opSoma(self):
+    self.cliqueOP("+")
 
   def executaOperacao(self):
+    s = self.display.get()
     if self.operador == "+":
-      self.valor += float(self.display.get()) 
+      self.valor += float(s) 
     elif self.operador == "-":
-      self.valor -= float(self.display.get()) 
+      self.valor -= float(s) 
     elif self.operador == "*":
-      self.valor *= float(self.display.get()) 
+      self.valor *= float(s) 
     elif self.operador == "/":
-      self.valor /= float(self.display.get())
+      self.valor /= float(s)
     else:
       print("Operação inválida")
-    
+   
 
-  def cliqueSoma(self):
-    self.cliqueOP("+")  
-  
   def cliqueOP(self, operador):   
     if self.valor == None:
       self.valor = float(self.display.get()) 
@@ -61,6 +63,7 @@ class Calculadora:
     self.display.delete(0,END)
     self.display.focus_force()
     print(self.valor, " | ", self.operador )
+
 
   def cliqueRstd(self):
     if (self.valor,self.operador) == (None,None): 
@@ -72,6 +75,7 @@ class Calculadora:
     self.valor = None
     self.operador = None
   
+
   def cliqueZera(self):
     self.valor = None
     self.operador = None
@@ -79,4 +83,5 @@ class Calculadora:
     self.display.focus_force()
 
 
-Calculadora()
+
+Calculadora().mainloop()

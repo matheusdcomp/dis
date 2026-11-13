@@ -7,6 +7,8 @@ print(thanks * 3) #repete a string 3 vezes
 print(thanks + '\tAgain!') #O operador + é concatenação
 
 
+
+
 print("\nstring com aspas duplas aceita 'aspas simples'.")
 
 print('string com aspas simples aceita "aspas duplas".')

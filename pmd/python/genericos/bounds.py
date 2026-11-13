@@ -1,7 +1,7 @@
 from typing import TypeVar, Generic, SupportsAbs
-import conteudo as c
+from conteudo import Conteudo, Garrafa, Chocolate
 
-T = TypeVar('T', bound=SupportsAbs[c.Conteudo])
+T = TypeVar('T', bound=SupportsAbs[Conteudo])
 
 class Caixa(Generic[T]):
   def __init__(self, conteudo:T): 
@@ -11,10 +11,10 @@ class Caixa(Generic[T]):
   def setConteudo(self, conteudo:T): 
     self.conteudo = conteudo
 
-c1 = Caixa[c.Garrafa](c.Garrafa("AGUA"))
-gr:c.Garrafa = c1.getConteudo()
+c1 = Caixa[Garrafa](Garrafa("AGUA"))
+gr:Garrafa = c1.getConteudo()
 print(gr)
 
-c2 = Caixa[c.Chocolate](c.Chocolate(50.0))
-ch:c.Chocolate = c2.getConteudo()
+c2 = Caixa[Chocolate](Chocolate(50.0))
+ch:Chocolate = c2.getConteudo()
 print(ch)

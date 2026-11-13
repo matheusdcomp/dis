@@ -21,7 +21,7 @@ class BlocoNotas (Frame):
         self.grid(padx=10, pady=10)
         self.master.protocol("WM_DELETE_WINDOW", self.fechar)  
 
-        self.master.option_add('*tearOff', FALSE)
+        self.master.option_add('*tearOff', FALSE)#define que o menu deve ser fixo na janela
         mainmenu = Menu(self.master)
         self.master.config(menu=mainmenu) 
         
