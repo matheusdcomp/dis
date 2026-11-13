@@ -8,7 +8,7 @@ def centralizarJanela(janela, width, height, resizable=False):
   x = (screen_width - width) // 2
   y = (screen_height - height) // 2
   janela.geometry(f"{width}x{height}+{x}+{y}")
-  janela.resizable(resizable, resizable)#nao funciona com grid
+  janela.resizable(resizable, resizable)
   
 
 class ProdutoForm:
@@ -17,7 +17,7 @@ class ProdutoForm:
     categorias = ["DIVERSOS", "LIMPEZA", "MANUTENÇÃO"]
     janela = Tk()
     janela.title("Produtos")
-    centralizarJanela(janela, 800, 600, True)
+    centralizarJanela(janela, 800, 600, False)
 
     styleLB = Style()
     styleLB.configure("TLabel", font=("Arial", 16, "bold"))
@@ -26,8 +26,7 @@ class ProdutoForm:
     styleCT = Style()
     styleCT.configure("TEntry", font=("Arial", 16, "bold"))
     styleCB = Style()
-    styleCB.configure("TCombobox", font=("Arial", 16, "bold"))
-    
+    styleCB.configure("TCombobox", font=("Arial", 16, "bold"))    
 
     lbnm = Label(janela, style="TLabel", text="Nome:")
     self.ennm = Entry(janela, style="TEntry")
@@ -65,7 +64,6 @@ class ProdutoForm:
     self.tvps.grid(row=3, column=0, columnspan=4, padx=5, pady=5, sticky=(N,S,E,W))
     self.lbrd.grid(row=4, column=0, columnspan=4, padx=5, pady=5, sticky=(N,S,E,W))
     
-
     janela.rowconfigure(3, weight=1)    
     janela.columnconfigure(0, weight=1)
     janela.columnconfigure(1, weight=1)
@@ -73,10 +71,12 @@ class ProdutoForm:
     janela.columnconfigure(3, weight=1)
     janela.mainloop()
 
+
   def cliqueBtsv(self):
     p = (self.ennm.get().upper(), float(self.envl.get()), self.cbct.get())
     self.tvps.insert('', 'end', None, values=p)
     self.lbrd["text"] = f"<< PRODUTO {self.ennm.get().upper()} CADASTRADO >>"
+
 
   def cliqueBtal(self): 
     produdosSelecionados = self.tvps.selection()
@@ -85,12 +85,14 @@ class ProdutoForm:
       p = (self.ennm.get().upper(), float(self.envl.get()), self.cbct.get())
       self.tvps.insert('', 'end', None, values=p)
       self.lbrd["text"] = f"<< PRODUTO {self.ennm.get().upper()} ATUALIZADO >>"
+
       
   def cliqueBtrm(self):
     produdosSelecionados = self.tvps.selection()        
     for p in produdosSelecionados:
       self.tvps.delete(p)
       self.lbrd["text"] = "<< PRODUTO(S) REMOVIDO(S) >>"
+
 
   def cliqueBtcn(self):
     self.ennm.delete(0,END)
