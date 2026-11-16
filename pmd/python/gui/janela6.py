@@ -13,7 +13,7 @@ class Janela(Tk):
     self.nome=Entry(self, width=10)
     self.nome.grid(row=1, column=2, sticky=E+W, pady=5, padx=5)
     self.nome.focus_force()
-    self.senha=Entry(self, width=10, fg='darkgray',show='l',font=('Wingdings','10'))
+    self.senha=Entry(self, width=10, fg='darkgray',show='*',font=('Wingdings','10'))
     self.senha.grid(row=2,column=2, sticky=E+W, pady=5, padx=5)
     self.ok=Button(self, width=8, command=self.testar,text='OK')
     self.ok.grid(row=4, column=1, sticky=W, padx=5)
