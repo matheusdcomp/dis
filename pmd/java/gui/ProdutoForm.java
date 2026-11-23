@@ -42,18 +42,18 @@ public class ProdutoForm extends JFrame implements ActionListener {
     // linha 0
     var lbnm = new JLabel("Nome:");
     lbnm.setFont(fonte);
-    gbc.gridx = 0;      //coluna inicial
-    gbc.gridy = 0;      //linha inicial
-    gbc.weightx = 0;    //o quanto a coluna expande - só precisa ajustar um componente em cada coluna, os demais ficam com 0
-    gbc.weighty = 0;    //o quanto a linha expande - só precisa ajustar um componente em cada linha, os demais ficam com 0
-    gbc.gridwidth = 1;  //quantas colunas vai ocupar (use gridheight se quiser ocupar mais de uma linha). A soma de todos os componentes na mesma linha/coluna define o total de colunas/linhas.
+    gbc.gridx = 0;
+    gbc.gridy = 0;
+    gbc.weightx = 0.0;
+    gbc.weighty = 0;
+    gbc.gridwidth = 1;
     add(lbnm, gbc);
 
     tfnm = new JTextField();
     tfnm.setFont(fonte);
     gbc.gridx = 1;
     gbc.gridy = 0;
-    gbc.weightx = 0.0;
+    gbc.weightx = 0;
     gbc.weighty = 0;
     gbc.gridwidth = 7;
     add(tfnm, gbc);
@@ -63,7 +63,7 @@ public class ProdutoForm extends JFrame implements ActionListener {
     lbvl.setFont(fonte);
     gbc.gridx = 0;
     gbc.gridy = 1;
-    gbc.weightx = 0.0;
+    gbc.weightx = 0;
     gbc.weighty = 0;
     gbc.gridwidth = 1;
     add(lbvl, gbc);
@@ -81,7 +81,7 @@ public class ProdutoForm extends JFrame implements ActionListener {
     lbct.setFont(fonte);
     gbc.gridx = 4;
     gbc.gridy = 1;
-    gbc.weightx = 0.0;
+    gbc.weightx = 0;
     gbc.weighty = 0;
     gbc.gridwidth = 1;
     add(lbct, gbc);

@@ -17,7 +17,7 @@ class ProdutoForm:
     categorias = ["DIVERSOS", "LIMPEZA", "MANUTENÇÃO"]
     janela = Tk()
     janela.title("Produtos")
-    centralizarJanela(janela, 800, 600, True)
+    centralizarJanela(janela, 800, 600, False)
 
     styleLB = Style()
     styleLB.configure("TLabel", font=("Arial", 16, "bold"))
@@ -26,8 +26,7 @@ class ProdutoForm:
     styleCT = Style()
     styleCT.configure("TEntry", font=("Arial", 16, "bold"))
     styleCB = Style()
-    styleCB.configure("TCombobox", font=("Arial", 16, "bold"))
-    
+    styleCB.configure("TCombobox", font=("Arial", 16, "bold"))    
 
     lbnm = Label(janela, style="TLabel", text="Nome:")
     self.ennm = Entry(janela, style="TEntry")
