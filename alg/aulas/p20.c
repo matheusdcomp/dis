@@ -2,14 +2,17 @@
 
 const int LIN = 2, COL = 3;
 
-void dobrar(int x) {
-  x = x * 2;
+void dobrar(int *x) {
+  *x = *x * 2;
 }
 
 void dobrarMatriz(int m[][3] ) {
   for (int l = 0; l < LIN; l++) 
-    for (int c = 0; c < c; c++)
-      m[l][c] = m[l][c] * 2;
+    for (int c = 0; c < c; c++) {
+      int a = m[l][c];
+      dobrar(&a);
+      m[l][c] = a; 
+    }
 }
 
 void main() {
