@@ -6,7 +6,6 @@ void fun() {
   *x = 5;
   printf( "\n*x: %d\tx: %x\n", *x, x );
   free(x);
-  x = (int*) malloc( sizeof(int) );
 }
 
 
