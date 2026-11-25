@@ -1,2 +1,0 @@
-Dis {codigo = 1, nome = "PF", valor = 100.0}
-Dis {codigo = 2, nome = "CLP", valor = 90.0}

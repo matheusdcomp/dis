@@ -1,4 +1,4 @@
-package pmd.java.p1;
+package p1;
 
 public class CorMain {
 

@@ -4,7 +4,8 @@
       "lib/**/*.jar",
       "/home/matheus/Downloads/junit-platform-console-standalone-6.1.0-javadoc.jar",
       "/home/matheus/Downloads/junit-platform-console-standalone-6.1.0.jar",
-      "test-lib1/junit-platform-console-standalone-1.13.0-M3.jar"
+      "test-lib1/junit-platform-console-standalone-1.13.0-M3.jar",
+      "test-lib/junit-platform-console-standalone-6.1.3.jar"
     ],
     "exclude": [
       "lib/junit-platform-console-standalone-1.13.0-M3.jar"
